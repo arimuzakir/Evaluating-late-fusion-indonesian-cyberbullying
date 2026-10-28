@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "torch": "2.11.0+cu130",
+    "torchvision": "0.26.0+cu130",
+    "transformers": "4.57.1",
+    "scikit-learn": "1.6.1",
+    "pandas": "2.2.3",
+    "numpy": "2.1.3",
+    "einops": "0.8.1",
+    "emoji": "2.14.1"
+  },
+  "python": "3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]",
+  "gpu": "NVIDIA L4",
+  "amp": "torch.bfloat16",
+  "cuda": "13.0",
+  "started_utc": "2026-10-20T16:55:01.553676+00:00"
+}

@@ -1,0 +1,32 @@
+{
+  "source": "Stored R1, R2 and adjudication item-level records; numerical re-aggregation only",
+  "status": "REPRODUCIBLE_ITEM_LEVEL_SUMMARY",
+  "n_audit": 100,
+  "n_positive_row_consensus": 55,
+  "row_level_counts": {
+    "2": 46,
+    "1": 9,
+    "0": 0
+  },
+  "reporting_basis": "Recorded per-item scores with adjudication taking precedence for recorded disagreements",
+  "reporting_scope": "Descriptive distribution within the 55 consensus-positive audited windows only",
+  "historical_coordinator_aggregate_for_provenance_only": {
+    "2": 44,
+    "1": 8,
+    "0": 3
+  },
+  "difference_row_minus_historical": {
+    "2": 2,
+    "1": 1,
+    "0": -3
+  },
+  "historical_difference_resolved_by_new_adjudication": false,
+  "any_rater_score_modified": false,
+  "new_human_adjudication_performed": false,
+  "reporting_policy": "Use derived row-level counts for descriptive summaries; do not use historical coordinator aggregate as an alternative result",
+  "source_sha256": {
+    "R1": "9a2fbd15fbf541e90078a22bd331616c3de7efb6d908b1dd88644be3fb18ba54",
+    "R2": "16e79686c3f1c1cf1b5ec6249dd133e19e1e49077e30146f1eee0045e03e037d",
+    "consensus": "b4bc17f47af8211b6877c2a30f5b4bc102bb976e181445f764b29e78a5fa85ad"
+  }
+}

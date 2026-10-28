@@ -1,0 +1,13 @@
+{
+  "macro_f1": 0.4986506306603848,
+  "accuracy": 0.5139177423437105,
+  "roc_auc": 0.49945044487069246,
+  "average_precision": 0.5891853208304723,
+  "macro_f1_sd": 0.007918055277494444,
+  "accuracy_sd": 0.007828134292655942,
+  "roc_auc_sd": 0.00915525751419615,
+  "average_precision_sd": 0.0076687279331716955,
+  "replicates": 1000,
+  "analytical_fit_prevalence_accuracy": 0.5144738247674956,
+  "analytical_cohort_prevalence_accuracy": 0.5157395380169927
+}

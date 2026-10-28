@@ -1,0 +1,106 @@
+{
+  "config": {
+    "representation": "waveform16_v1",
+    "sample_rate": 16000,
+    "pcm": "signed little-endian 16-bit mono",
+    "frame_length": 400,
+    "hop_length": 160,
+    "fft_length": 512,
+    "window": "numpy.hanning symmetric",
+    "trailing_frame": "zero pad to next complete frame",
+    "epsilon": 1e-10,
+    "rolloff_fraction": 0.85,
+    "normalization": "PCM / 32768; no loudness normalization; standardization later fits training role only",
+    "missing_audio": "all 16 zeros with explicit audio_present=0; media errors are not silently converted to missing",
+    "minimum_decoded_seconds": 0.25,
+    "source_video_directory": "data/multimodal/video"
+  },
+  "schema": [
+    [
+      "log10_rms_mean",
+      "mean(log10(sqrt(mean(frame^2))+1e-10))",
+      "log10 amplitude"
+    ],
+    [
+      "log10_rms_std",
+      "population std of log10 RMS",
+      "log10 amplitude"
+    ],
+    [
+      "absolute_peak",
+      "max(abs(decoded waveform))",
+      "amplitude [-1,1]"
+    ],
+    [
+      "absolute_mean",
+      "mean(abs(decoded waveform))",
+      "amplitude [-1,1]"
+    ],
+    [
+      "zero_crossing_mean",
+      "mean fraction of adjacent samples with differing signbit per frame",
+      "fraction"
+    ],
+    [
+      "zero_crossing_std",
+      "population std of frame zero crossing fraction",
+      "fraction"
+    ],
+    [
+      "spectral_centroid_mean",
+      "mean power-weighted frequency / Nyquist",
+      "normalized frequency"
+    ],
+    [
+      "spectral_centroid_std",
+      "population std of normalized centroid",
+      "normalized frequency"
+    ],
+    [
+      "spectral_bandwidth_mean",
+      "mean sqrt(power-weighted squared distance to centroid) / Nyquist",
+      "normalized frequency"
+    ],
+    [
+      "spectral_bandwidth_std",
+      "population std of normalized bandwidth",
+      "normalized frequency"
+    ],
+    [
+      "spectral_rolloff85_mean",
+      "mean first frequency reaching 85 percent cumulative frame power / Nyquist",
+      "normalized frequency"
+    ],
+    [
+      "spectral_rolloff85_std",
+      "population std of normalized rolloff",
+      "normalized frequency"
+    ],
+    [
+      "spectral_flatness_mean",
+      "mean geometric/arithmetic frame power ratio; zero for zero-power frame",
+      "ratio"
+    ],
+    [
+      "spectral_flatness_std",
+      "population std of frame spectral flatness",
+      "ratio"
+    ],
+    [
+      "spectral_flux_mean",
+      "mean squared L2 change between successive normalized power spectra",
+      "squared ratio"
+    ],
+    [
+      "audio_present",
+      "1 if a decoded source audio stream supplies at least 0.25 second for window; else 0",
+      "binary"
+    ]
+  ],
+  "input_sha256": {
+    "features/multimodal_video_clean_metadata.csv": "42569f4ffe4d56cc785ea3b243795dc485b0aa2536462ac2881d929fcc549266",
+    "data/multimodal/segmentation_10s_stride3_v2/multimodal_segments.csv": "8dc481e23c9e2d908cddc562ad69b3999c28ac7a52fa4cd372748c5dfa14fcee",
+    "results/v6_reviewer_experiments_20261020_v1/VIDEO_PRIMARY_MANIFEST.csv": "f82b694fda9251a3cd9a736ca5974e520d606a5e5277bdf5b3028b0ba3bb68a4",
+    "results/v6_reviewer_experiments_20261020_v1/VIDEO_ROLE_MANIFEST.csv": "662ed2510be1d48673951926a15a2dc30a2ad9f216c4b7dd7ff4755b9b620daa"
+  }
+}

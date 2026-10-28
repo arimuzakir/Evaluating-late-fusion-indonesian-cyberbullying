@@ -1,0 +1,7 @@
+candidate,baseline,delta_macro_f1,ci_low,ci_high,group_permutation_p,source_groups,n,replicates,scope,p_holm,family,label_version
+equal_vat,text,-0.0033623179238975176,-0.01777983396700193,0.011919894227450286,0.656034396560344,214,3951,10000,conditional on fitted models; exploratory internal corpus,1.0,EXPLORATORY_6,v1.1-GoldAdjudicated
+equal_va,visual,-0.024695572099937113,-0.05428166363790058,0.0015491785406301277,0.10008999100089991,214,3951,10000,conditional on fitted models; exploratory internal corpus,0.40035996400359963,EXPLORATORY_6,v1.1-GoldAdjudicated
+equal_ta,text,-0.00495565828079203,-0.019819625308879252,0.009847396556833676,0.5355464453554645,214,3951,10000,conditional on fitted models; exploratory internal corpus,1.0,EXPLORATORY_6,v1.1-GoldAdjudicated
+ta_lr,text,-0.06284301502129797,-0.09911755319024258,-0.026099042228977888,0.0020997900209979003,214,3951,10000,conditional on fitted models; exploratory internal corpus,0.010498950104989501,EXPLORATORY_6,v1.1-GoldAdjudicated
+equal_tv,text,0.000623473338921432,-0.013929003767400638,0.015241685538588987,0.9314068593140686,214,3951,10000,conditional on fitted models; exploratory internal corpus,1.0,EXPLORATORY_6,v1.1-GoldAdjudicated
+tv_lr,text,-0.06269190647793321,-0.09261346839817441,-0.03331866671248384,0.0005999400059994001,214,3951,10000,conditional on fitted models; exploratory internal corpus,0.0035996400359964006,EXPLORATORY_6,v1.1-GoldAdjudicated

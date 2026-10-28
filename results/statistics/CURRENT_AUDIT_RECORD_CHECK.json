@@ -1,0 +1,20 @@
+{
+  "current_consensus_entries": 26,
+  "unresolved_core_item_fields": 0,
+  "computed_keyframe_counts_among_55_positive": {
+    "score2": 46,
+    "score1": 9,
+    "score0": 0
+  },
+  "coordinator_reported_keyframe_counts": {
+    "score2": 44,
+    "score1": 8,
+    "score0": 3
+  },
+  "keyframe_numeric_distribution_in_manuscript": false,
+  "source_hashes": {
+    "Form_Audit_R1_scored.csv": "5ee68b58e281075c71176316d946cc8fade611f25789abca2fce772ec85f7b6a",
+    "Form_Audit_R2_scored.csv": "516eae167adea6b2b59dee6c7ca823926805d15814acc05e913d1a21650cefa4",
+    "Form_Adjudikasi.csv": "06a594f295050adad7dda77107a105f7c217178a2357646560206c95ff11e059"
+  }
+}

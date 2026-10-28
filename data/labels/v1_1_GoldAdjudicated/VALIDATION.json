@@ -1,0 +1,64 @@
+{
+  "status": "PASS",
+  "version": "v1.1-GoldAdjudicated",
+  "checks": [
+    {
+      "file": "data/dataset_master_13307_labeled.csv",
+      "status": "PASS",
+      "rows": 13307,
+      "changed_label_rows": 4,
+      "changed_columns": [
+        "label_final",
+        "label_teks"
+      ]
+    },
+    {
+      "file": "data/dataset_ocr_video_labeled.csv",
+      "status": "PASS",
+      "rows": 2248,
+      "changed_label_rows": 2,
+      "changed_columns": [
+        "label_final",
+        "label_teks"
+      ]
+    },
+    {
+      "file": "features/multimodal_video_clean_metadata.csv",
+      "status": "PASS",
+      "rows": 4401,
+      "changed_label_rows": 4,
+      "changed_columns": [
+        "label_final"
+      ]
+    },
+    {
+      "file": "data/multimodal/segmentation_10s_stride3_v2/multimodal_segments.csv",
+      "status": "PASS",
+      "rows": 4401,
+      "changed_label_rows": 4,
+      "changed_columns": [
+        "label_final"
+      ]
+    },
+    {
+      "file": "manifests/VIDEO_PRIMARY_MANIFEST.csv",
+      "status": "PASS",
+      "rows": 3951,
+      "changed_label_rows": 4,
+      "changed_columns": [
+        "label_final"
+      ]
+    }
+  ],
+  "window_label_changes": 4,
+  "window_label_changes_in_historical_194": 0,
+  "historical_179_negative_window_labels_retained": true,
+  "annotator_votes_and_legacy_expert_columns_preserved": true,
+  "original_ratings_snapshots_preserved_byte_for_byte": true,
+  "row_order_and_non_label_fields_preserved": true,
+  "roles_preserved_byte_for_byte": true,
+  "all_153_adjudicated_window_labels_align_with_new_reference": true,
+  "registry_or_human_signoff_created": false,
+  "audio_pitch_measurements_created": false,
+  "model_training_or_new_performance_claims": false
+}

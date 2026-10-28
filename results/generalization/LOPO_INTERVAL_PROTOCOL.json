@@ -1,0 +1,32 @@
+{
+  "status": "VERIFIED_EXISTING_LOPO_PREDICTIONS_WITH_NEW_DESCRIPTIVE_CLUSTER_INTERVALS",
+  "reps": 20000,
+  "seed": 27062026,
+  "models": [
+    "siglip2_visual_probe",
+    "siglip2_vt_probe",
+    "siglip2_vta_probe",
+    "siglip2_vta_coverage_probe"
+  ],
+  "platforms": [
+    "Facebook",
+    "Instagram",
+    "TikTok",
+    "X/Twitter",
+    "YouTube"
+  ],
+  "n_records": 15804,
+  "number_of_models": 4,
+  "description": "Resamples source group IDs within each held-out platform. No model refitted. Paired differences use the same group draws. Conditional uncertainty only.",
+  "limitations": [
+    "Existing LOPO probes use frozen pretrained features, not end-to-end encoder retraining",
+    "Source group can span platforms; the released LOPO role manifest has source purge checks",
+    "Within-platform source-group resampling is not repeated external independent validation",
+    "Subgroup CI does not account for model selection, training or data acquisition uncertainty"
+  ],
+  "source_sha256": {
+    "LOPO_FROZEN_FEATURE_PROBE_PREDICTIONS.csv": "3ae6473e9d0c20e64d7c1084b80ab3056646de36a691b11439b75acaf7125d80",
+    "LOPO_FROZEN_FEATURE_PROBE_METRICS.csv": "e6d70043e81429d8bfcc1a279befedb96c4d8d41084d9ec352843edee03c9b6a",
+    "LOPO_ROLE_MANIFEST.csv": "e4152ebc35092dfcb0cf56c6bf4310684c1aa7259f7fd16aa933f053559952e5"
+  }
+}

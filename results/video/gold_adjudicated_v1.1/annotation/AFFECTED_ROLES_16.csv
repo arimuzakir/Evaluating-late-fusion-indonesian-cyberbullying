@@ -1,0 +1,17 @@
+master_id,outer_fold,role,group_id,old_label,new_label,required_action
+CB_MASTER_09804,0,fit,vid_bda336dfd420,0,1,retrain supervised encoder/audio/probe branches with updated fit labels
+CB_MASTER_11091,0,fit,vid_7f0b3e89ff4a,0,1,retrain supervised encoder/audio/probe branches with updated fit labels
+CB_MASTER_11325,0,fit,vid_be0e9fcdc574,1,0,retrain supervised encoder/audio/probe branches with updated fit labels
+CB_MASTER_11039,0,meta_fit,vid_facbf5548284,0,1,refit fusion heads with updated labels
+CB_MASTER_11091,1,early_stop,vid_7f0b3e89ff4a,0,1,repeat checkpoint selection using updated early_stop labels; cannot reuse previously selected checkpoint blindly
+CB_MASTER_09804,1,test,vid_bda336dfd420,0,1,evaluate against updated held-out reference after fold pipeline is fixed
+CB_MASTER_11039,1,test,vid_facbf5548284,0,1,evaluate against updated held-out reference after fold pipeline is fixed
+CB_MASTER_11325,1,test,vid_be0e9fcdc574,1,0,evaluate against updated held-out reference after fold pipeline is fixed
+CB_MASTER_11091,2,fit,vid_7f0b3e89ff4a,0,1,retrain supervised encoder/audio/probe branches with updated fit labels
+CB_MASTER_11325,2,fit,vid_be0e9fcdc574,1,0,retrain supervised encoder/audio/probe branches with updated fit labels
+CB_MASTER_09804,2,meta_fit,vid_bda336dfd420,0,1,refit fusion heads with updated labels
+CB_MASTER_11039,2,meta_fit,vid_facbf5548284,0,1,refit fusion heads with updated labels
+CB_MASTER_09804,3,fit,vid_bda336dfd420,0,1,retrain supervised encoder/audio/probe branches with updated fit labels
+CB_MASTER_11039,3,fit,vid_facbf5548284,0,1,retrain supervised encoder/audio/probe branches with updated fit labels
+CB_MASTER_11325,3,meta_fit,vid_be0e9fcdc574,1,0,refit fusion heads with updated labels
+CB_MASTER_11091,3,test,vid_7f0b3e89ff4a,0,1,evaluate against updated held-out reference after fold pipeline is fixed

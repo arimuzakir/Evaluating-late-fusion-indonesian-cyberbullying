@@ -1,0 +1,137 @@
+{
+  "focal": {
+    "candidate": "equal_vat",
+    "baseline": "text",
+    "delta_macro_f1": -0.0033623179238975,
+    "ci_low": -0.0178765858028778,
+    "ci_high": 0.0115901332544028,
+    "permutation_p": 0.6607533924660753,
+    "bootstrap_se": 0.0075124837897468,
+    "mde_normal_80pct": 0.0210468635366681,
+    "seed": 24102026,
+    "replicates": 100000,
+    "n": 3951,
+    "groups": 214,
+    "p_holm_four": 0.6607533924660753
+  },
+  "stratified_random": {
+    "macro_f1": 0.4986506306603848,
+    "accuracy": 0.5139177423437105,
+    "roc_auc": 0.49945044487069246,
+    "average_precision": 0.5891853208304723,
+    "macro_f1_sd": 0.007918055277494444,
+    "accuracy_sd": 0.007828134292655942,
+    "roc_auc_sd": 0.00915525751419615,
+    "average_precision_sd": 0.0076687279331716955,
+    "replicates": 1000,
+    "analytical_fit_prevalence_accuracy": 0.5144738247674956,
+    "analytical_cohort_prevalence_accuracy": 0.5157395380169927
+  },
+  "exclusion": [
+    {
+      "cohort": "excluded",
+      "n": 450,
+      "positive": 280,
+      "negative": 170,
+      "positive_fraction": 0.6222222222222222,
+      "source_videos": 37,
+      "ocr_present": 329,
+      "stt_present": 227,
+      "both_present": 180,
+      "neither_present": 74
+    },
+    {
+      "cohort": "retained",
+      "n": 3951,
+      "positive": 2326,
+      "negative": 1625,
+      "positive_fraction": 0.5887117185522652,
+      "source_videos": 215,
+      "ocr_present": 2035,
+      "stt_present": 2506,
+      "both_present": 1275,
+      "neither_present": 685
+    }
+  ],
+  "sensitivity": [
+    {
+      "analysis": "all_aligned",
+      "model": "text",
+      "n": 3951,
+      "groups": 214,
+      "macro_f1": 0.5703396012843986
+    },
+    {
+      "analysis": "all_aligned",
+      "model": "equal_vat",
+      "n": 3951,
+      "groups": 214,
+      "macro_f1": 0.5669772833605011
+    },
+    {
+      "analysis": "exclude_3_to_2_votes",
+      "model": "text",
+      "n": 3754,
+      "groups": 214,
+      "macro_f1": 0.574121015913547
+    },
+    {
+      "analysis": "exclude_3_to_2_votes",
+      "model": "equal_vat",
+      "n": 3754,
+      "groups": 214,
+      "macro_f1": 0.5738038517630988
+    },
+    {
+      "analysis": "exclude_four_overrides",
+      "model": "text",
+      "n": 3947,
+      "groups": 214,
+      "macro_f1": 0.5709227221473222
+    },
+    {
+      "analysis": "exclude_four_overrides",
+      "model": "equal_vat",
+      "n": 3947,
+      "groups": 214,
+      "macro_f1": 0.5672535158921297
+    },
+    {
+      "analysis": "score_against_original_majority",
+      "model": "text",
+      "n": 3951,
+      "groups": 214,
+      "macro_f1": 0.5714715577093805
+    },
+    {
+      "analysis": "score_against_original_majority",
+      "model": "equal_vat",
+      "n": 3951,
+      "groups": 214,
+      "macro_f1": 0.5675822429262387
+    },
+    {
+      "analysis": "platform_poststratification",
+      "model": "text",
+      "n": 3951,
+      "groups": 214,
+      "macro_f1": 0.5704638186971274
+    },
+    {
+      "analysis": "platform_poststratification",
+      "model": "equal_vat",
+      "n": 3951,
+      "groups": 214,
+      "macro_f1": 0.5675672679908348
+    }
+  ],
+  "source_oof_sha256": "336892131fd6ff00d27cd568e30c8ecc9abb9cf705adea5d93158a03016f4c01",
+  "notes": [
+    "All inferences conditional on stored fitted models.",
+    "Focal four contrasts are a retrospective reporting family; original seven availability and six exploratory families remain historical archives.",
+    "MDE is a normal-approximation sensitivity using bootstrap SE, not a power simulation or equivalence result.",
+    "Random baseline uses 1000 independent score draws; Bernoulli decision rate comes only from each encoder-fit role.",
+    "Poststratification changes platform composition within valid observations; excluded windows have no valid predictions and are not imputed.",
+    "Label sensitivity changes scoring/eligibility only and does not refit encoders."
+  ]
+}

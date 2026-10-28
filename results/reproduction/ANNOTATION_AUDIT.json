@@ -1,0 +1,24 @@
+{
+  "n_recorded_items": 13307,
+  "recorded_vote_cells": 66535,
+  "fleiss_kappa": 0.8853015656108575,
+  "mean_pairwise_cohen_kappa": 0.8855040304464721,
+  "window_review_n": 153,
+  "window_kappa_before_adjudication": 0.8954203691045797,
+  "window_agreement_n": 145,
+  "discordant_window_reviews": 8,
+  "majority_overrides": [
+    "CB_MASTER_11039",
+    "CB_MASTER_11091",
+    "CB_MASTER_11325",
+    "CB_MASTER_09804"
+  ],
+  "scope": "recorded ratings only; human independence is researcher-reported; no identity or certification verification",
+  "researcher_clarified_cases": [
+    "CB_MASTER_00202",
+    "CB_MASTER_00111",
+    "CB_MASTER_09067"
+  ],
+  "labels_modified": false,
+  "historical_votes_modified": false
+}

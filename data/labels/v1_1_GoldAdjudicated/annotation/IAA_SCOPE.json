@@ -1,0 +1,12 @@
+{
+  "raw_expert_pair_n": 1331,
+  "raw_expert_kappa": 0.8851444252043699,
+  "raw_scope": "Original text/audio-based item ratings according to researcher; independence is researcher-reported, not verified by numerical calculation.",
+  "legacy_master_kappa": 0.9074715487382484,
+  "legacy_scope": "Diagnostic arithmetic only. The 194 edited pairs are now declared parent-video context while other rows retain original item ratings; do not report 0.9075 as uniform-unit independent window IAA or as a directly comparable reliability improvement.",
+  "new_window_sample_n": 153,
+  "new_window_kappa_before_adjudication": 0.8954203691045797,
+  "new_window_agreement": 0.9477124183006536,
+  "new_window_scope": "153 paired window ratings kept unchanged; adjudicated gold stored in a separate column. Not a reliability estimate for all 4401 windows.",
+  "do_not_recalculate_independent_IAA_from_consensus_columns": true
+}

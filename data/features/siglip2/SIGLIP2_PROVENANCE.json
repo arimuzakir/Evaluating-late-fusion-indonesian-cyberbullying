@@ -1,0 +1,9 @@
+{
+  "checkpoint": "google/siglip2-base-patch16-224",
+  "resolved_commit": "75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2",
+  "source": "https://huggingface.co/google/siglip2-base-patch16-224",
+  "training": "frozen pretrained features; supervised linear probe on fit role only",
+  "text_max_length": 64,
+  "absent_text": "zero feature vector",
+  "purpose": "2025 vision-language representation baseline; does not isolate fusion architecture"
+}

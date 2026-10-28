@@ -1,0 +1,3 @@
+cohort,n,positive,negative,positive_fraction,source_videos,ocr_present,stt_present,both_present,neither_present
+excluded,450,280,170,0.6222222222222222,37,329,227,180,74
+retained,3951,2326,1625,0.5887117185522652,215,2035,2506,1275,685

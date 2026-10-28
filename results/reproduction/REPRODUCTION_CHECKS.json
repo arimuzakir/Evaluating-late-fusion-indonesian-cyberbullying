@@ -1,0 +1,304 @@
+{
+  "scope": "stored predictions and released label records; no training or independent human validation",
+  "checks": [
+    {
+      "check": "Label package hashes",
+      "pass": true,
+      "details": {
+        "payload_files": 21,
+        "mismatch": [],
+        "manifest_sha256": "098afc25c3848875bd5ef81246c3f6ce55b3dff9c58896316c78a13af8873e2f"
+      }
+    },
+    {
+      "check": "22-file frozen label inventory",
+      "pass": true,
+      "details": {
+        "entries": 22,
+        "mismatch": []
+      }
+    },
+    {
+      "check": "Population counts",
+      "pass": true,
+      "details": {
+        "master": {
+          "n": 13307,
+          "class_counts": {
+            "1": 7252,
+            "0": 6055
+          }
+        },
+        "comments": {
+          "n": 8906,
+          "class_counts": {
+            "1": 4646,
+            "0": 4260
+          }
+        },
+        "video": {
+          "n": 4401,
+          "class_counts": {
+            "1": 2606,
+            "0": 1795
+          }
+        },
+        "aligned": {
+          "n": 3951,
+          "class_counts": {
+            "1": 2326,
+            "0": 1625
+          }
+        }
+      }
+    },
+    {
+      "check": "Labels match master: meta",
+      "pass": true,
+      "details": {
+        "n": 4401,
+        "mismatch": 0
+      }
+    },
+    {
+      "check": "Labels match master: segments",
+      "pass": true,
+      "details": {
+        "n": 4401,
+        "mismatch": 0
+      }
+    },
+    {
+      "check": "Labels match master: aligned",
+      "pass": true,
+      "details": {
+        "n": 3951,
+        "mismatch": 0
+      }
+    },
+    {
+      "check": "Labels match master: ocr",
+      "pass": true,
+      "details": {
+        "n": 2248,
+        "mismatch": 0
+      }
+    },
+    {
+      "check": "Raw votes unchanged",
+      "pass": true,
+      "details": {
+        "cells": 66535
+      }
+    },
+    {
+      "check": "Exactly four majority overrides",
+      "pass": true,
+      "details": {
+        "overrides": [
+          "CB_MASTER_09804",
+          "CB_MASTER_11039",
+          "CB_MASTER_11091",
+          "CB_MASTER_11325"
+        ]
+      }
+    },
+    {
+      "check": "Lineage labels",
+      "pass": true,
+      "details": {
+        "n": 13307,
+        "changed": 4
+      }
+    },
+    {
+      "check": "Historical 194/94 scope",
+      "pass": true,
+      "details": {
+        "rows": 194,
+        "parent_rows": 94,
+        "negative": 179
+      }
+    },
+    {
+      "check": "153-window agreement",
+      "pass": true,
+      "details": {
+        "n": 153,
+        "kappa": 0.8954203691045797,
+        "agreements": 145,
+        "reference_alignment": true
+      }
+    },
+    {
+      "check": "Role isolation fold 0",
+      "pass": true,
+      "details": {
+        "rows": 3951,
+        "group_max_roles": 1,
+        "roles": {
+          "fit": 1621,
+          "test": 1237,
+          "calibration": 423,
+          "meta_fit": 404,
+          "early_stop": 266
+        }
+      }
+    },
+    {
+      "check": "Role isolation fold 1",
+      "pass": true,
+      "details": {
+        "rows": 3951,
+        "group_max_roles": 1,
+        "roles": {
+          "fit": 1889,
+          "test": 773,
+          "calibration": 495,
+          "meta_fit": 466,
+          "early_stop": 328
+        }
+      }
+    },
+    {
+      "check": "Role isolation fold 2",
+      "pass": true,
+      "details": {
+        "rows": 3951,
+        "group_max_roles": 1,
+        "roles": {
+          "fit": 1890,
+          "test": 805,
+          "calibration": 476,
+          "meta_fit": 466,
+          "early_stop": 314
+        }
+      }
+    },
+    {
+      "check": "Role isolation fold 3",
+      "pass": true,
+      "details": {
+        "rows": 3951,
+        "group_max_roles": 1,
+        "roles": {
+          "fit": 1677,
+          "test": 1136,
+          "calibration": 425,
+          "meta_fit": 420,
+          "early_stop": 293
+        }
+      }
+    },
+    {
+      "check": "Outer fold source groups isolated",
+      "pass": true,
+      "details": {
+        "groups": 214,
+        "videos": 215
+      }
+    },
+    {
+      "check": "Image hashes disjoint across folds",
+      "pass": true,
+      "details": {
+        "unique_image_hashes": 3948
+      }
+    },
+    {
+      "check": "All 63 video metric rows recomputed",
+      "pass": true,
+      "details": {
+        "rows": 63,
+        "models": 21,
+        "seeds": [
+          42,
+          2026,
+          2027
+        ],
+        "oof_rows": 11853,
+        "differences": []
+      }
+    },
+    {
+      "check": "All 21 three-seed summaries recomputed",
+      "pass": true,
+      "details": {
+        "rows": 21,
+        "differences": []
+      }
+    },
+    {
+      "check": "OOF labels match master",
+      "pass": true,
+      "details": {
+        "rows": 11853
+      }
+    },
+    {
+      "check": "All seven comment result rows recomputed",
+      "pass": true,
+      "details": {
+        "rows": 7,
+        "predictions": 8582,
+        "n_per_run": [
+          1226
+        ],
+        "differences": []
+      }
+    },
+    {
+      "check": "Comment source/text isolation",
+      "pass": true,
+      "details": {
+        "records": 8196,
+        "split_counts": {
+          "train": 5741,
+          "validation": 1229,
+          "test": 1226
+        }
+      }
+    },
+    {
+      "check": "Comment held-out labels and IDs",
+      "pass": true,
+      "details": {
+        "unique_test_ids": 1226
+      }
+    },
+    {
+      "check": "All 20 frozen-feature LOPO metric rows recomputed",
+      "pass": true,
+      "details": {
+        "rows": 20,
+        "predictions": 15804,
+        "differences": []
+      }
+    },
+    {
+      "check": "LOPO role source isolation",
+      "pass": true,
+      "details": {
+        "held_out_platforms": 5
+      }
+    },
+    {
+      "check": "Aligned audio shape/status",
+      "pass": true,
+      "details": {
+        "shape": [
+          3951,
+          16
+        ],
+        "status_counts": {
+          "OK": 3841,
+          "TRUNCATED_AT_SOURCE_END": 84,
+          "SOURCE_HAS_NO_AUDIO_STREAM": 26
+        },
+        "zero_absent_rows": 26
+      }
+    }
+  ],
+  "passed": 27,
+  "failed": 0
+}

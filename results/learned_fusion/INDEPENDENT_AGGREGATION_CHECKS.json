@@ -1,0 +1,56 @@
+[
+  {
+    "model": "visual",
+    "group_weighted_loss_independent_group_average": true,
+    "ece_independent_bin_average": true
+  },
+  {
+    "model": "audio",
+    "group_weighted_loss_independent_group_average": true,
+    "ece_independent_bin_average": true
+  },
+  {
+    "model": "text",
+    "group_weighted_loss_independent_group_average": true,
+    "ece_independent_bin_average": true
+  },
+  {
+    "model": "equal_vat",
+    "group_weighted_loss_independent_group_average": true,
+    "ece_independent_bin_average": true
+  },
+  {
+    "model": "vat_lr",
+    "group_weighted_loss_independent_group_average": true,
+    "ece_independent_bin_average": true
+  },
+  {
+    "model": "sigmoid_equal_vat",
+    "group_weighted_loss_independent_group_average": true,
+    "ece_independent_bin_average": true
+  },
+  {
+    "model": "convex_vat",
+    "group_weighted_loss_independent_group_average": true,
+    "ece_independent_bin_average": true
+  },
+  {
+    "model": "sigmoid_visual",
+    "group_weighted_loss_independent_group_average": true,
+    "ece_independent_bin_average": true
+  },
+  {
+    "model": "sigmoid_audio",
+    "group_weighted_loss_independent_group_average": true,
+    "ece_independent_bin_average": true
+  },
+  {
+    "model": "sigmoid_text",
+    "group_weighted_loss_independent_group_average": true,
+    "ece_independent_bin_average": true
+  },
+  {
+    "new_control_predictions_reconstructed_from_exported_parameters": true,
+    "text_fallback_preserved": true
+  }
+]

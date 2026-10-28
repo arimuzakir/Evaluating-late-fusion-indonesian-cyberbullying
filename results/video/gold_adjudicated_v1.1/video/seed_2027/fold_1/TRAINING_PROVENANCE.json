@@ -1,0 +1,21 @@
+{
+  "label_version": "v1.1-GoldAdjudicated",
+  "seed": 2027,
+  "fold": 1,
+  "text_encoder": "fresh generic checkpoint -> fit role -> early_stop selection under v1.1",
+  "visual_encoder": "fresh ImageNet checkpoint -> fit role -> early_stop selection under v1.1",
+  "old_supervised_encoder_outputs_used": false,
+  "changed_ids_by_role": {
+    "fit": [],
+    "early_stop": [
+      "CB_MASTER_11091"
+    ],
+    "meta_fit": [],
+    "calibration": [],
+    "test": [
+      "CB_MASTER_09804",
+      "CB_MASTER_11039",
+      "CB_MASTER_11325"
+    ]
+  }
+}

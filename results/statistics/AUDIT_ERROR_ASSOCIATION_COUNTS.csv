@@ -1,0 +1,5 @@
+branch,quality,n,text_errors,vat_errors,corrected,new_errors
+ocr,faithful,43,16,17,3,4
+ocr,partial_or_corrupt,9,3,3,0,0
+stt,faithful,51,20,24,1,5
+stt,partial_or_corrupt,13,7,6,1,0

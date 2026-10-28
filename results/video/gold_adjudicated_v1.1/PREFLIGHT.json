@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "n": 3951,
+  "changed_labels": 4,
+  "label_version": "v1.1-GoldAdjudicated",
+  "roles_unchanged": true,
+  "comment_labels_unchanged": true,
+  "legacy_supervised_branch_cache_used": false,
+  "generic_siglip_and_waveform_reused": true,
+  "environment": {
+    "python": "3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]",
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.6.1",
+    "torch": "2.11.0+cu130",
+    "einops": "0.8.1",
+    "transformers": "4.57.1",
+    "torchvision": "0.26.0+cu130",
+    "emoji": "2.14.1",
+    "cuda_runtime": "13.0",
+    "gpu": "NVIDIA L4"
+  }
+}

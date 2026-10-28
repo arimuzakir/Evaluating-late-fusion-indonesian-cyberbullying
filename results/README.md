@@ -1,0 +1,3 @@
+# Numerical results
+
+`comments/` contains the selected standalone-text benchmark. `video/` contains the 21-configuration, three-seed aligned-window evaluation. `statistics/` holds the focal source-paired comparison and subset analyses. `learned_fusion/` contains calibration and role-fitted controls. `input_audit/` contains blinded numerical ratings and keyframe reconciliation outputs. `generalization/` contains **frozen-feature-only** cross-platform and repartition probes. `reproduction/` stores main saved-prediction checks. `figures/` contains visualizations generated from final result tables.

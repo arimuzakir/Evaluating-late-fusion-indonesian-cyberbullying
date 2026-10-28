@@ -1,0 +1,8 @@
+candidate,baseline,delta_macro_f1,ci_low,ci_high,group_permutation_p,source_groups,n,replicates,scope,p_holm,family,label_version
+vat_coverage,visual,-0.027871704692166377,-0.06619157279843842,0.006287688236161603,0.1523847615238476,214,3951,10000,conditional on fitted models; exploratory internal corpus,0.7619238076192381,PRIMARY_7,v1.1-GoldAdjudicated
+vat_coverage,vat_lr,-0.005649859503072618,-0.03469069184498378,0.02353452532003124,0.7144285571442855,214,3951,10000,conditional on fitted models; exploratory internal corpus,1.0,PRIMARY_7,v1.1-GoldAdjudicated
+vat_coverage,vat_flags,-0.023233485146422428,-0.04437824172215981,-0.002817634764191723,0.0352964703529647,214,3951,10000,conditional on fitted models; exploratory internal corpus,0.2470752924707529,PRIMARY_7,v1.1-GoldAdjudicated
+vat_coverage,coverage_only,0.006893473791220073,-0.018983764048161936,0.03214933148591089,0.5783421657834217,214,3951,10000,conditional on fitted models; exploratory internal corpus,1.0,PRIMARY_7,v1.1-GoldAdjudicated
+vat_coverage,coverage_shuffled_control,-0.005458069020913059,-0.03547497927122037,0.024874383795501817,0.7222277772222778,214,3951,10000,conditional on fitted models; exploratory internal corpus,1.0,PRIMARY_7,v1.1-GoldAdjudicated
+vat_coverage,healnet_adapted_2024,-0.006111059113287576,-0.04763447751946281,0.036970812817397905,0.7933206679332067,214,3951,10000,conditional on fitted models; exploratory internal corpus,1.0,PRIMARY_7,v1.1-GoldAdjudicated
+vat_coverage,siglip2_vta_probe,-0.03400399668641518,-0.07130433475895127,0.004101752486750494,0.11348865113488651,214,3951,10000,conditional on fitted models; exploratory internal corpus,0.6809319068093191,PRIMARY_7,v1.1-GoldAdjudicated

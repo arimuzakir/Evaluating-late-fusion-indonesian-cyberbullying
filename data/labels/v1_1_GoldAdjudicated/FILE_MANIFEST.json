@@ -1,0 +1,27 @@
+{
+  "version": "v1.1-GoldAdjudicated",
+  "files": {
+    "VALIDATION.json": "3530212e8d3c80d6e485b1727f29bb1c7af225df623115400d4c66fb9ff8a44b",
+    "VERSION_LOCK.json": "302cc8c624f4518b8896e132784d35ad35188024777676cbf2ab795e679775d3",
+    "README.md": "5786d090674352585c5edf7b514913bcb4296f348a23dda128888905d4f52342",
+    "POPULATION_COUNTS.csv": "4a59e81b0825b1e6f2601d00c0ab28ccb0f1686a6c3dd050adf5bac48e513a55",
+    "manifests/VIDEO_ROLE_MANIFEST.csv": "7e687cd04aee97af82c999feb5242bc3ca92370a83d850893a9cdcb5305c2c62",
+    "manifests/VIDEO_PRIMARY_MANIFEST.csv": "bd082abfa3fec59b3ebd0bf783a90acc48a543d7f46324c79ce7312517ea558a",
+    "annotation/WINDOW_LABEL_CHANGELOG_4.csv": "cf19b7faf8215b7cb2add13e41cb02a7bbb0b7f97da54d0380aa7b68d2d4312e",
+    "annotation/LABEL_LINEAGE_ALL_13307.csv": "089ad7c3f2308309b39d434964f68dd1ae92ec032d852f759d12a7b4a16555a8",
+    "annotation/PARENT_VIDEO_CONTEXT_94.csv": "01ed919630676044c47397ae556330c5a62bc82d9d0ec8d7f2f36e0398c096a4",
+    "annotation/HISTORICAL_194_VIDEO_CONTEXT_LINKAGE.csv": "6836a37be7261ad246832d5769b81ba2a9ca1019760df4bf1ccb9b2607033148",
+    "annotation/IAA_SCOPE.json": "9209355c618ce98f12f7b5297e0780d154403d2c5d08e2dc1c7a78ee16743bca",
+    "annotation/RESEARCHER_DECLARATION_SCOPE.json": "8f16e8c671c1b967b514db70596d305739d37a203746164afd62164e42dba23e",
+    "annotation/WINDOW_AUDIT_REFERENCE_153.csv": "e5624e562c56a604fc88da0ded2ac894f1d124620b8ed13f87eea04c165ffda8",
+    "annotation/AFFECTED_ROLES_16.csv": "b4e2e58f0cccaadd4a64d37059f3e1b3664aba162c6757bbaaefa4a051db8c1f",
+    "data/dataset_master_13307_labeled.csv": "57d89584371e2949b821dc1a1e41c549e6d704be0f021d3d01c586f4183f3497",
+    "data/dataset_ocr_video_labeled.csv": "0e5f596be4cccc8c9fc1b707fb465e80cb2f900867f66f8b515cc021f70c1b6b",
+    "features/multimodal_video_clean_metadata.csv": "3a34a5505f9681e25a5811bcb509ec2a6b29d3ed0774223c9e8736f0cba95989",
+    "annotation/source_snapshots/EXPERT_2_INDEPENDENT_WINDOW_REVIEW.csv": "d6f58f77d9d8ac22f9b56b551903b342048c93739c1d23bf63aee54d1f56e227",
+    "annotation/source_snapshots/WINDOW_ADJUDICATION_AS_RECEIVED.csv": "0f0f57266213e3edb1f1ad4bc0b2fbef098e8dca582d7d0118aa50f6c2dae0fe",
+    "annotation/source_snapshots/EXPERT_1_INDEPENDENT_WINDOW_REVIEW.csv": "a4f93fa3415a85b1b01a6185aca7fdbcb76d72d4706afb911c77568f8b950a88",
+    "data/multimodal/segmentation_10s_stride3_v2/multimodal_segments.csv": "3553801eb045c4ad5e853b1bea03eee0664ba80773b39ff9a77f0df3e3a708a0"
+  },
+  "README.md": "Public numerical view; original source text is withheld. Reproduction claims apply to retained numeric fields."
+}

@@ -1,0 +1,37 @@
+{
+  "received_date": "2026-10-24",
+  "source": "researcher declaration provided to the release maintainers",
+  "reported_initial_rating_date": "2026-10-14",
+  "reported_collective_video_review_date": "2026-10-15",
+  "document_status": "retrospective researcher statement; not an original meeting log",
+  "reported_facilitator": "Dr. Ari Muzakir, M.Cs.",
+  "reported_public_expert_roles": {
+    "pakar_1": "Indonesian forensic linguistics lecturer/expert",
+    "pakar_2": "Child developmental psychology practitioner/academic"
+  },
+  "reported_private_registry_reference": "data/registry/penilai_internal.enc",
+  "registry_verification_status": "not located in the current Drive data folder inventory; no file or credentials fabricated",
+  "reported_category_aggregates": [
+    {
+      "category": "physical fighting / school corridor violence",
+      "videos": 58,
+      "affected_rows": 121
+    },
+    {
+      "category": "peer-group intimidation / surrounding / confrontation",
+      "videos": 24,
+      "affected_rows": 49
+    },
+    {
+      "category": "non-verbal harassment / body shaming",
+      "videos": 12,
+      "affected_rows": 24
+    }
+  ],
+  "category_arithmetic_matches": true,
+  "category_membership_mapping_available": false,
+  "category_claim_status": "researcher_reported_only; no per-video category assignments inferred",
+  "new_window_decisions": "Four decisions authorized as final window-level labels by researcher; underlying audiovisual evidence not independently re-reviewed in this release",
+  "F0_claim_status": "not used as quantitative evidence; waveform16 has no F0 feature or pitch-contour measurement",
+  "target_definition_open_point": "Physical violence or offline incident footage is not by itself proof that the online act is cyberbullying; clarify operational target in codebook before final publication claims."
+}

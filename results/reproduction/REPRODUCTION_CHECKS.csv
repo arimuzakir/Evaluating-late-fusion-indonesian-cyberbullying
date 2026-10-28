@@ -1,0 +1,28 @@
+check,status
+Label package hashes,PASS
+22-file frozen label inventory,PASS
+Population counts,PASS
+Labels match master: meta,PASS
+Labels match master: segments,PASS
+Labels match master: aligned,PASS
+Labels match master: ocr,PASS
+Raw votes unchanged,PASS
+Exactly four majority overrides,PASS
+Lineage labels,PASS
+Historical 194/94 scope,PASS
+153-window agreement,PASS
+Role isolation fold 0,PASS
+Role isolation fold 1,PASS
+Role isolation fold 2,PASS
+Role isolation fold 3,PASS
+Outer fold source groups isolated,PASS
+Image hashes disjoint across folds,PASS
+All 63 video metric rows recomputed,PASS
+All 21 three-seed summaries recomputed,PASS
+OOF labels match master,PASS
+All seven comment result rows recomputed,PASS
+Comment source/text isolation,PASS
+Comment held-out labels and IDs,PASS
+All 20 frozen-feature LOPO metric rows recomputed,PASS
+LOPO role source isolation,PASS
+Aligned audio shape/status,PASS

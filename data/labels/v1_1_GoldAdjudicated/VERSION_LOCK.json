@@ -1,0 +1,36 @@
+{
+  "label_version": "v1.1-GoldAdjudicated",
+  "release_prepared_date": "2026-10-24",
+  "source_master_sha256": "cd3349fe5c2c824a1d9269135938d3a2de56a4321c685d880a097b71a147dafb",
+  "new_master_sha256": "22b86cfbdd8e81a7fef13678c65ff8fee155c158ae95c9769d5f0ec2e7793dc4",
+  "source_input_sha256": {
+    "project_sources/18-dataset_master_13307_labeled.csv": "cd3349fe5c2c824a1d9269135938d3a2de56a4321c685d880a097b71a147dafb",
+    "project_sources/19-dataset_ocr_video_labeled.csv": "7c7736a18fa9ee89624b92f9bb24810c4f58b4e5be263950fca6c1654491ec91",
+    "working_sources/multimodal_video_clean_metadata.csv": "42569f4ffe4d56cc785ea3b243795dc485b0aa2536462ac2881d929fcc549266",
+    "working_sources/multimodal_segments.csv": "8dc481e23c9e2d908cddc562ad69b3999c28ac7a52fa4cd372748c5dfa14fcee",
+    "working_sources/VIDEO_PRIMARY_MANIFEST.csv": "f82b694fda9251a3cd9a736ca5974e520d606a5e5277bdf5b3028b0ba3bb68a4",
+    "working_sources/VIDEO_ROLE_MANIFEST.csv": "662ed2510be1d48673951926a15a2dc30a2ad9f216c4b7dd7ff4755b9b620daa",
+    "audit_sources/manual/EXPERT_1_INDEPENDENT_WINDOW_REVIEW.csv": "5381e4f6fc854e79b03b79c107cad7c7fa1f4ea07457ff1f4f2903043d1bb8be",
+    "audit_sources/manual/EXPERT_2_INDEPENDENT_WINDOW_REVIEW.csv": "ed48943bc498f5452a6df4b12f8f8789aa60a1973905bf32794d759beaa5df29",
+    "audit_sources/manual/NEW_ADJUDICATION_TEMPLATE_FILL_ONLY_AFTER_INDEPENDENT_REVIEWS.csv": "ab9966d4d934ac2e31215f90c7539d614bb30e79cc185626109cbdcfe77752ed",
+    "audit_work/HISTORICAL_194_CLUSTER_MAPPING.csv": "7419f5914a314240307849b8f0402e09e39f616f03d9b18747e7667a9050158c",
+    "project_sources/17-anotasi_mentah_5_anotator.csv": "dd96760bef7af5678816fe84a64a689e4d2cc8ebbced618a90056ab38b7af06b"
+  },
+  "scope": "Versioned label/data alignment only; four researcher-confirmed window adjudications applied; 194 historical expert changes treated as parent-video context.",
+  "data_final": false,
+  "label_patch_applied": true,
+  "current_model_results_label_version": "previous frozen labels",
+  "new_model_reevaluation_complete": false,
+  "do_not_reuse_old_supervised_encoder_cache_as_new_label_results": true,
+  "retained_legacy_columns_note": "pakar_1/pakar_2 are preserved historical fields with declared mixed annotation units, not uniform-unit window gold. derajat_kesepakatan describes original five-rater votes, not consensus with the revised target.",
+  "source_files_modified": false,
+  "historical_note": "This lock records the state at label-package preparation. Video re-evaluation under v1.1 labels was completed afterwards; see results/video/v6_gold_adjudicated_v1_1_20261024/ and docs/provenance/RELEASE_STATUS.json.",
+  "superseded_status_fields": [
+    "current_model_results_label_version",
+    "new_model_reevaluation_complete",
+    "data_final"
+  ],
+  "private_original_master_sha256": "11f1b2a6ccb6de7b15b1f24dfd38fb904437adb13eb197d746434ff77f1dd573",
+  "public_release_pseudonymization": "source_url, author_or_uploader and all video/source-group identifiers are replaced by salted SHA-256 pseudonyms (consistent mapping, so group structure is preserved); URLs and @mentions in text fields are replaced by [URL] and @user. All other columns are unchanged. Identifiable originals and the mapping are retained privately; their SHA-256 values are recorded where available.",
+  "private_original_ocr_sha256": "d8ea0099a975ac0e2a2a375462d2aeb34f50bf3526cf9cd0083ada08ec8b252e"
+}

@@ -1,0 +1,38 @@
+{
+  "rows_all": 4401,
+  "rows_aligned": 3951,
+  "source_videos": 233,
+  "finite": true,
+  "status_counts": {
+    "OK": 4281,
+    "TRUNCATED_AT_SOURCE_END": 94,
+    "SOURCE_HAS_NO_AUDIO_STREAM": 26
+  },
+  "feature_std_all": [
+    1.4000717401504517,
+    0.5784122943878174,
+    0.24261951446533203,
+    0.055038608610630035,
+    0.052011046558618546,
+    0.0371943861246109,
+    0.04833376035094261,
+    0.04081244394183159,
+    0.03590672090649605,
+    0.019528843462467194,
+    0.08099014312028885,
+    0.0622422955930233,
+    0.02822684496641159,
+    0.027506083250045776,
+    0.013287022709846497,
+    0.07663197815418243
+  ],
+  "new_representation": true,
+  "legacy_array_unchanged": true,
+  "next_required_step": "Re-evaluate audio and every audio-dependent fusion under the frozen roles before deciding which representation to retain. This file is NOT a final model result.",
+  "environment": {
+    "python": "3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers"
+  }
+}

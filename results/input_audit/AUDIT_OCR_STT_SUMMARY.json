@@ -1,0 +1,50 @@
+{
+  "n_total_sample": 100,
+  "raters": [
+    "R1",
+    "R2"
+  ],
+  "b_agresi_window": {
+    "raw_agreement": 0.95,
+    "cohen_kappa": 0.8997594226142742,
+    "n_agree": 95,
+    "n_discordant": 5
+  },
+  "a_agresi_input": {
+    "raw_agreement": 0.93,
+    "cohen_kappa": 0.8596631916599841
+  },
+  "ocr_audit": {
+    "n_evaluated": 52,
+    "raw_agreement": 0.9230769230769231,
+    "weighted_kappa": 0.8514285714285715,
+    "consensus_distribution": {
+      "score_2_accurate": 43,
+      "score_2_pct": 82.69,
+      "score_1_partial": 3,
+      "score_1_pct": 5.77,
+      "score_0_corrupted": 6,
+      "score_0_pct": 11.54
+    },
+    "population_design_weighted_accuracy_pct": 82.64,
+    "omission_in_empty_ocr_count": 7,
+    "omission_in_empty_ocr_pct": 14.58
+  },
+  "stt_audit": {
+    "n_evaluated": 64,
+    "raw_agreement": 0.9375,
+    "weighted_kappa": 0.8928870292887029,
+    "consensus_distribution": {
+      "score_2_faithful": 51,
+      "score_2_pct": 79.69,
+      "score_1_partial": 4,
+      "score_1_pct": 6.25,
+      "score_0_hallucination_loop": 9,
+      "score_0_pct": 14.06
+    },
+    "population_design_weighted_accuracy_pct": 79.44,
+    "whisper_repetition_loops_n": 8,
+    "omission_in_empty_stt_count": 4,
+    "omission_in_empty_stt_pct": 11.11
+  }
+}

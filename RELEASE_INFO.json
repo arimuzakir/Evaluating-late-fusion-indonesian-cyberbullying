@@ -1,0 +1,12 @@
+{
+  "project_title": "Evaluating Late Fusion under Fragmented Multimodal Evidence for Indonesian Cyberbullying Detection",
+  "repository_target": "https://github.com/arimuzakir/Evaluating-late-fusion-indonesian-cyberbullying",
+  "project_release_date": "2026-10-06",
+  "project_release_date_source": "Researcher-specified project release date, not a timestamp verified from GitHub or Git history",
+  "analysis_reference_date": "2026-10-22",
+  "analysis_reference_date_source": "Researcher-specified analysis reference date, not a claim that every later analysis was complete by this date",
+  "archive_assembly_date": "2026-10-28",
+  "numerical_source_release": "v1.1.1 GoldAdjudicated",
+  "package_version": "v1.1.2",
+  "note": "Final v1.1.2 packaging retains the numerical results from v1.1.1, stabilizes the environment used to recompute frozen-feature ROC-AUC/AP, and adds six tested read-only notebooks. Some statistical calculations were recorded later than 2026-10-22. This archive does not change historical GitHub timestamps or imply experiments were finished before their recorded analysis dates."
+}

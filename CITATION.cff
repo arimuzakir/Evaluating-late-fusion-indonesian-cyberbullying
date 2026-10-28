@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+title: "Evaluating Late Fusion under Fragmented Multimodal Evidence for Indonesian Cyberbullying Detection"
+type: software
+abstract: "Research code and reproducibility artifacts for Indonesian cyberbullying detection: a standalone comment benchmark and a source-group-aware multimodal (text, visual, acoustic) video-window evaluation using label release v1.1-GoldAdjudicated."
+license: MIT
+authors:
+  - family-names: "Muzakir"
+    given-names: "Ari"
+  - family-names: "Ependi"
+    given-names: "Usman"
+  - family-names: "Suyanto"
+    given-names: "Suyanto"
+# Manuscript author order; final publication metadata should be checked before release.
+
+# Researcher-designated project release date: 2026-10-06.
+# This package was assembled on 2026-10-28. See RELEASE_INFO.json.

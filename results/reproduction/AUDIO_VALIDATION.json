@@ -1,0 +1,16 @@
+{
+  "representation": "waveform16_v1",
+  "all_rows": 4401,
+  "aligned_rows": 3951,
+  "features": 16,
+  "aligned_status_counts": {
+    "OK": 3841,
+    "TRUNCATED_AT_SOURCE_END": 84,
+    "SOURCE_HAS_NO_AUDIO_STREAM": 26
+  },
+  "feature_bytes_verified": true,
+  "row_alignment_verified": true,
+  "historical_lock_policy": "original LOCK.json retained; current layout validated through audio_release_hashes.json and IDs",
+  "labels_modified": false,
+  "features_modified": false
+}

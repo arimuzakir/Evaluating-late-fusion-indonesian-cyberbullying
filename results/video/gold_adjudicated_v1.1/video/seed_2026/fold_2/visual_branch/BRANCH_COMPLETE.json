@@ -1,0 +1,9 @@
+{
+  "label_version": "v1.1-GoldAdjudicated",
+  "files": {
+    "best_model.pt": "8216f442df9ed61eb4df068171c74368fe481fc89f4ee9f31e72619910a6f7de",
+    "TRAINING_HISTORY.json": "e00feaec9e14adcf7a339ec2410bff5af6d9985d5c681613db359775ea3d5223",
+    "outputs.npz": "3c4d51ce9ae7538b862580f05f3a1c3caacddc66cf724a01642deb6d92a93b22",
+    "MODEL_MANIFEST.json": "ca07e9a37ee1f15e57382c00a3079454f407b1da8f7b917e5ff609e556b41dca"
+  }
+}

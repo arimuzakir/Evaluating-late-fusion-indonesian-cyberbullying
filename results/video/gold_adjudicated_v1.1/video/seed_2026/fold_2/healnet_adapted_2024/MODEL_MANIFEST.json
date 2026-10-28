@@ -1,0 +1,138 @@
+{
+  "kind": "healnet",
+  "feature_dims": [
+    1280,
+    16,
+    768
+  ],
+  "seed": 2026,
+  "training_role": "meta_fit only",
+  "config": {
+    "head_epochs": 30,
+    "head_batch": 64,
+    "head_lr": 0.001
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "meta_fit_loss": 0.6791722886264324
+    },
+    {
+      "epoch": 2,
+      "meta_fit_loss": 0.4150254465639591
+    },
+    {
+      "epoch": 3,
+      "meta_fit_loss": 0.2658368591219187
+    },
+    {
+      "epoch": 4,
+      "meta_fit_loss": 0.15644999407231808
+    },
+    {
+      "epoch": 5,
+      "meta_fit_loss": 0.1405864618718624
+    },
+    {
+      "epoch": 6,
+      "meta_fit_loss": 0.08590760873630643
+    },
+    {
+      "epoch": 7,
+      "meta_fit_loss": 0.0652979975566268
+    },
+    {
+      "epoch": 8,
+      "meta_fit_loss": 0.0429122862406075
+    },
+    {
+      "epoch": 9,
+      "meta_fit_loss": 0.06503703445196152
+    },
+    {
+      "epoch": 10,
+      "meta_fit_loss": 0.01949159847572446
+    },
+    {
+      "epoch": 11,
+      "meta_fit_loss": 0.05374652470345609
+    },
+    {
+      "epoch": 12,
+      "meta_fit_loss": 0.03574226485216059
+    },
+    {
+      "epoch": 13,
+      "meta_fit_loss": 0.01879242033464834
+    },
+    {
+      "epoch": 14,
+      "meta_fit_loss": 0.03265164967160672
+    },
+    {
+      "epoch": 15,
+      "meta_fit_loss": 0.015510966768488288
+    },
+    {
+      "epoch": 16,
+      "meta_fit_loss": 0.021569842792814597
+    },
+    {
+      "epoch": 17,
+      "meta_fit_loss": 0.01873467705445364
+    },
+    {
+      "epoch": 18,
+      "meta_fit_loss": 0.011595265721553005
+    },
+    {
+      "epoch": 19,
+      "meta_fit_loss": 0.014916053391061723
+    },
+    {
+      "epoch": 20,
+      "meta_fit_loss": 0.009061714154086076
+    },
+    {
+      "epoch": 21,
+      "meta_fit_loss": 0.005825006635859609
+    },
+    {
+      "epoch": 22,
+      "meta_fit_loss": 0.009313022310379893
+    },
+    {
+      "epoch": 23,
+      "meta_fit_loss": 0.0075755544457933865
+    },
+    {
+      "epoch": 24,
+      "meta_fit_loss": 0.004809498495887965
+    },
+    {
+      "epoch": 25,
+      "meta_fit_loss": 0.004150839915382676
+    },
+    {
+      "epoch": 26,
+      "meta_fit_loss": 0.0035398457694100216
+    },
+    {
+      "epoch": 27,
+      "meta_fit_loss": 0.003681774302094709
+    },
+    {
+      "epoch": 28,
+      "meta_fit_loss": 0.0033910507554537617
+    },
+    {
+      "epoch": 29,
+      "meta_fit_loss": 0.0031434266493306495
+    },
+    {
+      "epoch": 30,
+      "meta_fit_loss": 0.0028605167608475313
+    }
+  ],
+  "source_audio": "waveform16_v1"
+}

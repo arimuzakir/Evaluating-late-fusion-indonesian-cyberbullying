@@ -1,0 +1,13 @@
+seed,fold,label_version,old_supervised_encoder_outputs_used,new_text_branch_complete,new_visual_branch_complete
+42,0,v1.1-GoldAdjudicated,False,True,True
+42,1,v1.1-GoldAdjudicated,False,True,True
+42,2,v1.1-GoldAdjudicated,False,True,True
+42,3,v1.1-GoldAdjudicated,False,True,True
+2026,0,v1.1-GoldAdjudicated,False,True,True
+2026,1,v1.1-GoldAdjudicated,False,True,True
+2026,2,v1.1-GoldAdjudicated,False,True,True
+2026,3,v1.1-GoldAdjudicated,False,True,True
+2027,0,v1.1-GoldAdjudicated,False,True,True
+2027,1,v1.1-GoldAdjudicated,False,True,True
+2027,2,v1.1-GoldAdjudicated,False,True,True
+2027,3,v1.1-GoldAdjudicated,False,True,True

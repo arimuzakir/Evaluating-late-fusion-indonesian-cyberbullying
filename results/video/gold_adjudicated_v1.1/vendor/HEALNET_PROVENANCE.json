@@ -1,0 +1,7 @@
+{
+  "source": "https://github.com/konst-int-i/healnet",
+  "commit": "90459b65a3d4a4ef9fd405671c457b5a1163cc7d",
+  "sha256": "78e9c2b10455f6ad43a88ed4e0a646cbf6304bf52cac06a5140f49dbc4796820",
+  "adaptation": "same official vector-token feature fusion architecture; supervised encoders retrained under v1.1 window labels",
+  "claim": "local feature-level adaptation, not reproduction of original published scores"
+}

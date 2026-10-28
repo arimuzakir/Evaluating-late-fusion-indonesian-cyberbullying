@@ -1,0 +1,138 @@
+{
+  "kind": "healnet",
+  "feature_dims": [
+    1280,
+    16,
+    768
+  ],
+  "seed": 42,
+  "training_role": "meta_fit only",
+  "config": {
+    "head_epochs": 30,
+    "head_batch": 64,
+    "head_lr": 0.001
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "meta_fit_loss": 0.7127015675817218
+    },
+    {
+      "epoch": 2,
+      "meta_fit_loss": 0.4630840803895678
+    },
+    {
+      "epoch": 3,
+      "meta_fit_loss": 0.36432925292423796
+    },
+    {
+      "epoch": 4,
+      "meta_fit_loss": 0.24804769243512834
+    },
+    {
+      "epoch": 5,
+      "meta_fit_loss": 0.26925780730588095
+    },
+    {
+      "epoch": 6,
+      "meta_fit_loss": 0.18636794814041682
+    },
+    {
+      "epoch": 7,
+      "meta_fit_loss": 0.1392519058925765
+    },
+    {
+      "epoch": 8,
+      "meta_fit_loss": 0.11091436166316271
+    },
+    {
+      "epoch": 9,
+      "meta_fit_loss": 0.0867390978549208
+    },
+    {
+      "epoch": 10,
+      "meta_fit_loss": 0.08638143220118114
+    },
+    {
+      "epoch": 11,
+      "meta_fit_loss": 0.060055843953575404
+    },
+    {
+      "epoch": 12,
+      "meta_fit_loss": 0.07686096376606397
+    },
+    {
+      "epoch": 13,
+      "meta_fit_loss": 0.050597089010157754
+    },
+    {
+      "epoch": 14,
+      "meta_fit_loss": 0.044925671869090626
+    },
+    {
+      "epoch": 15,
+      "meta_fit_loss": 0.05011837716613497
+    },
+    {
+      "epoch": 16,
+      "meta_fit_loss": 0.042172096270535676
+    },
+    {
+      "epoch": 17,
+      "meta_fit_loss": 0.04009173358125346
+    },
+    {
+      "epoch": 18,
+      "meta_fit_loss": 0.033853801898658276
+    },
+    {
+      "epoch": 19,
+      "meta_fit_loss": 0.03881840966641903
+    },
+    {
+      "epoch": 20,
+      "meta_fit_loss": 0.028899971562038575
+    },
+    {
+      "epoch": 21,
+      "meta_fit_loss": 0.025630132777483335
+    },
+    {
+      "epoch": 22,
+      "meta_fit_loss": 0.030214803759008646
+    },
+    {
+      "epoch": 23,
+      "meta_fit_loss": 0.025390428823551962
+    },
+    {
+      "epoch": 24,
+      "meta_fit_loss": 0.03129168566582458
+    },
+    {
+      "epoch": 25,
+      "meta_fit_loss": 0.02831795651997839
+    },
+    {
+      "epoch": 26,
+      "meta_fit_loss": 0.023866319197363088
+    },
+    {
+      "epoch": 27,
+      "meta_fit_loss": 0.025495033711194992
+    },
+    {
+      "epoch": 28,
+      "meta_fit_loss": 0.021815307455004325
+    },
+    {
+      "epoch": 29,
+      "meta_fit_loss": 0.02599227659603847
+    },
+    {
+      "epoch": 30,
+      "meta_fit_loss": 0.026384270284324884
+    }
+  ],
+  "source_audio": "waveform16_v1"
+}

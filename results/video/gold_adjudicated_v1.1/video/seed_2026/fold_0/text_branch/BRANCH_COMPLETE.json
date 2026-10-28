@@ -1,0 +1,13 @@
+{
+  "label_version": "v1.1-GoldAdjudicated",
+  "files": {
+    "best_model.pt": "52ea51351f327816362cd5a5a1562857c80a12c9942a21ccb2a7442e85134995",
+    "TRAINING_HISTORY.json": "e9e2619130f6983db640ace6f8bce9974c966927ffcf098c7b9181606e68b7bd",
+    "outputs.npz": "d554224770fc0d4a700b53f2c26accbbb7ddb58ab930ace11a5e5c2bcaeafe4c",
+    "MODEL_MANIFEST.json": "d1876a1bc11918d1be2e999579556cb90217d8ba1289f9f3dda95c720be089f0",
+    "tokenizer/tokenizer_config.json": "0088a6f8bcdd4014184fb068b83ebb12896a9db2bb269a71f73de83fef24bceb",
+    "tokenizer/special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+    "tokenizer/vocab.txt": "35cfc7be6dc3ec71102248722f352830a8fd89b5a5dadb83d70c2f7794ddbc11",
+    "tokenizer/tokenizer.json": "a72fde588de4ca0b07e16711718fcb00f33679f755ede961fa6d341403331f32"
+  }
+}

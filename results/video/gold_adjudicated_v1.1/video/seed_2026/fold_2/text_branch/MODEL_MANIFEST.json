@@ -1,0 +1,10 @@
+{
+  "model_id": "indobenchmark/indobert-base-p2",
+  "resolved_commit": "94b4e0a82081fa57f227fcc2024d1ea89b57ac1f",
+  "seed": 2026,
+  "epochs": 4,
+  "max_length": 192,
+  "selection": "best early-stop-role macro F1 at fixed 0.5; earliest tie",
+  "fit_n": 1585,
+  "early_stop_n": 238
+}

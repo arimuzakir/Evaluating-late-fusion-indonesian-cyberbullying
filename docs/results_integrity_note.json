@@ -1,0 +1,89 @@
+{
+  "source_historical_results_manifest_sha256": "d6de4994724bff9539e28eecf5af32af62883d0387d163cf026ecb86c9ad57e4",
+  "n_entries_historical": 184,
+  "n_historical_diffs_or_missing": 20,
+  "issues": [
+    {
+      "file": "ROLE_MANIFEST.csv",
+      "type": "historic_digest_mismatch"
+    },
+    {
+      "file": "LOPO_ROLE_MANIFEST.csv",
+      "type": "historic_digest_mismatch"
+    },
+    {
+      "file": "VIDEO_OOF_PREDICTIONS.csv",
+      "type": "historic_digest_mismatch"
+    },
+    {
+      "file": "LOPO_FROZEN_FEATURE_PROBE_PREDICTIONS.csv",
+      "type": "historic_digest_mismatch"
+    },
+    {
+      "file": "annotation/WINDOW_LABEL_CHANGELOG_4.csv",
+      "type": "historic_digest_mismatch"
+    },
+    {
+      "file": "annotation/AFFECTED_ROLES_16.csv",
+      "type": "historic_digest_mismatch"
+    },
+    {
+      "file": "annotation/RESEARCHER_DECLARATION_SCOPE.json",
+      "type": "historic_digest_mismatch"
+    },
+    {
+      "file": "video/seed_2027/fold_0/TEST_PREDICTIONS.csv",
+      "type": "historic_digest_mismatch"
+    },
+    {
+      "file": "video/seed_2027/fold_1/TEST_PREDICTIONS.csv",
+      "type": "historic_digest_mismatch"
+    },
+    {
+      "file": "video/seed_2027/fold_2/TEST_PREDICTIONS.csv",
+      "type": "historic_digest_mismatch"
+    },
+    {
+      "file": "video/seed_2027/fold_3/TEST_PREDICTIONS.csv",
+      "type": "historic_digest_mismatch"
+    },
+    {
+      "file": "video/seed_2026/fold_0/TEST_PREDICTIONS.csv",
+      "type": "historic_digest_mismatch"
+    },
+    {
+      "file": "video/seed_2026/fold_1/TEST_PREDICTIONS.csv",
+      "type": "historic_digest_mismatch"
+    },
+    {
+      "file": "video/seed_2026/fold_2/TEST_PREDICTIONS.csv",
+      "type": "historic_digest_mismatch"
+    },
+    {
+      "file": "video/seed_2026/fold_3/TEST_PREDICTIONS.csv",
+      "type": "historic_digest_mismatch"
+    },
+    {
+      "file": "video/seed_42/fold_0/TEST_PREDICTIONS.csv",
+      "type": "historic_digest_mismatch"
+    },
+    {
+      "file": "video/seed_42/fold_1/TEST_PREDICTIONS.csv",
+      "type": "historic_digest_mismatch"
+    },
+    {
+      "file": "video/seed_42/fold_2/TEST_PREDICTIONS.csv",
+      "type": "historic_digest_mismatch"
+    },
+    {
+      "file": "video/seed_42/fold_3/TEST_PREDICTIONS.csv",
+      "type": "historic_digest_mismatch"
+    },
+    {
+      "file": "vendor/__pycache__/healnet_official.cpython-313.pyc",
+      "type": "absent_in_public_release"
+    }
+  ],
+  "n_public_result_files": 184,
+  "status": "CURRENT_PUBLIC_BYTE_INVENTORY_REBUILT; historical original result inventory not asserted to match"
+}

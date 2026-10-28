@@ -1,0 +1,44 @@
+{
+  "computational_reevaluation_complete": true,
+  "label_version": "v1.1-GoldAdjudicated",
+  "models": [
+    "majority",
+    "text",
+    "visual",
+    "audio",
+    "equal_va",
+    "equal_vat",
+    "va_lr",
+    "vat_lr",
+    "vat_flags",
+    "vat_coverage",
+    "coverage_only",
+    "coverage_shuffled_control",
+    "concat_mlp",
+    "healnet_adapted_2024",
+    "siglip2_visual_probe",
+    "siglip2_vt_probe",
+    "siglip2_vta_probe",
+    "equal_tv",
+    "equal_ta",
+    "tv_lr",
+    "ta_lr"
+  ],
+  "seeds": [
+    42,
+    2026,
+    2027
+  ],
+  "folds": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "rows_per_seed": 3951,
+  "oof_rows": 11853,
+  "metric_rows": 63,
+  "supervised_encoders_retrained_under_new_labels": true,
+  "data_final": false,
+  "remaining": "final independent output audit and annotation/documentation scope; Word unchanged"
+}

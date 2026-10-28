@@ -1,0 +1,16 @@
+{
+  "n": 100,
+  "consensus_entries": 26,
+  "positive_windows": 55,
+  "keyframe_consensus_counts": {
+    "2": 46,
+    "1": 9
+  },
+  "all_core_disagreements_have_consensus": true,
+  "audit_source_sha256": {
+    "Form_Audit_R1_scored.csv": "5ee68b58e281075c71176316d946cc8fade611f25789abca2fce772ec85f7b6a",
+    "Form_Audit_R2_scored.csv": "516eae167adea6b2b59dee6c7ca823926805d15814acc05e913d1a21650cefa4",
+    "Form_Adjudikasi.csv": "06a594f295050adad7dda77107a105f7c217178a2357646560206c95ff11e059"
+  },
+  "private_mapping_exported": false
+}

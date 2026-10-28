@@ -1,0 +1,11 @@
+analysis,model,n,groups,macro_f1
+all_aligned,text,3951,214,0.5703396012843986
+all_aligned,equal_vat,3951,214,0.5669772833605011
+exclude_3_to_2_votes,text,3754,214,0.574121015913547
+exclude_3_to_2_votes,equal_vat,3754,214,0.5738038517630988
+exclude_four_overrides,text,3947,214,0.5709227221473222
+exclude_four_overrides,equal_vat,3947,214,0.5672535158921297
+score_against_original_majority,text,3951,214,0.5714715577093805
+score_against_original_majority,equal_vat,3951,214,0.5675822429262387
+platform_poststratification,text,3951,214,0.5704638186971274
+platform_poststratification,equal_vat,3951,214,0.5675672679908348

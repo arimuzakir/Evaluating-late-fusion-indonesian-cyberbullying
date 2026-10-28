@@ -1,0 +1,17 @@
+column_index,feature_name,definition,unit
+0,log10_rms_mean,mean(log10(sqrt(mean(frame^2))+1e-10)),log10 amplitude
+1,log10_rms_std,population std of log10 RMS,log10 amplitude
+2,absolute_peak,max(abs(decoded waveform)),"amplitude [-1,1]"
+3,absolute_mean,mean(abs(decoded waveform)),"amplitude [-1,1]"
+4,zero_crossing_mean,mean fraction of adjacent samples with differing signbit per frame,fraction
+5,zero_crossing_std,population std of frame zero crossing fraction,fraction
+6,spectral_centroid_mean,mean power-weighted frequency / Nyquist,normalized frequency
+7,spectral_centroid_std,population std of normalized centroid,normalized frequency
+8,spectral_bandwidth_mean,mean sqrt(power-weighted squared distance to centroid) / Nyquist,normalized frequency
+9,spectral_bandwidth_std,population std of normalized bandwidth,normalized frequency
+10,spectral_rolloff85_mean,mean first frequency reaching 85 percent cumulative frame power / Nyquist,normalized frequency
+11,spectral_rolloff85_std,population std of normalized rolloff,normalized frequency
+12,spectral_flatness_mean,mean geometric/arithmetic frame power ratio; zero for zero-power frame,ratio
+13,spectral_flatness_std,population std of frame spectral flatness,ratio
+14,spectral_flux_mean,mean squared L2 change between successive normalized power spectra,squared ratio
+15,audio_present,1 if a decoded source audio stream supplies at least 0.25 second for window; else 0,binary

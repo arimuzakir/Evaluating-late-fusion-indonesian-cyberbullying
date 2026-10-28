@@ -1,0 +1,15 @@
+{
+  "architecture": "torchvision EfficientNet-B0",
+  "trainable_blocks": [
+    7,
+    8
+  ],
+  "classifier": [
+    0.2,
+    1280,
+    2
+  ],
+  "seed": 2027,
+  "epochs": 5,
+  "selection": "early-stop role fixed-0.5 macro F1"
+}

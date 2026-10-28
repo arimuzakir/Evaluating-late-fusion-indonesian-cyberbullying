@@ -1,0 +1,43 @@
+{
+  "source_text_rows": 8906,
+  "high_agreement_before_dedup": 8216,
+  "n_after_preprocessing_dedup": 8196,
+  "conflicting_rows_removed": 0,
+  "test_rule": {
+    "seed": 42,
+    "fraction": 0.15,
+    "candidate": 75
+  },
+  "validation_rule": {
+    "seed": 142,
+    "fraction": 0.17647058823529413,
+    "candidate": 53
+  },
+  "all_five_platforms_in_all_roles": true,
+  "group_overlap": 0,
+  "text_hash_overlap": 0,
+  "platform_by_split": {
+    "test": {
+      "Facebook": 271,
+      "Instagram": 260,
+      "TikTok": 246,
+      "X (Twitter)": 206,
+      "YouTube": 243
+    },
+    "train": {
+      "Facebook": 1208,
+      "Instagram": 1189,
+      "TikTok": 1206,
+      "X (Twitter)": 996,
+      "YouTube": 1142
+    },
+    "validation": {
+      "Facebook": 258,
+      "Instagram": 250,
+      "TikTok": 217,
+      "X (Twitter)": 240,
+      "YouTube": 264
+    }
+  },
+  "scope": "high-agreement subset; not all master rows; split is internal, corpus previously explored"
+}

@@ -1,0 +1,6 @@
+population,n,non_bullying,bullying
+data/dataset_master_13307_labeled.csv,13307,6055,7252
+data/dataset_ocr_video_labeled.csv,2248,840,1408
+features/multimodal_video_clean_metadata.csv,4401,1795,2606
+data/multimodal/segmentation_10s_stride3_v2/multimodal_segments.csv,4401,1795,2606
+manifests/VIDEO_PRIMARY_MANIFEST.csv,3951,1625,2326

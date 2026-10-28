@@ -1,0 +1,7 @@
+{
+  "seed": 42,
+  "fold": 2,
+  "complete": true,
+  "label_version": "v1.1-GoldAdjudicated",
+  "predictions_sha256": "e2116dbdc0bafa76c1d559f1dc5e5d07c22137c4ccb941da30eee84b1aaa1858"
+}

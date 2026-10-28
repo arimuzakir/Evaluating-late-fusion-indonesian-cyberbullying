@@ -1,0 +1,41 @@
+{
+  "status": "COMPLETED_SUPPLEMENTARY_FROZEN_FEATURE_PROBE",
+  "comparison_scope": "New lightweight frozen-feature sensitivity ONLY. Not end-to-end retraining or replication of primary supervised fusion; not a contemporaneous task-matched baseline.",
+  "population": "Aligned 3951 video windows; v1.1-GoldAdjudicated",
+  "outer_split": "First fold of StratifiedGroupKFold(n_splits=5,shuffle=True,random_state=seed); held-out groups never fitted",
+  "calibration_split": "First fold of StratifiedGroupKFold(n_splits=4,shuffle=True,random_state=seed+100000), applied only to outer training pool",
+  "seeds": [
+    42,
+    2026,
+    2027,
+    1301,
+    1302
+  ],
+  "models": [
+    "visual",
+    "text",
+    "audio",
+    "equal_frozen_vat"
+  ],
+  "features": {
+    "visual": "SigLIP2 frozen visual 768D",
+    "text": "SigLIP2 frozen text 768D",
+    "audio": "Waveform16 16D (15 acoustic features + availability)"
+  },
+  "model_training": "StandardScaler fitted on fit role only + LogisticRegression(C=1,liblinear,random_state=seed); inverse-source-size fit weights; no pretrained encoder updates",
+  "equal_frozen_vat": "Arithmetic mean of three separately trained frozen-feature branch probabilities",
+  "threshold": "Calibration role only: Macro F1 maximum, threshold grid 0.10 to 0.90 by 0.025; ties closest to 0.5 then smaller",
+  "caveats": [
+    "Repeated source splits overlap and are not independent external validation cohorts",
+    "Repeated partition SD is descriptive, not a confidence interval or hypothesis test",
+    "Frozen pretrained feature transfer does not establish end-to-end model generalisation",
+    "No hyperparameter optimisation on outer test",
+    "This analysis does not address unfiltered standalone-comment model performance"
+  ],
+  "source_sha256": {
+    "data/labels/v1_1_GoldAdjudicated/manifests/VIDEO_PRIMARY_MANIFEST.csv": "bd082abfa3fec59b3ebd0bf783a90acc48a543d7f46324c79ce7312517ea558a",
+    "data/features/siglip2/siglip2_frozen_features.npz": "9ad7e603e42864796e70f11240ce468e4acd75728e33483a21b3c5e5cc0af1e1",
+    "data/features/waveform16_v1/audio_waveform16_aligned_3951.npy": "e35b8e453bb83c43280ac8affa892788e72f83580da76db18d2bbdebc0660c7d",
+    "data/features/waveform16_v1/ALIGNED_ROW_ID_MANIFEST.csv": "31c70e38d7dde7aaaa37d06b2ed609dfb8d99a4e5fa486e283a2096ec3d1d8de"
+  }
+}

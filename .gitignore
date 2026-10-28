@@ -1,0 +1,34 @@
+# Local environments and generated caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.DS_Store
+Icon?
+Icon*
+Icon
+._*
+.Spotlight-V100
+.Trashes
+*.tmp
+*.partial
+
+# Internal documentation and private records
+docs/internal/
+private/
+*.enc
+
+# Original media and locally stored large checkpoints
+data/raw/
+data/multimodal/video/
+models/checkpoints/
+*.pt
+*.pth
+*.joblib
+
+# Local caches and private correction backups
+__pycache__/
+*.pyc
+docs/provenance/backups/
+results/retraining/
