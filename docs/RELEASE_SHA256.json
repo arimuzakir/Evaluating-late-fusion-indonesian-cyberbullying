@@ -1260,8 +1260,8 @@
       "bytes": 3884
     },
     "scripts/analysis/repeated_group_probe.py": {
-      "sha256": "75745b616211500783c6740ad235510faf548fd03fb40c06ba073572fd615341",
-      "bytes": 8771
+      "sha256": "0e22e94549f1563b2aff4a34221c9d7647d8fb69cf5c11b15c0d995953eef3bb",
+      "bytes": 9985
     },
     "scripts/validation/build_checksums.py": {
       "sha256": "fbee424314a0b7613c4e6d226a052e4e3d536e485f91e436f7c170847ba56a2b",
@@ -1272,8 +1272,8 @@
       "bytes": 4355
     },
     "scripts/validation/verify_release.py": {
-      "sha256": "cac6bb312a16db1fb1171834c3f4bf216254851e5f580f66b7ff79f4913b9cc7",
-      "bytes": 3739
+      "sha256": "5368b19464a889d68c8978204c1db3eeb4c14e68fcf2a62d9f90c31a0d905c04",
+      "bytes": 3982
     },
     "src/README.md": {
       "sha256": "60534d1a4e105bd757a0fa5344bd394f699b52c896dfa721e4f3d249e3ee82f2",

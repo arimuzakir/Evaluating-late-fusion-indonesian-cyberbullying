@@ -8,7 +8,9 @@ from pathlib import Path
 import argparse, hashlib, json
 import numpy as np
 import pandas as pd
+from collections import defaultdict
 from threadpoolctl import threadpool_limits
+from sklearn.utils import check_random_state
 from sklearn.model_selection import StratifiedGroupKFold
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
@@ -42,6 +44,31 @@ def cutoff(y,p):
     tied=[t for score,t in vals if abs(score-best)<1e-12]
     return sorted(tied,key=lambda t:(abs(t-.5),t))[0]
 
+def _sgkf_first_fold(y,groups,n_splits,seed):
+    sgkf=StratifiedGroupKFold(n_splits=n_splits,shuffle=True,random_state=seed)
+    rng=check_random_state(seed)
+    _,y_inv,y_cnt=np.unique(y,return_inverse=True,return_counts=True)
+    _,groups_inv,groups_cnt=np.unique(groups,return_inverse=True,return_counts=True)
+    y_counts_per_group=np.zeros((len(groups_cnt),len(y_cnt)))
+    for class_idx,group_idx in zip(y_inv,groups_inv):
+        y_counts_per_group[group_idx,class_idx]+=1
+    y_counts_per_fold=np.zeros((n_splits,len(y_cnt)))
+    groups_per_fold=defaultdict(set)
+    shuffled_groups_idx=rng.permutation(len(groups_cnt))
+    sorted_groups_idx=shuffled_groups_idx[
+        np.argsort(-np.std(y_counts_per_group[shuffled_groups_idx],axis=1),kind='mergesort')
+    ]
+    for group_idx in sorted_groups_idx:
+        group_y_counts=y_counts_per_group[group_idx]
+        best_fold=sgkf._find_best_fold(
+            y_counts_per_fold=y_counts_per_fold,y_cnt=y_cnt,group_y_counts=group_y_counts
+        )
+        y_counts_per_fold[best_fold]+=group_y_counts
+        groups_per_fold[best_fold].add(group_idx)
+    test=np.array([idx for idx,g in enumerate(groups_inv) if g in groups_per_fold[0]])
+    pool=np.array([idx for idx,g in enumerate(groups_inv) if g not in groups_per_fold[0]])
+    return pool,test
+
 def _run_single_thread(root,output,seeds=SEEDS):
     root,output=Path(root).resolve(),Path(output).resolve();output.mkdir(parents=True,exist_ok=True)
     meta=pd.read_csv(root/BASE)
@@ -59,10 +86,8 @@ def _run_single_thread(root,output,seeds=SEEDS):
     y=meta.label_final.values.astype(int);groups=meta.group_id.values
     rows=[]; preds=[]; roles=[]
     for seed in seeds:
-        outer=StratifiedGroupKFold(n_splits=5,shuffle=True,random_state=seed)
-        pool,test=next(outer.split(x['visual'],y,groups))
-        inner=StratifiedGroupKFold(n_splits=4,shuffle=True,random_state=seed+100000)
-        a,b=next(inner.split(x['visual'][pool],y[pool],groups[pool]));fit=pool[a];cal=pool[b]
+        pool,test=_sgkf_first_fold(y,groups,5,seed)
+        a,b=_sgkf_first_fold(y[pool],groups[pool],4,seed+100000);fit=pool[a];cal=pool[b]
         sets={'fit':fit,'calibration':cal,'test':test}
         gs=[set(groups[ix]) for ix in sets.values()]
         assert not(gs[0]&gs[1] or gs[0]&gs[2] or gs[1]&gs[2])
