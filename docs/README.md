@@ -2,6 +2,7 @@
 
 - [Methods and numerical reproduction](methods_and_reproducibility.md)
 - [Data provenance and disclosure](data_release.md)
+- [Official API ingestion, de-identification, and windowing protocol](ingestion_and_preprocessing_protocol.md)
 - [Signed institutional data provenance and protection record (`010/DRPM/Univ-BD/IX/2026`)](UBD_Data_Provenance_and_Protection_Record_Signed_20260923.pdf)
 - [Results and path index](results_index.md)
 - [OCR, STT and keyframe audit](input_audit.md)

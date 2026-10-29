@@ -1,0 +1,146 @@
+{
+  "protocol_metadata": {
+    "specification_name": "Official Platform API Ingestion, De-identification, Temporal Windowing, and Public Redaction Reference Specification",
+    "manuscript_section": "Section 3.1 — Corpus Origin, Acquisition Provenance, De-identification, and Multimodal Alignment",
+    "institutional_record_reference": "010/DRPM/Univ-BD/IX/2026 (23 September 2026)",
+    "artifact_status": "Reference preprocessing and ingestion specification; not an original historical execution log. Zero credentials or raw personal identifiers are stored.",
+    "operational_target": "Content-level bullying-indicative aggression in standalone comments or 10-second video windows"
+  },
+  "acquisition_interfaces": {
+    "collection_basis": [
+      "Official platform APIs (keyword and public-post query interfaces)",
+      "Archived Indonesian abusive-language resources (Ibrohim & Budi [2])"
+    ],
+    "platforms": [
+      "Facebook",
+      "Instagram",
+      "TikTok",
+      "YouTube",
+      "X"
+    ],
+    "credentials_policy": "Environment variables only; never hardcode or commit API keys or access tokens",
+    "required_env_placeholders": {
+      "YouTube": "YOUTUBE_DATA_API_V3_KEY",
+      "TikTok": "TIKTOK_RESEARCH_API_BEARER_TOKEN",
+      "Facebook_Instagram": "META_GRAPH_API_ACCESS_TOKEN",
+      "X": "X_API_V2_BEARER_TOKEN"
+    },
+    "seed_lexicon_reference": "Indonesian abusive and cyberbullying lexicon adapted from Ibrohim & Budi [2] and adolescent school/peer-conflict context keywords"
+  },
+  "corpus_cohorts": {
+    "master_inventory_total": 13307,
+    "standalone_comments_track": {
+      "initial_records": 8906,
+      "excluded_majority_3_of_5_low_consensus": 690,
+      "excluded_text_hash_leakage_isolation": 20,
+      "retained_high_agreement_records": 8196,
+      "held_out_test_records": 1226
+    },
+    "multimodal_video_track": {
+      "source_videos_total": 233,
+      "initial_candidate_windows_10s_stride3s": 4401,
+      "platform_window_distribution_4401": {
+        "Instagram": 1420,
+        "Facebook": 828,
+        "TikTok": 754,
+        "YouTube": 750,
+        "X_Twitter": 649
+      },
+      "alignment_exclusions": 450,
+      "retained_aligned_windows": 3951,
+      "linked_source_groups": 214,
+      "source_disjoint_outer_folds": 4
+    }
+  },
+  "temporal_windowing_and_extraction": {
+    "window_sec": 10.0,
+    "stride_sec": 3.0,
+    "overlap_ratio": 0.7,
+    "segment_id_format": "{file_id}_s{index:05d}_{start_ms:09d}_{end_ms:09d}",
+    "visual_keyframe": {
+      "sampling_rule": "Exact midpoint of window: round(start_sec + (end_sec - start_sec) / 2.0, 3)",
+      "resolution_rgb": [224, 224],
+      "ffmpeg_filter": "scale=224:224",
+      "jpeg_quality_qscale": 2
+    },
+    "speech_to_text_stt": {
+      "engine": "faster-whisper",
+      "model_size": "large-v3-turbo",
+      "language": "id",
+      "beam_size": 1,
+      "vad_filter": true,
+      "condition_on_previous_text": false,
+      "audio_decode_format": "16000 Hz, mono, pcm_s16le",
+      "context_prompt": "Lu kenapa sih, anjir, tolol banget, bego, bocil, caper, cupu, mati aja lo, bacot, najis, sialan, sok jagoan, viral."
+    },
+    "optical_character_recognition_ocr": {
+      "engine": "EasyOCR",
+      "languages": ["id", "en"],
+      "detail_level": 0,
+      "watermark_noise_patterns_removed": [
+        "filmora",
+        "capcut",
+        "kinemaster",
+        "inshot",
+        "vn editor"
+      ]
+    },
+    "acoustic_feature_extraction": {
+      "representation": "waveform16_v1",
+      "dimension": 16,
+      "sample_rate_hz": 16000,
+      "pcm_encoding": "signed little-endian 16-bit mono",
+      "frame_length_samples": 400,
+      "hop_length_samples": 160,
+      "fft_length": 512,
+      "window_function": "numpy.hanning symmetric",
+      "rolloff_fraction": 0.85,
+      "epsilon": 1e-10,
+      "minimum_decoded_seconds": 0.25,
+      "features": [
+        "log10_rms_mean",
+        "log10_rms_std",
+        "absolute_peak",
+        "absolute_mean",
+        "zero_crossing_mean",
+        "zero_crossing_std",
+        "spectral_centroid_mean",
+        "spectral_centroid_std",
+        "spectral_bandwidth_mean",
+        "spectral_bandwidth_std",
+        "spectral_rolloff85_mean",
+        "spectral_rolloff85_std",
+        "spectral_flatness_mean",
+        "spectral_flatness_std",
+        "spectral_flux_mean",
+        "audio_present"
+      ]
+    }
+  },
+  "deidentification_and_public_redaction": {
+    "pseudonymisation_rules": {
+      "master_id_format": "CB_MASTER_{index:05d}",
+      "video_group_prefixes": ["FB_", "VID_", "LEG_"],
+      "strip_at_mentions_regex": "@[A-Za-z0-9_.]+",
+      "strip_urls_regex": "https?://\\S+|www\\.\\S+",
+      "preserve_source_url_in_public": false,
+      "preserve_author_handle_in_public": false
+    },
+    "public_csv_redaction_token": "[WITHHELD]",
+    "dataset_master_masked_columns": [
+      "raw_text_or_ocr",
+      "visual_keyframe_path",
+      "stt_audio_transcript",
+      "source_url",
+      "author_or_uploader",
+      "context_topic",
+      "collected_or_timestamp",
+      "emojis_extracted"
+    ],
+    "multimodal_segments_masked_columns": [
+      "frame_path",
+      "stt_transcript",
+      "ocr_text"
+    ]
+  }
+}

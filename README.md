@@ -31,6 +31,7 @@ The comment and video results belong to **different populations and selection pr
 ├── notebooks/                               Six Jupyter notebooks for archived numerical analyses
 ├── src/                                     Numerical metric and source-consistency checks
 ├── scripts/
+│   ├── preprocessing/                       Reference official API ingestion, de-identification and 10s/3s windowing specification
 │   ├── validation/                          Hash, annotation and saved-result verification
 │   └── analysis/                            LOPO intervals and frozen-feature partition probes
 ├── results/

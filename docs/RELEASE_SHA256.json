@@ -1,7 +1,7 @@
 {
   "archive_version": "v1.1.2",
   "archive_assembly_date": "2026-10-28",
-  "file_count": 326,
+  "file_count": 329,
   "files": {
     ".github/workflows/verify-release.yml": {
       "sha256": "a86f02a7a49dc75eb1bbffdc04c316081fece9d0f6a7fe0d8ba410801247a07f",
@@ -24,8 +24,8 @@
       "bytes": 1261
     },
     "README.md": {
-      "sha256": "1655b98c43e93081df30545383df314c09f30bc278e8157ea229e8ada41dacaf",
-      "bytes": 10247
+      "sha256": "3a3fca0974731abae835206864a89014acbcbde28f07b0cb329cad81ce9c1999",
+      "bytes": 10387
     },
     "RELEASE_INFO.json": {
       "sha256": "e065f95c2c2b04880a190d65e584c2a5fad5d4ab4d10b519edacecf31ea6dc81",
@@ -58,6 +58,10 @@
     "configs/comments/TEXT_PREFLIGHT.json": {
       "sha256": "f9a7c0f3802f4b510cebb6b8c44475c57826fd57f029c496e0df3b2ab4f985c5",
       "bytes": 966
+    },
+    "configs/ingestion_protocol_config.example.json": {
+      "sha256": "bb0f62fa2aaebb9e134e0e29fe82deb9956f61410091277b11fb1b7f9fc301b7",
+      "bytes": 5205
     },
     "configs/video/runtime_environment.json": {
       "sha256": "948974bc4613f13d9edfa99cf0506ff93670331c5eab53dcebc6939354f36613",
@@ -208,8 +212,8 @@
       "bytes": 976435
     },
     "docs/README.md": {
-      "sha256": "4fd442ac41c74e88d4b79c2ddf3d8d747c5254b249ce50874f259664b526895c",
-      "bytes": 501
+      "sha256": "2a316a6756b5e7c3effb41b10550c6eac7560a22700a93c01077b11dad9e4f22",
+      "bytes": 612
     },
     "docs/UBD_Data_Provenance_and_Protection_Record_Signed_20260923.pdf": {
       "sha256": "be6cd5c9f337650ba1858ce7ed361bfd016093145a31e7776d8969ee8048803a",
@@ -218,6 +222,10 @@
     "docs/data_release.md": {
       "sha256": "8daf79f5815c279768925171daee8567041a12ca9bf3b4517875887df09a5b3f",
       "bytes": 7327
+    },
+    "docs/ingestion_and_preprocessing_protocol.md": {
+      "sha256": "61137b7da68e027eab15d2c0ba2de8afc1766bb173d0d30557d473c2a8aad1d8",
+      "bytes": 6579
     },
     "docs/input_audit.md": {
       "sha256": "e26cd2ebf9f635878fb44f07d6bbd4afc7e74b35d4c19747d064277c90c380d1",
@@ -1262,6 +1270,10 @@
     "scripts/analysis/repeated_group_probe.py": {
       "sha256": "0e22e94549f1563b2aff4a34221c9d7647d8fb69cf5c11b15c0d995953eef3bb",
       "bytes": 9985
+    },
+    "scripts/preprocessing/official_api_ingestion_and_windowing_reference.py": {
+      "sha256": "89c6c81ed1adb5ec27c8eec3768b93448e20cf48a7404dc47ed41249a678f376",
+      "bytes": 25309
     },
     "scripts/validation/build_checksums.py": {
       "sha256": "fbee424314a0b7613c4e6d226a052e4e3d536e485f91e436f7c170847ba56a2b",
