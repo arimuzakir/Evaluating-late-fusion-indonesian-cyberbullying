@@ -1,7 +1,7 @@
 {
   "archive_version": "v1.1.2",
   "archive_assembly_date": "2026-10-28",
-  "file_count": 325,
+  "file_count": 326,
   "files": {
     ".github/workflows/verify-release.yml": {
       "sha256": "a86f02a7a49dc75eb1bbffdc04c316081fece9d0f6a7fe0d8ba410801247a07f",
@@ -24,15 +24,15 @@
       "bytes": 1261
     },
     "README.md": {
-      "sha256": "4274ec809957d3f6a73fce4c62e4a204a9a113de1534526ce8553ed74bef8a07",
-      "bytes": 9822
+      "sha256": "1655b98c43e93081df30545383df314c09f30bc278e8157ea229e8ada41dacaf",
+      "bytes": 10247
     },
     "RELEASE_INFO.json": {
       "sha256": "e065f95c2c2b04880a190d65e584c2a5fad5d4ab4d10b519edacecf31ea6dc81",
       "bytes": 1109
     },
     "VERIFICATION.md": {
-      "sha256": "1df6e2a3b76d1e1efa00d4d533f8d660811cb678a428e8fd3ed1c7b51478cc2a",
+      "sha256": "d48412e501e118f64744fdaffcf54f080ae04d9a96bf17b52507970afd138fd6",
       "bytes": 1019
     },
     "configs/analysis/control_protocol_lock.json": {
@@ -208,20 +208,24 @@
       "bytes": 976435
     },
     "docs/README.md": {
-      "sha256": "b7162d997311dab6fa9e186085aa8fa0bcb3b8ab9560407e575051edd171a6d9",
-      "bytes": 346
+      "sha256": "4fd442ac41c74e88d4b79c2ddf3d8d747c5254b249ce50874f259664b526895c",
+      "bytes": 501
+    },
+    "docs/UBD_Data_Provenance_and_Protection_Record_Signed_20260923.pdf": {
+      "sha256": "6e4de12b420d3068499908e28121518340b2317f14e2941c15460acfb480466c",
+      "bytes": 2808911
     },
     "docs/data_release.md": {
-      "sha256": "3cb2d033cf4a098d9b5e5b61a87e00e8bb901b14fa41b9b0ce54e28a0fe38e9b",
-      "bytes": 2019
+      "sha256": "8daf79f5815c279768925171daee8567041a12ca9bf3b4517875887df09a5b3f",
+      "bytes": 7327
     },
     "docs/input_audit.md": {
       "sha256": "e26cd2ebf9f635878fb44f07d6bbd4afc7e74b35d4c19747d064277c90c380d1",
       "bytes": 2528
     },
     "docs/limitations.md": {
-      "sha256": "812fae310bd407586a3962d7259c7308de75304a1d7e43f61c5f5a12f18a8b92",
-      "bytes": 1907
+      "sha256": "3008968bb3ee12e7f7a4da392beec381ab8e8f630d2c78b67b9703599b1ba28b",
+      "bytes": 2290
     },
     "docs/methods_and_reproducibility.md": {
       "sha256": "a325640741b907a50773d69f44232b1700ed970c7c1d6eba8de6c03c025f124a",

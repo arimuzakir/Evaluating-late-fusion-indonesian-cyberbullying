@@ -9,5 +9,5 @@
 - Retained and excluded video observations differ in positive-class proportion; poststratification does not estimate results on excluded windows.
 - The archived waveform16 representation cannot support reconstruction of the exact original source waveform-to-feature map from public data.
 - Raw media, original comments and full checkpoints are restricted. Published scripts support recomputation from stored probability outputs and selected frozen features.
-- Official ethics determination and complete platform provenance remain outside this numerical package. Documentation should be updated only when verified.
+- Administrative data provenance, usage, de-identification, and release controls are documented in the signed institutional record (`010/DRPM/Univ-BD/IX/2026`, dated 23 September 2026; see [`data_release.md`](data_release.md) and [`UBD_Data_Provenance_and_Protection_Record_Signed_20260923.pdf`](UBD_Data_Provenance_and_Protection_Record_Signed_20260923.pdf)). As stated in that record, administrative acknowledgment is not an institutional ethics approval, an ethics-exemption determination, or a blanket platform redistribution license.
 - The effect of fusion on Macro F1 is not supported as positive or equivalent by the recorded clustered confidence interval.

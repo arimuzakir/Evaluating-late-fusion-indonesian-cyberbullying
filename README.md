@@ -99,6 +99,7 @@ jupyter lab
 - [Frozen-feature cross-platform and partition diagnostics](results/generalization/REPEATED_SPLIT_SUMMARY.csv)
 - [Input and experiment provenance](docs/methods_and_reproducibility.md)
 - [Data access and privacy scope](docs/data_release.md)
+- [Signed institutional data provenance and protection record (`010/DRPM/Univ-BD/IX/2026`)](docs/UBD_Data_Provenance_and_Protection_Record_Signed_20260923.pdf)
 - [Study limitations](docs/limitations.md)
 
 ## Important boundaries
@@ -108,7 +109,7 @@ jupyter lab
 3. The 100-window blinded audit includes 55 consensus-positive windows. **Recorded item-level keyframe scores are reproducibly 46/9/0** (scores 2/1/0). An earlier coordinator aggregate differs and is retained as historical provenance, but is not used as the numerical result because no supporting item-level corrections are available. This audit does not establish population-wide keyframe coverage. See [input audit](docs/input_audit.md).
 4. Three main training seeds share the same source partitions. Five additional group partitions are on *different frozen-feature linear probes*. Neither result measures variation from repartitioning and retraining the main encoders. Cross-platform LOPO is likewise a frozen-feature probe.
 5. These data do not provide a new independent external test cohort. Historical exploratory analysis included examination of earlier held-out outcomes, so retrospective inference must not be presented as prospective preregistration.
-6. Institutional ethics determination and some platform-use documentation remain to be confirmed by the researchers. See [data governance](docs/data_release.md). Code licensing does not grant rights over original social-media content.
+6. Administrative data provenance, de-identification, and release boundaries are documented in the signed Universitas Bina Darma record (`010/DRPM/Univ-BD/IX/2026`, dated 23 September 2026; see [data governance](docs/data_release.md) and [signed PDF record](docs/UBD_Data_Provenance_and_Protection_Record_Signed_20260923.pdf)). This administrative record is not an institutional ethics approval, an ethics-exemption determination, or a grant of rights over original third-party social-media content.
 
 ## Version history and release dates
 
