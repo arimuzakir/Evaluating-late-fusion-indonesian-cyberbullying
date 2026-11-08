@@ -131,34 +131,37 @@ def verify_documentation_consistency(root):
                 raise AssertionError(f'Contradictory/superseded string {bad!r} found in {rel}')
 
     # 2. Required artifact-derived values in README and methods/audit/limitations docs
-    t6 = pd.read_csv(root / 'results/statistics/revision_20261108/probability/TABLE6_PROBABILITY_METRICS.csv').set_index('model')
-    sig_f1 = str(float(t6.loc['sigmoid_equal_vat', 'window_macro_f1']))
-    sig_brier = str(float(t6.loc['sigmoid_equal_vat', 'window_brier']))
-    conv_f1 = str(float(t6.loc['convex_vat', 'window_macro_f1']))
-    conv_brier = str(float(t6.loc['convex_vat', 'window_brier']))
+    t6 = pd.read_csv(root / 'results/statistics/revision_20261108/probability/TABLE6_PROBABILITY_METRICS.csv', dtype=str).set_index('model')
+    sig_f1 = t6.loc['sigmoid_equal_vat', 'window_macro_f1']
+    sig_brier = t6.loc['sigmoid_equal_vat', 'window_brier']
+    conv_f1 = t6.loc['convex_vat', 'window_macro_f1']
+    conv_brier = t6.loc['convex_vat', 'window_brier']
     for token in [sig_f1, sig_brier, conv_f1, conv_brier]:
         assert token in texts['README.md'], f'Missing Table 6 control metric {token} in README.md'
         assert token in texts['docs/methods_and_reproducibility.md'], f'Missing Table 6 control metric {token} in methods_and_reproducibility.md'
 
-    hp = pd.read_csv(root / 'results/video/revision_20261108/head_sensitivity/HEAD_SENSITIVITY_POOLED.csv')
-    mlp_min = str(float(hp[hp.model.str.startswith('concat_mlp')].pooled_macro_f1.min()))
-    mlp_max = str(float(hp[hp.model.str.startswith('concat_mlp')].pooled_macro_f1.max()))
-    hn_min = str(float(hp[hp.model.str.startswith('healnet')].pooled_macro_f1.min()))
-    hn_max = str(float(hp[hp.model.str.startswith('healnet')].pooled_macro_f1.max()))
+    hp = pd.read_csv(root / 'results/video/revision_20261108/head_sensitivity/HEAD_SENSITIVITY_POOLED.csv', dtype=str)
+    hp['val'] = hp['pooled_macro_f1'].map(float)
+    mlp_sub = hp[hp.model.str.startswith('concat_mlp')]
+    hn_sub = hp[hp.model.str.startswith('healnet')]
+    mlp_min = mlp_sub.loc[mlp_sub['val'].idxmin(), 'pooled_macro_f1']
+    mlp_max = mlp_sub.loc[mlp_sub['val'].idxmax(), 'pooled_macro_f1']
+    hn_min = hn_sub.loc[hn_sub['val'].idxmin(), 'pooled_macro_f1']
+    hn_max = hn_sub.loc[hn_sub['val'].idxmax(), 'pooled_macro_f1']
     for token in ['concat_mlp', 'healnet', mlp_min, mlp_max, hn_min, hn_max, 'NVIDIA L4']:
         assert token in texts['docs/methods_and_reproducibility.md'], f'Missing R1.3 token {token} in methods_and_reproducibility.md'
 
-    rep = pd.read_csv(root / 'results/video/revision_20261108/source_partitions/REPARTITION_EFFECTS.csv').set_index('partition_seed')
-    for pseed in [1042, 2042]:
+    rep = pd.read_csv(root / 'results/video/revision_20261108/source_partitions/REPARTITION_EFFECTS.csv', dtype=str).set_index('partition_seed')
+    for pseed in ['1042', '2042']:
         for col in ['text_f1', 'equal_vat_f1']:
-            val_str = str(float(rep.loc[pseed, col]))
+            val_str = rep.loc[pseed, col]
             assert val_str in texts['README.md'] and val_str in texts['docs/methods_and_reproducibility.md'], f'Missing R2.5 {pseed} {col} in docs'
 
-    bounds = pd.read_csv(root / 'results/input_audit/revision_20261108/AUDIT_FIDELITY_DESIGN_BOUNDS.csv').set_index('branch')
+    bounds = pd.read_csv(root / 'results/input_audit/revision_20261108/AUDIT_FIDELITY_DESIGN_BOUNDS.csv', dtype=str).set_index('branch')
     for branch in ['ocr', 'stt']:
-        w_prop = str(float(bounds.loc[branch, 'weighted_proportion']))
-        ci_lo = str(float(bounds.loc[branch, 'ci_low']))
-        ci_hi = str(float(bounds.loc[branch, 'ci_high']))
+        w_prop = bounds.loc[branch, 'weighted_proportion']
+        ci_lo = bounds.loc[branch, 'ci_low']
+        ci_hi = bounds.loc[branch, 'ci_high']
         for token in [w_prop, ci_lo, ci_hi]:
             assert token in texts['docs/input_audit.md'], f'Missing R1.5 bound {token} in input_audit.md'
     for token in ['2,035', '2,506', '26102026', '26102027', '0.7418091717475274', '0.6956329285188523']:

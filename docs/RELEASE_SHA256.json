@@ -381,7 +381,7 @@
       "bytes": 4721
     },
     "docs/reproduction/MANUSCRIPT_ARTIFACT_MANIFEST.csv": {
-      "sha256": "20f62dc4a82afce4874c8e46c03d01de288e21ff4867d6b2aaab3f080c14d1d4",
+      "sha256": "00abe5f5b7c18a0c5213adb8657740e33bf346627e4ec377b8e0808c22848f16",
       "bytes": 31036
     },
     "docs/reproduction/revision_20261108/SOURCE_REVIEWER_COVERAGE.csv": {
@@ -1685,8 +1685,8 @@
       "bytes": 3984
     },
     "scripts/validation/verify_revision.py": {
-      "sha256": "5a39992a9dbf1d0e52dcb578f0c9c30b4005c2d1dbfe7d2a494714694c655944",
-      "bytes": 21214
+      "sha256": "092971c3a97a2356fc74155b3f40af0c870b33a263b1d6606f353facfac1bbe6",
+      "bytes": 21245
     },
     "src/README.md": {
       "sha256": "09ce7710295f74524ceae6b601f29d9b0b006079467ac069ade079b25437791b",
