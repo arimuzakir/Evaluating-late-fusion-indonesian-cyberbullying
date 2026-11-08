@@ -1,27 +1,37 @@
-"""Independent numerical, source-freeze, and documentation-consistency verification for the V4 reviewer revision.
+"""Independent numerical, source-freeze, asset, and structured documentation verification for the V4 reviewer revision.
 
 Recalculates all CPU-reproducible V4 revision tables into a temporary directory via
 `scripts/analysis/reproduce_revision.py` and verifies:
 1. Byte-level preservation of all 279 frozen GoldAdjudicated v1.1 repository files
    and all 89 public integrated V4 files (`configs/revision_20261108/RESULTS_SOURCE_FREEZE.json`),
    plus exclusion of private author callback files (`KEEP_PRIVATE`).
-2. Cohort, label, group, and role invariants across primary, neural-head sensitivity,
-   two-partition source allocation (1042 and 2042 -> effective outer seed 2044), and
-   seed-42 probability control predictions (`R1.1` - `R1.9`, `R2.1` - `R2.6`).
+2. Preservation and SHA-256 verification of final author diagram exports `results/figures/Fig_1.png`
+   and `results/figures/Fig_2.png`, intentional absence of `.drawio` files in the public repository,
+   and exact match between `docs/RELEASE_SHA256.json` file count and actual public repository contents.
 3. Exact numerical agreement (`atol = 1e-12`, with zero relaxed tolerances) between freshly
    recomputed tables and archived V4 revision tables across all 35 CPU-reproducible files,
-   plus explicit verification of both canonical pre-pseudonymisation (`master_id`) group ordering
-   and lexicographic `src_<16hex>` pseudonym ordering for the partition bootstrap CIs (`Item 8`).
-4. Automated documentation-vs-artifact consistency checks across `README.md`, `CHANGELOG.md`,
-   `VERIFICATION.md`, `docs/*.md`, `src/reference_archived/`, and `MANUSCRIPT_ARTIFACT_MANIFEST.csv`
-   against the authoritative CSV/JSON artifacts (`Item 1` - `Item 9`).
+   plus explicit verification of both the public `master_id`-sorted first-appearance group ordering
+   and lexicographic `src_<16hex>` pseudonym ordering for the partition bootstrap CIs (`R2.5`).
+4. Cohort, label, group, and role invariants across primary, neural-head sensitivity,
+   two-partition source allocation (1042 and 2042 -> effective outer seed 2044), and
+   seed-42 probability control predictions (`R1.1` - `R1.9`, `R2.1` - `R2.6`).
+5. Structured documentation-vs-artifact consistency checks by model, seed, estimand, category,
+   and configuration across `README.md`, `CHANGELOG.md`, `VERIFICATION.md`, `docs/*.md`,
+   `results/figures/README.md`, `src/reference_archived/`, and `MANUSCRIPT_ARTIFACT_MANIFEST.csv`,
+   plus negative mutation self-tests confirming that altering summary numbers or removing
+   final PNG figures causes verification to fail.
 """
 from pathlib import Path
-import argparse, hashlib, json, sys, tempfile
+import argparse, hashlib, json, re, sys, tempfile
 import numpy as np
 import pandas as pd
 
 FREEZE_MANIFEST = 'configs/revision_20261108/RESULTS_SOURCE_FREEZE.json'
+
+EXPECTED_FIGURES = {
+    'results/figures/Fig_1.png': '5a2145c99127310215df17553f24f2219658355e883e609269a41a742cfa069e',
+    'results/figures/Fig_2.png': 'eeae9d409efe2b264068562c5e35f3d65260920236f2386e719ebfef13f693c1',
+}
 
 RECOMPUTED_TO_REPO = {
     'ROLE_COUNTS.csv': 'results/video/revision_20261108/roles/ROLE_COUNTS.csv',
@@ -61,6 +71,25 @@ RECOMPUTED_TO_REPO = {
     'COMMENT_MULTIPLICITY_FAMILY.csv': 'docs/provenance/revision_20261108/COMMENT_MULTIPLICITY_FAMILY.csv',
 }
 
+DOC_FILES = [
+    'README.md',
+    'CHANGELOG.md',
+    'VERIFICATION.md',
+    'docs/README.md',
+    'docs/methods_and_reproducibility.md',
+    'docs/input_audit.md',
+    'docs/limitations.md',
+    'docs/numerical_environment.md',
+    'docs/results_index.md',
+    'docs/data_release.md',
+    'results/figures/README.md',
+    'notebooks/README.md',
+    'src/README.md',
+    'src/reference_archived/README.md',
+    'src/reference_archived/model_and_fusion_reference.py',
+    'docs/reproduction/MANUSCRIPT_ARTIFACT_MANIFEST.csv',
+]
+
 
 def sha256(path):
     h = hashlib.sha256()
@@ -85,30 +114,73 @@ def compare_csv(repo_file, repro_file, atol=1e-12):
                 raise AssertionError(f'String mismatch in {repo_file.name}.{col}')
 
 
-def verify_documentation_consistency(root):
+def _assert_line_association(content, doc_name, anchor, required_tokens):
+    matching_lines = [line for line in content.splitlines() if anchor in line]
+    if not matching_lines:
+        raise AssertionError(f'Anchor {anchor!r} not found in {doc_name}')
+    for line in matching_lines:
+        if all(str(tok) in line for tok in required_tokens):
+            return
+    missing = [str(tok) for tok in required_tokens if not any(str(tok) in line for line in matching_lines)]
+    raise AssertionError(
+        f'Structured association check failed in {doc_name} for anchor {anchor!r}: '
+        f'missing or mismatched tokens {missing} on matching line(s)'
+    )
+
+
+def verify_figures_and_checksum_inventory(root, simulated_missing_figure=None):
     root = Path(root).resolve()
-    doc_files = [
-        'README.md',
-        'CHANGELOG.md',
-        'VERIFICATION.md',
-        'docs/README.md',
-        'docs/methods_and_reproducibility.md',
-        'docs/input_audit.md',
-        'docs/limitations.md',
-        'docs/numerical_environment.md',
-        'docs/results_index.md',
-        'docs/data_release.md',
-        'notebooks/README.md',
-        'src/README.md',
-        'src/reference_archived/README.md',
-        'src/reference_archived/model_and_fusion_reference.py',
-        'docs/reproduction/MANUSCRIPT_ARTIFACT_MANIFEST.csv',
-    ]
-    texts = {rel: (root / rel).read_text(encoding='utf-8') for rel in doc_files}
+    # 1. Author decision: no .drawio files in public git repo
+    drawio_files = [str(p.relative_to(root)) for p in root.rglob('*.drawio') if '.git' not in p.parts]
+    if drawio_files:
+        raise AssertionError(f'Editable .drawio files must not be committed to the public repository: {drawio_files}')
+
+    # 2. Final Fig_1.png and Fig_2.png existence and SHA-256 verification
+    for rel_fig, exp_hash in EXPECTED_FIGURES.items():
+        p = root / rel_fig
+        if simulated_missing_figure == rel_fig or not p.is_file():
+            raise AssertionError(f'Required final figure missing: {rel_fig}')
+        actual_hash = sha256(p)
+        if actual_hash != exp_hash:
+            raise AssertionError(f'SHA-256 mismatch for {rel_fig}: {actual_hash} != {exp_hash}')
+
+    # 3. Checksum file count computed dynamically from actual public repo contents
+    skip_dirs = {'.git', '__pycache__', '.pytest_cache', '.ipynb_checkpoints', 'private'}
+    public_files = []
+    for p in sorted(root.rglob('*')):
+        if not p.is_file():
+            continue
+        rel = p.relative_to(root)
+        if any(part in skip_dirs for part in rel.parts) or p.name == '.DS_Store':
+            continue
+        if rel.as_posix() == 'docs/RELEASE_SHA256.json':
+            continue
+        public_files.append(rel.as_posix())
+    release_sha_path = root / 'docs/RELEASE_SHA256.json'
+    release_sha = json.loads(release_sha_path.read_text(encoding='utf-8'))
+    recorded_files = release_sha.get('files', {})
+    if len(recorded_files) != len(public_files):
+        raise AssertionError(
+            f'RELEASE_SHA256.json count ({len(recorded_files)}) != actual public file count ({len(public_files)})'
+        )
+    return len(public_files)
+
+
+def verify_documentation_consistency(root, texts_override=None, simulated_missing_figure=None):
+    root = Path(root).resolve()
+    actual_public_count = verify_figures_and_checksum_inventory(root, simulated_missing_figure=simulated_missing_figure)
+
+    texts = {rel: (root / rel).read_text(encoding='utf-8') for rel in DOC_FILES}
+    if texts_override:
+        texts.update(texts_override)
 
     # 1. Forbidden / superseded strings that contradict V4 source artifacts
     forbidden = [
         '0.56213', '0.57845', '0.23370', '0.23676', '0.04928',
+        '0.559139', '0.011066', '0.558972', '0.008434',
+        '0.2512264663532779', '0.20519627702685368',
+        '0.48315726365359944', '0.24975172285051612', '0.21479619426367523',
+        '0.09545243198743931', '0.07153506150983952', '0.2564143928576902', '0.20735809107968097',
         'visual_linear', 'audio_mlp', 'feature_mlp',
         '0.4648', '0.5608', '0.5568', 'A100',
         '15, 30, 45', '15,30,45', '0.001, 0.01', '0.001,0.01',
@@ -119,65 +191,300 @@ def verify_documentation_consistency(root):
         '1,781', '2,869', '0.71147', '0.68080',
         'choice(2326', 'choice(1625',
         'p > τ*', 'missing_video_file', 'missing_keyframe_image',
-        '0.58777', '0.58290', '0.0247206', 'p_holm = 1.0',
+        '0.58777', '0.58290', '0.0247206', 'p_holm_four = 1.0',
         'RETROSPECTIVE_MDE.json', 'PROVENANCE_TIMELINE.csv',
         '12_INASS_Reviewer_Revisions_CPU.ipynb',
         '5c5e5078f147551621d2d1d2fa68740e59f2c7eb9424667262da75d7226d18a9',
         'docs/provenance/revision_20261108/FUSION_HEAD_CONFIGURATION.json',
+        'docs/provenance/revision_20261108/PROBABILITY_ESTIMAND.json',
+        'docs/provenance/revision_20261108/AUDIT_DESIGN_METHOD.json',
+        'docs/provenance/revision_20261108/AUDIT_TARGET_DISAGREEMENT.json',
+        'docs/provenance/revision_20261108/AUDIT_UNCERTAINTY_NOTES.json',
+        'docs/provenance/revision_20261108/CONTROL_PROTOCOL_LOCK_VERIFIED.json',
+        'MV_000001', 'MV_004386',
+        'A06', 'A07', 'ADJ_KF',
+        '6.6.113+',
+        'mdeberta_v3',
+        '**187**', '**220**', '**35**',
+        '`187` `frame_identity_match`', '`220` `frame_identity_match+stt_content_match`', '`35` `ocr_content_match`',
     ]
     for rel, content in texts.items():
         for bad in forbidden:
             if bad in content:
                 raise AssertionError(f'Contradictory/superseded string {bad!r} found in {rel}')
 
-    # 2. Required artifact-derived values in README and methods/audit/limitations docs
-    t6 = pd.read_csv(root / 'results/statistics/revision_20261108/probability/TABLE6_PROBABILITY_METRICS.csv', dtype=str).set_index('model')
-    sig_f1 = t6.loc['sigmoid_equal_vat', 'window_macro_f1']
-    sig_brier = t6.loc['sigmoid_equal_vat', 'window_brier']
-    conv_f1 = t6.loc['convex_vat', 'window_macro_f1']
-    conv_brier = t6.loc['convex_vat', 'window_brier']
-    for token in [sig_f1, sig_brier, conv_f1, conv_brier]:
-        assert token in texts['README.md'], f'Missing Table 6 control metric {token} in README.md'
-        assert token in texts['docs/methods_and_reproducibility.md'], f'Missing Table 6 control metric {token} in methods_and_reproducibility.md'
+    # 2. Verify VERIFICATION.md checksum count matches actual public file count
+    _assert_line_association(
+        texts['VERIFICATION.md'],
+        'VERIFICATION.md',
+        'docs/RELEASE_SHA256.json',
+        [f'**{actual_public_count} files PASS**'],
+    )
 
+    # 3. Item 2A: Structured 3-seed mean/SD verification from THREE_SEED_RECOMPUTED.csv
+    three_seed = pd.read_csv(
+        root / 'results/statistics/revision_20261108/main_result_checks/THREE_SEED_RECOMPUTED.csv',
+        dtype=str,
+    ).set_index('model')
+    _assert_line_association(
+        texts['README.md'],
+        'README.md',
+        'Video extracted text (`text`, primary)',
+        ['0.5703396012843986', three_seed.loc['text', 'mean'], three_seed.loc['text', 'std']],
+    )
+    _assert_line_association(
+        texts['README.md'],
+        'README.md',
+        'Video equal-weight VAT (`equal_vat`, primary)',
+        ['0.5669772833605011', three_seed.loc['equal_vat', 'mean'], three_seed.loc['equal_vat', 'std']],
+    )
+    _assert_line_association(
+        texts['docs/methods_and_reproducibility.md'],
+        'docs/methods_and_reproducibility.md',
+        'THREE_SEED_RECOMPUTED.csv` records `text`',
+        [
+            three_seed.loc['text', 'mean'],
+            three_seed.loc['text', 'std'],
+            three_seed.loc['equal_vat', 'mean'],
+            three_seed.loc['equal_vat', 'std'],
+        ],
+    )
+
+    # 4. Item 2B: Structured Table 6 metrics, ECE, and ranks by model from TABLE6_PROBABILITY_METRICS.csv
+    t6 = pd.read_csv(
+        root / 'results/statistics/revision_20261108/probability/TABLE6_PROBABILITY_METRICS.csv',
+        dtype=str,
+    ).set_index('model')
+    for model_name in ['text', 'equal_vat', 'vat_lr', 'sigmoid_equal_vat', 'convex_vat']:
+        row = t6.loc[model_name]
+        _assert_line_association(
+            texts['docs/methods_and_reproducibility.md'],
+            'docs/methods_and_reproducibility.md',
+            f'window_macro_f1 = {row["window_macro_f1"]}',
+            [
+                f'window_brier = {row["window_brier"]}',
+                f'window_ece = {row["window_ece"]}',
+                f'window_brier_rank = {row["window_brier_rank"]}',
+                f'source_brier = {row["source_brier"]}',
+                f'source_ece = {row["source_ece"]}',
+                f'source_brier_rank = {row["source_brier_rank"]}',
+            ],
+        )
+    # Also verify README.md Table 6 row pairs sigmoid_equal_vat, convex_vat, and vat_lr with their exact metrics and ranks
+    for model_name in ['sigmoid_equal_vat', 'convex_vat', 'vat_lr']:
+        row = t6.loc[model_name]
+        _assert_line_association(
+            texts['README.md'],
+            'README.md',
+            'Seed-42 probability controls (`R2.6`, V4)',
+            [
+                model_name,
+                row['window_macro_f1'],
+                row['window_brier'],
+                f'[rank {row["window_brier_rank"]}]',
+                row['window_ece'],
+                row['source_brier'],
+                f'[rank {row["source_brier_rank"]}]',
+                row['source_ece'],
+            ],
+        )
+
+    # Also verify CALIBRATION_CONTROL_BRIER_INTERVALS.csv paired deltas & CIs by model, reference, and weighting
+    cbrier = pd.read_csv(
+        root / 'results/statistics/revision_20261108/probability/CALIBRATION_CONTROL_BRIER_INTERVALS.csv',
+        dtype=str,
+    )
+    for model_name in ['sigmoid_equal_vat', 'convex_vat']:
+        sub = cbrier[cbrier['model'] == model_name]
+        req_tokens = []
+        for r in sub.itertuples():
+            req_tokens.extend([r.delta, r.ci_low, r.ci_high])
+        _assert_line_association(
+            texts['docs/methods_and_reproducibility.md'],
+            'docs/methods_and_reproducibility.md',
+            f'delta = {sub.iloc[0]["delta"]}' if False else sub.iloc[0]['delta'],
+            req_tokens,
+        )
+
+    # 5. Item 2C: Structured neural-head min/max value-to-configuration mapping from HEAD_SENSITIVITY_POOLED.csv
     hp = pd.read_csv(root / 'results/video/revision_20261108/head_sensitivity/HEAD_SENSITIVITY_POOLED.csv', dtype=str)
     hp['val'] = hp['pooled_macro_f1'].map(float)
-    mlp_sub = hp[hp.model.str.startswith('concat_mlp')]
-    hn_sub = hp[hp.model.str.startswith('healnet')]
-    mlp_min = mlp_sub.loc[mlp_sub['val'].idxmin(), 'pooled_macro_f1']
-    mlp_max = mlp_sub.loc[mlp_sub['val'].idxmax(), 'pooled_macro_f1']
-    hn_min = hn_sub.loc[hn_sub['val'].idxmin(), 'pooled_macro_f1']
-    hn_max = hn_sub.loc[hn_sub['val'].idxmax(), 'pooled_macro_f1']
-    for token in ['concat_mlp', 'healnet', mlp_min, mlp_max, hn_min, hn_max, 'NVIDIA L4']:
-        assert token in texts['docs/methods_and_reproducibility.md'], f'Missing R1.3 token {token} in methods_and_reproducibility.md'
+    for prefix in ['concat_mlp', 'healnet']:
+        sub = hp[hp['model'].str.startswith(prefix)]
+        min_row = sub.loc[sub['val'].idxmin()]
+        max_row = sub.loc[sub['val'].idxmax()]
+        for doc_rel in ['README.md', 'docs/methods_and_reproducibility.md', 'docs/limitations.md', 'docs/numerical_environment.md']:
+            _assert_line_association(
+                texts[doc_rel],
+                doc_rel,
+                min_row['pooled_macro_f1'],
+                [min_row['model'], max_row['pooled_macro_f1'], max_row['model']],
+            )
+            # Ensure min value appears directly before min config name and max value before max config name
+            pattern = re.escape(min_row['pooled_macro_f1']) + r'[^;\n]*?' + re.escape(min_row['model']) + r'.*?' + re.escape(max_row['pooled_macro_f1']) + r'[^;\n]*?' + re.escape(max_row['model'])
+            if not re.search(pattern, texts[doc_rel]):
+                raise AssertionError(
+                    f'Min/max configuration pairing mismatch for {prefix} in {doc_rel}: '
+                    f'expected {min_row["pooled_macro_f1"]} -> {min_row["model"]} and {max_row["pooled_macro_f1"]} -> {max_row["model"]}'
+                )
 
+    # 6. Item 3: Structured exclusion reason aggregation and category-to-count pairing from EXCLUSION_REASON_PLATFORM_CLASS.csv
+    excl_df = pd.read_csv(root / 'results/statistics/revision_20261108/exclusions/EXCLUSION_REASON_PLATFORM_CLASS.csv')
+    excl_grouped = excl_df[excl_df['excluded'] == True].groupby('reason_pattern')['n'].sum().to_dict()
+    expected_excl = {
+        'frame_identity_match': 197,
+        'frame_identity_match+stt_content_match': 200,
+        'ocr_content_match': 45,
+        'frame_identity_match+ocr_content_match': 5,
+        'frame_identity_match+ocr_content_match+stt_content_match': 3,
+    }
+    if excl_grouped != expected_excl or sum(excl_grouped.values()) != 450:
+        raise AssertionError(f'Exclusion category mismatch: {excl_grouped} != {expected_excl}')
+    for reason, count in expected_excl.items():
+        _assert_line_association(
+            texts['docs/methods_and_reproducibility.md'],
+            'docs/methods_and_reproducibility.md',
+            f'- `{reason}`',
+            [f'**{count}** windows'],
+        )
+    for doc_rel in ['docs/limitations.md', 'docs/data_release.md']:
+        _assert_line_association(
+            texts[doc_rel],
+            doc_rel,
+            '`197` `frame_identity_match`',
+            [
+                '`200` `frame_identity_match+stt_content_match`',
+                '`45` `ocr_content_match`',
+                '`5` `frame_identity_match+ocr_content_match`',
+                '`3` `frame_identity_match+ocr_content_match+stt_content_match`',
+            ],
+        )
+
+    # 7. Item 4: Structured hypothesis family verification from FOCAL_FOUR_100000.csv and COMMENT_MULTIPLICITY_FAMILY.csv
+    focal_df = pd.read_csv(root / 'results/statistics/FOCAL_FOUR_100000.csv', dtype=str)
+    for row in focal_df.itertuples():
+        _assert_line_association(
+            texts['docs/methods_and_reproducibility.md'],
+            'docs/methods_and_reproducibility.md',
+            f'`{row.candidate}` vs `{row.baseline}`',
+            [
+                f'delta_macro_f1 = {row.delta_macro_f1}',
+                row.ci_low,
+                row.ci_high,
+                f'permutation_p = {row.permutation_p}',
+                f'p_holm_four = {row.p_holm_four}',
+            ],
+        )
+    cmf_df = pd.read_csv(root / 'docs/provenance/revision_20261108/COMMENT_MULTIPLICITY_FAMILY.csv', dtype=str)
+    for row in cmf_df.itertuples():
+        _assert_line_association(
+            texts['docs/methods_and_reproducibility.md'],
+            'docs/methods_and_reproducibility.md',
+            f'`{row.candidate}` vs `{row.baseline}`',
+            [
+                f'delta_macro_f1 = {row.delta_macro_f1}',
+                row.ci_low,
+                row.ci_high,
+                f'group_permutation_p = {row.group_permutation_p}',
+                f'group_permutation_p_holm = {row.group_permutation_p_holm}',
+            ],
+        )
+
+    # 8. Item 5: Partition effects and CB_MASTER_... bootstrap provenance
     rep = pd.read_csv(root / 'results/video/revision_20261108/source_partitions/REPARTITION_EFFECTS.csv', dtype=str).set_index('partition_seed')
-    for pseed in ['1042', '2042']:
-        for col in ['text_f1', 'equal_vat_f1']:
-            val_str = rep.loc[pseed, col]
-            assert val_str in texts['README.md'] and val_str in texts['docs/methods_and_reproducibility.md'], f'Missing R2.5 {pseed} {col} in docs'
+    for pseed, eff_seed in [('1042', '1042'), ('2042', '2044')]:
+        r = rep.loc[pseed]
+        _assert_line_association(
+            texts['docs/methods_and_reproducibility.md'],
+            'docs/methods_and_reproducibility.md',
+            f'**Partition `{pseed}`**',
+            [
+                f'effective_outer_seed = {eff_seed}',
+                f'text_f1 = {r["text_f1"]}',
+                f'equal_vat_f1 = {r["equal_vat_f1"]}',
+                f'delta = {r["delta"]}',
+                r['ci_low'],
+                r['ci_high'],
+            ],
+        )
+        _assert_line_association(
+            texts['README.md'],
+            'README.md',
+            'Focal source repartitions (`R2.5`, V4)',
+            [r['text_f1'], r['equal_vat_f1'], r['ci_low'].lstrip('-'), r['ci_high']],
+        )
+    _assert_line_association(
+        texts['docs/methods_and_reproducibility.md'],
+        'docs/methods_and_reproducibility.md',
+        'Bootstrap group-ordering rule and provenance',
+        ['CB_MASTER_08907..CB_MASTER_13307', "pd.unique(d.sort_values('master_id').group_id)", 'public deterministic ordering rule'],
+    )
+
+    # 9. Item 6: Audit rater IDs (R1/R2), keyframe definitions (AUDIT_RATING_DEFINITIONS.json), environment versions, and repo paths
+    r1_df = pd.read_csv(root / 'results/input_audit/Form_Audit_R1_scored.csv', dtype=str)
+    r2_df = pd.read_csv(root / 'results/input_audit/Form_Audit_R2_scored.csv', dtype=str)
+    assert set(r1_df['penilai_id']) == {'R1'} and set(r2_df['penilai_id']) == {'R2'}
+    _assert_line_association(
+        texts['docs/input_audit.md'],
+        'docs/input_audit.md',
+        'Pre-consensus window-aggression agreement',
+        ['`R1`', '`R2`', '0.8997995991983968', '0/100', 'disagreements = 0'],
+    )
+
+    rating_defs = json.loads((root / 'results/input_audit/revision_20261108/AUDIT_RATING_DEFINITIONS.json').read_text(encoding='utf-8'))
+    kf_defs = rating_defs['keyframe']
+    for score_str, exp_count in [('2', 46), ('1', 9), ('0', 0)]:
+        _assert_line_association(
+            texts['docs/input_audit.md'],
+            'docs/input_audit.md',
+            f'| `{score_str}` |',
+            [f'`{kf_defs[score_str]}`', f'| {exp_count} |'],
+        )
 
     bounds = pd.read_csv(root / 'results/input_audit/revision_20261108/AUDIT_FIDELITY_DESIGN_BOUNDS.csv', dtype=str).set_index('branch')
-    for branch in ['ocr', 'stt']:
-        w_prop = bounds.loc[branch, 'weighted_proportion']
-        ci_lo = bounds.loc[branch, 'ci_low']
-        ci_hi = bounds.loc[branch, 'ci_high']
-        for token in [w_prop, ci_lo, ci_hi]:
-            assert token in texts['docs/input_audit.md'], f'Missing R1.5 bound {token} in input_audit.md'
-    for token in ['2,035', '2,506', '26102026', '26102027', '0.7418091717475274', '0.6956329285188523']:
-        assert token in texts['docs/input_audit.md'], f'Missing R1.5 design detail {token} in input_audit.md'
+    cells_sum = pd.read_csv(root / 'results/input_audit/revision_20261108/AUDIT_FIDELITY_DESIGN_CELLS.csv').groupby('branch')[['success_count_low', 'success_count_high']].sum()
+    for branch, label_str in [('ocr', '**OCR faithful'), ('stt', '**STT faithful')]:
+        b_row = bounds.loc[branch]
+        c_row = cells_sum.loc[branch]
+        _assert_line_association(
+            texts['docs/input_audit.md'],
+            'docs/input_audit.md',
+            label_str,
+            [
+                f'{b_row["faithful"]}/{b_row["n"]}',
+                b_row['weighted_proportion'],
+                b_row['ci_low'],
+                b_row['ci_high'],
+                f'sum(success_count_low) = {int(c_row["success_count_low"])}',
+                f'sum(success_count_high) = {int(c_row["success_count_high"]):,}',
+            ],
+        )
 
-    for token in ['frame_identity_match', 'ocr_content_match', 'stt_content_match', 'probability >= threshold', '0.6607533924660753', '0.021046863536667928']:
-        assert token in texts['docs/methods_and_reproducibility.md'], f'Missing R1.4/R1.7/R2.4 token {token} in methods_and_reproducibility.md'
+    env_cmp = pd.read_csv(root / 'docs/provenance/revision_20261108/TRAINING_ENVIRONMENT_COMPARISON.csv', dtype=str).set_index('parameter')
+    for doc_rel in ['docs/methods_and_reproducibility.md', 'docs/numerical_environment.md']:
+        for param in ['numpy', 'torch', 'torchvision', 'platform']:
+            _assert_line_association(
+                texts[doc_rel],
+                doc_rel,
+                env_cmp.loc[param, 'original'],
+                [env_cmp.loc[param, 'sensitivity']],
+            )
 
-    lineage = json.loads((root / 'docs/provenance/revision_20261108/ARCHIVED_CODE_LINEAGE.json').read_text())
-    gold_cells_hash = next(x['sha256'] for x in lineage['files'] if x['file'] == 'archived_sources/GOLD_CODE_CELLS.txt')
-    nb12_hash = next(x['source_notebook_sha256'] for x in lineage['files'] if x.get('source_notebook') == 'inputs/12_Reviewer_Requested_Only_Colab_V4_EXECUTED.ipynb')
-    for expected_hash in [gold_cells_hash, nb12_hash]:
-        assert expected_hash in texts['src/reference_archived/README.md'], f'Missing lineage hash {expected_hash} in src/reference_archived/README.md'
-        assert expected_hash in texts['src/reference_archived/model_and_fusion_reference.py'], f'Missing lineage hash {expected_hash} in model_and_fusion_reference.py'
+    # Verify all backticked relative/repo paths in Markdown docs actually exist in the repository
+    path_pat = re.compile(r'`([A-Za-z0-9_./-]+\.(?:csv|json|py|png|pdf|npy|npz|ipynb|md|yml|txt|cff))`')
+    for rel, content in texts.items():
+        if not rel.endswith('.md'):
+            continue
+        doc_dir = (root / rel).parent
+        for match in path_pat.finditer(content):
+            ref = match.group(1)
+            if '/' in ref and '*' not in ref and not ref.startswith('/tmp/'):
+                cand_rel = (doc_dir / ref).resolve()
+                cand_root = (root / ref).resolve()
+                if not cand_rel.is_file() and not cand_root.is_file():
+                    raise AssertionError(f'Non-existent repository file path `{ref}` referenced in {rel}')
 
-    # 3. Verify MANUSCRIPT_ARTIFACT_MANIFEST.csv paths, hashes, and command roles
+    # 10. Verify MANUSCRIPT_ARTIFACT_MANIFEST.csv paths, hashes, and command roles
     manifest = pd.read_csv(root / 'docs/reproduction/MANUSCRIPT_ARTIFACT_MANIFEST.csv')
     valid_roles = {
         'RECOMPUTE_ARTIFACT',
@@ -199,6 +506,32 @@ def verify_documentation_consistency(root):
         else:
             sp = root / row.script_path
             assert sp.is_file() and sha256(sp) == row.script_sha256, f'Script hash mismatch in manifest for {row.artifact_id}: {row.script_path}'
+
+
+def verify_negative_self_tests(root):
+    root = Path(root).resolve()
+    base_readme = (root / 'README.md').read_text(encoding='utf-8')
+    base_methods = (root / 'docs/methods_and_reproducibility.md').read_text(encoding='utf-8')
+    base_audit = (root / 'docs/input_audit.md').read_text(encoding='utf-8')
+
+    mutations = [
+        ('3-seed mean mutation in README.md', {'README.md': base_readme.replace('0.5591008526998115', '0.5591390000000000')}, None),
+        ('Table 6 rank swap in methods_and_reproducibility.md', {'docs/methods_and_reproducibility.md': base_methods.replace('source_brier_rank = 4', 'source_brier_rank = 1', 1)}, None),
+        ('Neural min/max config swap in methods_and_reproducibility.md', {'docs/methods_and_reproducibility.md': base_methods.replace('concat_mlp_e30_wd0.1', 'concat_mlp_e15_wd0.01', 1)}, None),
+        ('Exclusion count mutation in methods_and_reproducibility.md', {'docs/methods_and_reproducibility.md': base_methods.replace('**197** windows', '**187** windows', 1)}, None),
+        ('Hypothesis family mutation in methods_and_reproducibility.md', {'docs/methods_and_reproducibility.md': base_methods.replace('`equal_vat` vs `siglip2_vta_probe`', '`vat_coverage` vs `vat_lr`', 1)}, None),
+        ('Keyframe definition mutation in input_audit.md', {'docs/input_audit.md': base_audit.replace('`captures focal event`', '`clear visual aggression`', 1)}, None),
+        ('Missing Fig_1.png simulation', None, 'results/figures/Fig_1.png'),
+        ('Missing Fig_2.png simulation', None, 'results/figures/Fig_2.png'),
+    ]
+    for label, override, missing_fig in mutations:
+        failed = False
+        try:
+            verify_documentation_consistency(root, texts_override=override, simulated_missing_figure=missing_fig)
+        except AssertionError:
+            failed = True
+        if not failed:
+            raise AssertionError(f'Negative self-test did not fail as required: {label}')
 
 
 def run(root):
@@ -240,7 +573,7 @@ def run(root):
                 compare_csv(repo_p, repro_p, atol=1e-12)
     print(f'PASS CPU revision reproduction: {len(RECOMPUTED_TO_REPO)}/35 tables and JSON summaries verified at strict atol=1e-12')
 
-    # 3. Verify both canonical pre-pseudonymisation and lexicographic src_<16hex> bootstrap CIs for R2.5 (Item 8)
+    # 3. Verify both public master_id-sorted first-appearance and lexicographic src_<16hex> bootstrap CIs for R2.5
     rp = pd.read_csv(root / 'results/video/revision_20261108/source_partitions/REPARTITION_PREDICTIONS.csv', dtype={'master_id': str, 'group_id': str})
     rep_eff = pd.read_csv(root / 'results/video/revision_20261108/source_partitions/REPARTITION_EFFECTS.csv').set_index('partition_seed')
     expected_lex_ci = {
@@ -304,9 +637,10 @@ def run(root):
     assert int(excl_reason.loc[excl_reason.excluded, 'n'].sum()) == 450
     assert int(excl_reason.loc[~excl_reason.excluded, 'n'].sum()) == 3951
 
-    # 5. Documentation-vs-artifact consistency check (Item 9)
+    # 5. Structured documentation-vs-artifact consistency check + negative self-tests (Item 7)
     verify_documentation_consistency(root)
-    print('PASS all V4 revision structural, statistical, and documentation-consistency invariants')
+    verify_negative_self_tests(root)
+    print('PASS all V4 revision structural, statistical, figure-hash, and structured documentation-consistency invariants (including 8/8 negative mutation self-tests)')
 
 
 if __name__ == '__main__':

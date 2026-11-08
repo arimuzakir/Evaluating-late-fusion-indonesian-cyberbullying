@@ -5,10 +5,10 @@
 ## Automated checks
 
 - **Source-freeze gate (`INASS_RESULTS_FREEZE_20261108_V4`)**: **279/279 protected baseline files PASS**, **89/89 public V4 files PASS**, **2/2 private audit files excluded from public git PASS**.
-- **Public SHA-256 inventory (`docs/RELEASE_SHA256.json`)**: **431 files PASS** across all tracked public files (excluding the manifest itself).
+- **Public SHA-256 inventory (`docs/RELEASE_SHA256.json`)**: **431 files PASS** across all tracked public files (excluding the manifest itself), verified against the actual public repository file count.
 - **Primary numeric checks (`src.evaluate_release`)**: **27/27 PASS**.
-- **Keyframe item-level reaggregation (`reconcile_keyframes.py`)**: **PASS** with 46 score-2, 9 score-1, and 0 score-0 among 55 audited positive windows (`44/8/3` historical coordinator aggregate documented separately).
-- **V4 CPU revision reproduction (`verify_revision.py`)**: **35/35 CPU-derivable tables and JSON summaries recomputed from public inputs PASS at `atol = 1e-12`** (including exact pre-pseudonymization and lexicographic-pseudonym bootstrap CI verification for `REPARTITION_EFFECTS.csv`), plus **all R1.1–R1.9 and R2.1–R2.6 structural, statistical, and documentation-vs-artifact consistency invariants PASS**.
+- **Keyframe item-level reaggregation (`reconcile_keyframes.py`)**: **PASS** with 46 score-2 (`captures focal event`), 9 score-1 (`partial event or context`), and 0 score-0 (`focal event in clip not captured by frame`) among 55 consensus-positive audited windows from independent raters `R1` and `R2` (`44/8/3` historical coordinator aggregate documented separately).
+- **V4 CPU revision reproduction (`verify_revision.py`)**: **35/35 CPU-derivable tables and JSON summaries recomputed from public inputs PASS at `atol = 1e-12`** (including exact `1e-12` bootstrap CI verification under both the public `master_id`-sorted first-appearance group ordering rule and lexicographic `src_<16hex>` pseudonym ordering for `REPARTITION_EFFECTS.csv`), plus **all R1.1–R1.9 and R2.1–R2.6 structural, statistical, figure-hash, and structured documentation-vs-artifact consistency invariants (including negative mutation self-tests) PASS**.
 - **LOPO clustered bootstrap (`lopo_cluster_intervals.py`)**: **PASS** (`20,000` clustered replicates).
 - **Frozen-feature five-partition probe (`repeated_group_probe.py`)**: **PASS** with single-thread BLAS determinism.
 - **Notebook validation and execution**: **6/6 notebooks validated and executed** with documented dependencies.

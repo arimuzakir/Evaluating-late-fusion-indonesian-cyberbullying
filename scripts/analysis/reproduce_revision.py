@@ -58,10 +58,11 @@ def f1counts(c):
 
 def paired_ci(d, a, b, B=BOOTSTRAP_REPS, seed=SEED, group_order='canonical_master_id'):
     if group_order == 'canonical_master_id' and 'master_id' in d.columns:
-        # In INITIAL_RUN, paired_ci() ran before save() pseudonymised group_id to src_<16hex>.
-        # Because master_id (MV_000001..MV_004386) is ordered by the original un-pseudonymised
-        # source video identifier, taking unique group_ids in master_id order recovers the exact
-        # pre-pseudonymisation np.unique(group_id) ordering and reproduces archived CIs to 1e-12.
+        # In the archived revision notebook, paired_ci() ran before save() pseudonymised
+        # group_id to src_<16hex>. In the public repository (where video windows are indexed
+        # by CB_MASTER_08907..CB_MASTER_13307), taking unique group_ids in order of first
+        # appearance after sorting by master_id is the public deterministic ordering rule
+        # that reproduces REPARTITION_EFFECTS.csv CIs to atol = 1e-12.
         keys = pd.unique(d.sort_values('master_id').group_id.astype(str))
         rank_map = {k: i for i, k in enumerate(keys)}
         inv = d.group_id.astype(str).map(rank_map).to_numpy(int)
