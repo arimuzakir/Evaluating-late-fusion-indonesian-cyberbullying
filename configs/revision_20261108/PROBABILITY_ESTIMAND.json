@@ -1,0 +1,8 @@
+{
+  "primary": "window-weighted",
+  "reason": "The operational prediction unit is an eligible ten-second video window; each retained window has equal evaluation weight.",
+  "secondary": "source-weighted sensitivity, equal total weight per linked source group",
+  "decision_timing": "Explicit reporting choice made during this reviewer revision; not claimed prospectively registered.",
+  "uncertainty": "Paired source-group bootstrap conditional on stored fitted models",
+  "interpretation": "Lower Brier or ECE alone is not evidence of practical moderation benefit; model ranking depends on the estimand."
+}

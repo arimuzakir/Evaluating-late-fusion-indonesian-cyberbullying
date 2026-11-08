@@ -1,0 +1,33 @@
+{
+  "revision": "cpu_revision_v4",
+  "base_run_sha256": "327453c92a014093b7daad2b1eb9848823b2adfd8defa53f9a5f087446bb3630",
+  "base_protocol": {
+    "schema": 1,
+    "head": true,
+    "repartition": true,
+    "partition_seeds": [
+      1042,
+      2042
+    ],
+    "head_epochs": [
+      15,
+      30,
+      60
+    ],
+    "weight_decays": [
+      0.01,
+      0.1
+    ],
+    "bootstrap_reps": 10000,
+    "audit_reps": 2000,
+    "rng_seed": 6112026,
+    "primary_contrast": "Equal VAT minus extracted video text",
+    "training_seed": 42,
+    "adaptive_comparator": "bounded scope route, no new architecture",
+    "external_cohort": false
+  },
+  "training_performed": false,
+  "original_run_preserved": true,
+  "subgroup_intervals": "withdrawn; descriptive estimates retained",
+  "runtime_scope": "CPU analysis and archived prediction validation"
+}

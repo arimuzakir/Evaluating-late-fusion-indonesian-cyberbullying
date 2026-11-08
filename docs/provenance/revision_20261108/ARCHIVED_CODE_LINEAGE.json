@@ -1,0 +1,66 @@
+{
+  "scope": "Available source snapshots and explicit limits; new code hashes are revision-time provenance.",
+  "files": [
+    {
+      "file": "archived_sources/GOLD_CODE_CELLS.txt",
+      "sha256": "b231e720e6b2015f19b2c3e3847e4c7f4eafbed24762d75f4c0aaec485e3f7ca",
+      "purpose": "source reference for controlled refactoring; not executed by the handoff verifier",
+      "source_notebook_sha256": "00ec72c73dbf48d4a86837193e54d9d9f242d1919b648e553c65951ce9ead3ac",
+      "recorded_original_notebook_sha256": "0d885fce431e5da9ea5f48ec19e8fcf5ae1376308865b81ce83d7de7d544a1e2",
+      "source_notebook_hash_matches_record": false,
+      "lineage": "Available archived notebook copy. Whole-notebook byte hash differs from the original recorded reference; code snapshot is not proof of exact original run bytes. JSON/output/metadata versus code causes were not isolated."
+    },
+    {
+      "file": "archived_sources/SEGMENTATION_CODE_CELLS.txt",
+      "sha256": "b43eccf3c000010922778f2729138f262fc05fb9b8f358f481a6bb26642f254b",
+      "purpose": "source reference for controlled refactoring; not executed by the handoff verifier",
+      "source_notebook_sha256": "e1f99210a9c7bfec5bce40532fa7962022dd7b8721b926b7c6965d1944c8012f",
+      "recorded_historical_notebook_sha256": "e1f99210a9c7bfec5bce40532fa7962022dd7b8721b926b7c6965d1944c8012f",
+      "source_notebook_hash_matches_record": true,
+      "lineage": "Original code cells concatenated with cell-number delimiters; outputs and metadata omitted."
+    },
+    {
+      "file": "archived_sources/gold_driver.py",
+      "sha256": "aa687df42e9849cddcb2696714edcdb3baa261761a69cfa9b39f957bf0e12daf",
+      "purpose": "source reference for controlled refactoring; not executed by the handoff verifier",
+      "lineage": "Available archived driver reference. Exact association with the historical completed run has not been independently authenticated. Do not present as a verified original executable merely because the source is available."
+    },
+    {
+      "file": "archived_sources/gold_run_driver.py",
+      "sha256": "7c943de36113d540d4be4e1864725eabd358ce4b658041bbf65aeec490f1424b",
+      "purpose": "source reference for controlled refactoring; not executed by the handoff verifier",
+      "lineage": "Available archived driver reference. Exact association with the historical completed run has not been independently authenticated. Do not present as a verified original executable merely because the source is available."
+    },
+    {
+      "file": "archived_sources/nb12_analysis_functions.py",
+      "sha256": "602f99debd1e49e4c1ffce19797079614559e2744fcb6ee5ccbc57649ca1484c",
+      "purpose": "source reference for controlled refactoring; not executed by the handoff verifier",
+      "source_notebook": "inputs/12_Reviewer_Requested_Only_Colab_V4_EXECUTED.ipynb",
+      "source_notebook_sha256": "90ce402df35711f663f71d911380f4bb2936612fdfd87e0fe6f4d2d2e1783fcc",
+      "lineage": "Extracted literal engine or exact code cell from the verified V4 notebook; does not by itself authenticate every historical main-training decision."
+    },
+    {
+      "file": "archived_sources/nb12_embedded_model_engine.py",
+      "sha256": "29d869b42c2caada6f1c2b6eae3df454689efa1d4e0213be4debdc7a50132b71",
+      "purpose": "source reference for controlled refactoring; not executed by the handoff verifier",
+      "source_notebook": "inputs/12_Reviewer_Requested_Only_Colab_V4_EXECUTED.ipynb",
+      "source_notebook_sha256": "90ce402df35711f663f71d911380f4bb2936612fdfd87e0fe6f4d2d2e1783fcc",
+      "lineage": "Extracted literal engine or exact code cell from the verified V4 notebook; does not by itself authenticate every historical main-training decision."
+    },
+    {
+      "file": "archived_sources/nb12_training_functions.py",
+      "sha256": "00e070cfa625da032814a7df3a723f1ef676498b7ee7ee0e55c2eef1549302ec",
+      "purpose": "source reference for controlled refactoring; not executed by the handoff verifier",
+      "source_notebook": "inputs/12_Reviewer_Requested_Only_Colab_V4_EXECUTED.ipynb",
+      "source_notebook_sha256": "90ce402df35711f663f71d911380f4bb2936612fdfd87e0fe6f4d2d2e1783fcc",
+      "lineage": "Extracted literal engine or exact code cell from the verified V4 notebook; does not by itself authenticate every historical main-training decision."
+    },
+    {
+      "file": "archived_sources/waveform_source.py",
+      "sha256": "cd31fc7002239be29b9a5870b4052486e7fe45f3ffda93e7e6985dd40d64e8f9",
+      "purpose": "source reference for controlled refactoring; not executed by the handoff verifier",
+      "recorded_historical_sha256": "cd31fc7002239be29b9a5870b4052486e7fe45f3ffda93e7e6985dd40d64e8f9",
+      "matches_recorded_source": true
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "seed": 42,
+  "windows": 3951,
+  "groups": 214,
+  "folds": 4,
+  "labels": {
+    "positive": 2326,
+    "negative": 1625
+  },
+  "all_role_memberships_and_role_counts_match": true,
+  "base_probabilities_and_predictions_match": true,
+  "thresholds_checked_against_archived_selection_role": true,
+  "training_or_calibrator_refitting": false,
+  "source_sha256": {
+    "ROLE_PROBABILITIES_SEED42.csv": "49398fe1d0a935e8d8617549524abb934f368227ea9aab256d44ebe87504ffcf",
+    "CONTROL_THRESHOLDS.csv": "695f80485e4080608000926506520154abbe2d67125f9040e1cd5c2d9cb8e620",
+    "ROLE_SIZES.csv": "e6e3da194f54ef1c92d8ad8eecd9b55c6da818ee3d5d10d1f79c10793828c6a0"
+  },
+  "scope": "Archived seed-42 controls only; no additional training seeds inferred"
+}

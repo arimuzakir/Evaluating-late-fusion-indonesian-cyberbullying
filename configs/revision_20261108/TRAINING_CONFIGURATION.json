@@ -1,0 +1,36 @@
+{
+  "original_encoder_config": {
+    "text_batch": 16,
+    "visual_batch": 32,
+    "accumulation": 2,
+    "video_text_epochs": 4,
+    "visual_epochs": 5,
+    "video_max_length": 192,
+    "save_best_weights": true,
+    "head_epochs": 30,
+    "head_batch": 64,
+    "head_lr": 0.001
+  },
+  "text_model": "indobenchmark/indobert-base-p2",
+  "text_revision": "94b4e0a82081fa57f227fcc2024d1ea89b57ac1f",
+  "engine_sha256": "29d869b42c2caada6f1c2b6eae3df454689efa1d4e0213be4debdc7a50132b71",
+  "encoder_epoch_selection": "early_stop macro F1 at .5; earliest epoch on tie",
+  "head": "meta_fit only; full fixed grid; no test-based selection",
+  "head_scalers": "meta_fit only",
+  "base_audio_scaler": "fit only",
+  "threshold": "calibration role only; closest .5 then lower on ties",
+  "software": {
+    "python": "3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]",
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "numpy": "2.4.6",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.6.1",
+    "torch": "2.14.1+cu130",
+    "einops": "0.8.1",
+    "transformers": "4.57.1",
+    "torchvision": "0.29.1+cu130",
+    "emoji": "2.14.1",
+    "cuda_runtime": "13.0",
+    "gpu": "NVIDIA L4"
+  }
+}

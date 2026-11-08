@@ -1,0 +1,28 @@
+{
+  "status": "CONSERVATIVE_FINITE_POPULATION_CONSTRUCTION",
+  "alpha": 0.05,
+  "simultaneous_cell_family": 20,
+  "cell_alpha": 0.0025,
+  "estimator": "sum_h (N_h/n_h)*k_h / sum_h N_h among available-output strata",
+  "construction": "For every observed k_h invert both Hypergeom(N_h,K_h,n_h) tails at alpha/(2*family). Sum count endpoints over available strata and divide by their known population size.",
+  "coverage_argument": "Each integer count interval has noncoverage at most alpha/family. The union bound gives simultaneous coverage at least 1-alpha for all cell counts, hence for both aggregate branch proportions; no independence across outcomes or sources is used by this bound.",
+  "source_dependence": "Design randomness is selection of fixed windows, not iid outcome generation. Shared source effects can be arbitrary fixed patterns. The secondary multiplier analysis addresses source-dependence sensitivity but has no exact new-source guarantee.",
+  "singleton_handling": "Use finite-count test inversion, not an estimated within-cell variance; intervals remain wide for n_h=1.",
+  "measurement": "Condition on recorded adjudicated ratings; measurement error and external validation are not covered.",
+  "not_claimed": [
+    "optimal or shortest interval",
+    "implementation of a nuisance-parameter optimisation method",
+    "design-exact source-superpopulation bootstrap",
+    "causal explanation of fusion errors"
+  ],
+  "references": [
+    {
+      "url": "https://ucb-stat-159-s21.github.io/site/Notes/binom.html",
+      "purpose": "Primary teaching derivation of hypergeometric test inversion for SRSWOR"
+    },
+    {
+      "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.hypergeom.html",
+      "purpose": "Official parameterisation and cdf/sf implementation"
+    }
+  ]
+}

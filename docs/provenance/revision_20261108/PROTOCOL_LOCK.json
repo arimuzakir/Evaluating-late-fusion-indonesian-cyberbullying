@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "head": true,
+  "repartition": true,
+  "partition_seeds": [
+    1042,
+    2042
+  ],
+  "head_epochs": [
+    15,
+    30,
+    60
+  ],
+  "weight_decays": [
+    0.01,
+    0.1
+  ],
+  "bootstrap_reps": 10000,
+  "audit_reps": 2000,
+  "rng_seed": 6112026,
+  "primary_contrast": "Equal VAT minus extracted video text",
+  "training_seed": 42,
+  "adaptive_comparator": "bounded scope route, no new architecture",
+  "external_cohort": false
+}

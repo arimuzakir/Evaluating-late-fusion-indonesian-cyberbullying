@@ -1,0 +1,32 @@
+{
+  "source": "Panduan_Audit_Blinded.docx, technical protocol 26 October 2026",
+  "source_sha256": "eb52a00c431111415d70e505333bfa19e1d1c43ca9847053b7fd62423a970bfb",
+  "aggression": {
+    "1": "observed directed aggression, intimidation or degradation",
+    "0": "not observed",
+    "U": "ambiguous or unratable"
+  },
+  "accuracy": {
+    "2": "substantive meaning faithful to source writing/speech; minor spelling errors allowed",
+    "1": "partly correct but important meaning omitted or changed",
+    "0": "mostly unsupported, wrong or meaning-changing",
+    "NA": "empty output",
+    "U": "source cannot be assessed"
+  },
+  "relevance": {
+    "2": "direct evidence for presence or absence of aggression",
+    "1": "helpful but nondeterminative context",
+    "0": "unrelated to event assessment",
+    "NA": "empty output",
+    "U": "unratable"
+  },
+  "keyframe": {
+    "2": "captures focal event",
+    "1": "partial event or context",
+    "0": "focal event in clip not captured by frame",
+    "NA": "no aggression event in clip",
+    "U": "unratable"
+  },
+  "faithful_criterion": "accuracy score exactly 2 among available and assessable outputs",
+  "scope": "Recorded rubric definitions, not new human ratings; two ratings per window are not two independent windows"
+}

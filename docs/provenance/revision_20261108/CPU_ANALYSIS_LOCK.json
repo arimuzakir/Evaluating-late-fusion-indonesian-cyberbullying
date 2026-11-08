@@ -1,0 +1,11 @@
+{
+  "revision": "cpu_revision_v4",
+  "analysis_sha256": "602f99debd1e49e4c1ffce19797079614559e2744fcb6ee5ccbc57649ca1484c",
+  "base_run_sha256": "327453c92a014093b7daad2b1eb9848823b2adfd8defa53f9a5f087446bb3630",
+  "audit_alpha": 0.05,
+  "control_archive_sha256": {
+    "ROLE_PROBABILITIES_SEED42.csv": "49398fe1d0a935e8d8617549524abb934f368227ea9aab256d44ebe87504ffcf",
+    "CONTROL_THRESHOLDS.csv": "695f80485e4080608000926506520154abbe2d67125f9040e1cd5c2d9cb8e620",
+    "ROLE_SIZES.csv": "e6e3da194f54ef1c92d8ad8eecd9b55c6da818ee3d5d10d1f79c10793828c6a0"
+  }
+}

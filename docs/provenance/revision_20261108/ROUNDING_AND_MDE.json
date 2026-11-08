@@ -1,0 +1,15 @@
+{
+  "f1_text": 0.5703396012843986,
+  "f1_equal_vat": 0.5669772833605011,
+  "delta_macro_f1": -0.0033623179238975176,
+  "rounding_note": "compute paired differences from unrounded scores; pooled OOF is not an unweighted fold mean",
+  "bootstrap_se": 0.0075124837897468,
+  "target_power": 0.8,
+  "alpha": 0.05,
+  "sidedness": "two-sided",
+  "formula": "(norm.ppf(1-alpha/2)+norm.ppf(target_power))*bootstrap_se",
+  "mde_unadjusted": 0.021046863536667928,
+  "bootstrap_replicates": 100000,
+  "source": "ARCHIVED_FOCAL_FOUR_100000.csv: equal_vat versus text",
+  "scope": "retrospective conditional normal-approximation sensitivity diagnostic; not Holm-adjusted, prospective power or equivalence"
+}

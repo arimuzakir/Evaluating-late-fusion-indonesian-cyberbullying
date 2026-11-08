@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "seed_sample": 26102026,
+  "seed_blind_order": 26102027,
+  "population_windows": 3951,
+  "sample_windows": 100,
+  "sample_source_groups": 68,
+  "strata": 20,
+  "selection": "largest remainder quota; uniform permutation within each availability/platform cell; no replacement",
+  "matched_sample_and_audit_order": true,
+  "sampling_script_sha256": "5adc594846e2813c93f744c1a4c3dcaab619ea185eb8543a2832fa8b56018813"
+}

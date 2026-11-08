@@ -1,0 +1,13 @@
+parameter,original,sensitivity,equal
+cuda_runtime,13.0,13.0,True
+einops,0.8.1,0.8.1,True
+emoji,2.14.1,2.14.1,True
+gpu,NVIDIA L4,NVIDIA L4,True
+numpy,2.1.3,2.4.6,False
+pandas,2.2.3,2.2.3,True
+platform,Linux-6.6.122+-x86_64-with-glibc2.39,Linux-6.6.159+-x86_64-with-glibc2.39,False
+python,"3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]","3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]",True
+scikit-learn,1.6.1,1.6.1,True
+torch,2.11.0+cu130,2.14.1+cu130,False
+torchvision,0.26.0+cu130,0.29.1+cu130,False
+transformers,4.57.1,4.57.1,True

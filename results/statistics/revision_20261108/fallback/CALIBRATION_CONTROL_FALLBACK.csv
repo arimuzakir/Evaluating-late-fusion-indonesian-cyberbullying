@@ -1,0 +1,11 @@
+seed,fold,model,n,groups,positive,negative,threshold,tn,fp,fn,tp,macro_f1,scope
+42,pooled,sigmoid_equal_vat,685,86,423,262,fold-specific,218,44,363,60,0.37245222965779123,Archived control predictions; absent-extraction text branch remains 0.5 before probability combination
+42,pooled,convex_vat,685,86,423,262,fold-specific,113,149,161,262,0.524969576577544,Archived control predictions; absent-extraction text branch remains 0.5 before probability combination
+42,0,sigmoid_equal_vat,239,20,135,104,0.65,79,25,106,29,0.4267955548232365,Archived control predictions; absent-extraction text branch remains 0.5 before probability combination
+42,0,convex_vat,239,20,135,104,0.625,41,63,47,88,0.5212339743589743,Archived control predictions; absent-extraction text branch remains 0.5 before probability combination
+42,1,sigmoid_equal_vat,152,24,107,45,0.7,45,0,107,0,0.22842639593908629,Archived control predictions; absent-extraction text branch remains 0.5 before probability combination
+42,1,convex_vat,152,24,107,45,0.65,13,32,26,81,0.5229437229437229,Archived control predictions; absent-extraction text branch remains 0.5 before probability combination
+42,2,sigmoid_equal_vat,115,16,74,41,0.7,41,0,74,0,0.26282051282051283,Archived control predictions; absent-extraction text branch remains 0.5 before probability combination
+42,2,convex_vat,115,16,74,41,0.65,24,17,42,32,0.484461667046577,Archived control predictions; absent-extraction text branch remains 0.5 before probability combination
+42,3,sigmoid_equal_vat,179,26,107,72,0.65,53,19,76,31,0.4611338213391641,Archived control predictions; absent-extraction text branch remains 0.5 before probability combination
+42,3,convex_vat,179,26,107,72,0.65,35,37,46,61,0.5263191455443966,Archived control predictions; absent-extraction text branch remains 0.5 before probability combination

@@ -1,3 +1,5 @@
-# Source utilities
+# Source utilities and archived reference code
 
-`evaluate_release.py` independently recalculates stored metrics, label links, role separation and LOPO scores from the released numeric files. `annotation.py`, `audio.py` and `utils/` contain auxiliary preprocessing and analysis utilities. The original restricted raw-media GPU training pipeline is **not** part of this archive. Usage: `python -m src.evaluate_release --root .`.
+- `src/evaluate_release.py`: Independently recalculates primary stored metrics (`27/27` checks), label lineage links, role separation, and LOPO scores from the frozen `v1.1-GoldAdjudicated` numerical files. Usage: `python -m src.evaluate_release --root .`.
+- `src/annotation.py`, `src/audio.py`, and `src/utils/`: Auxiliary annotation agreement, `waveform16` feature extraction, and metric utilities.
+- `src/reference_archived/`: Path-sanitized reference copy of the historical model definitions (`VisualAdapter`, `AudioMLP`, `FeatureMLP`, `HEALNet`, `IndoBERTweet/IndoBERT/mDeBERTa` wrappers), 5-role source-disjoint split search, neural-head 2×3×2 sensitivity loop, and main-pipeline source repartition driver (`1042` and `2042`/`2044`). See [`src/reference_archived/README.md`](reference_archived/README.md) and [`docs/provenance/revision_20261108/ARCHIVED_CODE_LINEAGE.json`](../docs/provenance/revision_20261108/ARCHIVED_CODE_LINEAGE.json) for the three-level reproduction boundaries.

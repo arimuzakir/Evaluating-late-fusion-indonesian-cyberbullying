@@ -1,0 +1,34 @@
+{
+  "seed": 42,
+  "models": [
+    "sigmoid_equal_vat",
+    "convex_vat"
+  ],
+  "references": [
+    "text",
+    "equal_vat"
+  ],
+  "bootstrap_replicates": 10000,
+  "rng_seed": 6112026,
+  "rng": "NumPy default_rng PCG64",
+  "group_order": "first appearance in CALIBRATION_CONTROL_TEST_PREDICTIONS.csv; groupby sort=False",
+  "bootstrap": "Sample 214 source groups with replacement; keep all windows in each sampled group; same group draws across contrasts and estimands.",
+  "window_estimand": "sum of paired squared-error differences divided by number of resampled windows",
+  "source_estimand": "mean of within-source mean squared-error differences over sampled sources",
+  "interval": "2.5th and 97.5th percentiles; descriptive unadjusted intervals, not a new confirmatory testing family",
+  "conditioning": "Stored fitted models, fixed observations and archived probabilities; no fitting uncertainty or external-source validation.",
+  "calibration": "Existing calibrators and convex weights are not refitted; test outcomes are not used for fitting or threshold selection.",
+  "reliability": {
+    "bins": "[0,.1),[.1,.2),...,[.9,1]",
+    "source_weights": "Each window has weight 1/n_source computed over the whole cohort; restrict these weights within each bin.",
+    "empty_bins": "Omitted from plots; retained with NA averages in CSV.",
+    "small_bins": "Fewer than 20 windows or 5 source groups; marked and not merged.",
+    "intervals_per_bin": "Not estimated; reliability curves remain descriptive."
+  },
+  "tables": {
+    "metrics": "TABLE6_PROBABILITY_METRICS.csv",
+    "contrasts": "CALIBRATION_CONTROL_BRIER_INTERVALS.csv",
+    "inputs": "CALIBRATION_CONTROL_TEST_PREDICTIONS.csv"
+  },
+  "claim": "Brier/ECE comparisons do not demonstrate improved classification, equivalence or practical moderation benefit."
+}

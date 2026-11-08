@@ -1,0 +1,11 @@
+date,event,basis,status
+2026-09-23,Administrative provenance/protection record dated 23 September,Existing release documentation; signed-record review remains separate,ADMINISTRATIVE_ONLY; not ethics approval/exemption
+2026-10-06,Researcher-specified project release date,RELEASE_INFO.json explicitly says not Git-verified,RETROSPECTIVE_DECLARATION
+2026-10-12T12:36:16Z to 2026-10-12T13:15:32Z,Archived segmentation notebook records execution and 4401 segments from 233 videos,Notebook executionInfo timestamps and retained output; not independent audit evidence,RECORDED_EXECUTION; configuration-to-frozen-data linkage not fully established
+2026-10-14 and 2026-10-15; declaration received 2026-10-24,Initial rating and collective video review reported by researcher,"RESEARCHER_DECLARATION_SCOPE.json explicitly describes retrospective researcher statement, not original meeting log",RETROSPECTIVE_DECLARATION; do not present as contemporaneously verified chronology
+2026-10-24,"GoldAdjudicated evaluation records four label corrections, seed 42, primary seven and exploratory six contrasts",RUN_LOCK.json and versioned directory; filename date does not prove when choices were frozen,ARTIFACT_EVIDENCE; selection timing requires author
+2026-10-26,Technical audit sampling protocol records 100 windows and sample seed 26102026,"sample LOCK; completed_ratings=0 in sampling lock, not rating completion evidence",SAMPLING_CONFIGURATION; completion/adjudication date requires author
+2026-10-26T12:06:40.274919+00:00,Post hoc learned-fusion/control analysis locked for descriptive seed-42 analysis,"Verified control_protocol_lock.json; OOF hash matches evaluated predictions; lock names two controls, not final four contrasts",LOCK_BEFORE_NEW_CONTROL_RUN_ONLY; does not establish freezing before historical test inspection
+2026-10-28,Archive assembly date,RELEASE_INFO.json declaration,PACKAGING_DATE; not completion date for every analysis
+2026-11-07T05:24:15Z,Notebook 12 completed-run ZIP recorded in Drive,ZIP metadata plus retained protocol and numerical outputs,ARCHIVED_COMPUTATION
+UNKNOWN,Selection of final four-contrast family and primary text-versus-Equal-VAT framing,Original lock has seven/six families; later four-contrast analysis needs decision chronology,AUTHOR_REQUIRED; do not retrospectively call preregistered
