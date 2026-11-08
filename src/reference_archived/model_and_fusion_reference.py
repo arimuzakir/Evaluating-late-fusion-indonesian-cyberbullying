@@ -1,9 +1,12 @@
 """Archived reference implementation of the v1.1-GoldAdjudicated model engine,
-neural fusion head sensitivity grid (R1.3), and two-partition encoder retraining (R2.5).
+neural fusion head sensitivity grid (R1.3), and two-partition focal contrast retraining (R2.5).
 
 PROVENANCE & SCOPE NOTE:
-- Recovered from archived notebook `12_INASS_Reviewer_Revisions_CPU.ipynb`
-  (embedding `v1_1_gold_adjudicated_Model.py`, SHA-256 `5c5e5078f147551621d2d1d2fa68740e59f2c7eb9424667262da75d7226d18a9`).
+- Recovered from archived sources documented in `docs/provenance/revision_20261108/ARCHIVED_CODE_LINEAGE.json`:
+  * `inputs/12_Reviewer_Requested_Only_Colab_V4_EXECUTED.ipynb`
+    (SHA-256 `90ce402df35711f663f71d911380f4bb2936612fdfd87e0fe6f4d2d2e1783fcc`)
+  * `archived_sources/GOLD_CODE_CELLS.txt` (`08-Pipeline_Multimodal_Video_Evaluasi_GoldAdjudicated_v1_1.ipynb`,
+    SHA-256 `b231e720e6b2015f19b2c3e3847e4c7f4eafbed24762d75f4c0aaec485e3f7ca`)
 - Interactive Google Colab `drive.mount` and `files.upload` calls have been removed.
 - End-to-end execution of `train_transformer`, `train_visual`, `sensitivity`, and `repartition`
   requires restricted unredacted text, extracted video keyframes, or cached branch embeddings

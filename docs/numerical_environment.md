@@ -6,14 +6,12 @@ The `v1.1.1` frozen-feature repeated-partition tables (`results/generalization/R
 
 The archived `REPEATED_SPLIT_*` files **have not been modified**, and their SHA-256 hashes match `v1.1.1`.
 
-## 2. GPU matmul precision and neural-head sensitivity reconciliation (`R1.2`)
+## 2. GPU runtime comparison and neural-head sensitivity reconciliation (`R1.3`)
 
-In the V4 reviewer revision (`results/video/revision_20261108/head_sensitivity/HEAD_BASELINE_RECONCILIATION.csv`), the 48-run 2×3×2 factorial neural-head sensitivity grid (`weight_decay ∈ {1e-4, 1e-3}`, `dropout ∈ {0.1, 0.2, 0.3}`, `head_lr ∈ {5e-4, 1e-3}`) at seed `42` was executed in a single consistent PyTorch environment where `torch.set_float32_matmul_precision('high')` was not recorded. By contrast, the primary `GoldAdjudicated v1.1` training run (`VIDEO_OOF_PREDICTIONS.csv`) explicitly set `torch.set_float32_matmul_precision('high')` on an NVIDIA A100 GPU.
+In the V4 reviewer revision (`results/video/revision_20261108/head_sensitivity/HEAD_BASELINE_RECONCILIATION.csv`, `HEAD_REPLAY_DIAGNOSTICS.csv`, `TRAINING_ENVIRONMENT_COMPARISON.csv`, and `configs/revision_20261108/NUMERICAL_RUNTIME_LIMITS.json`), the 48-fit 2×3×2 factorial neural-head sensitivity grid (`concat_mlp` and `healnet` / `healnet_adapted_2024` across `epochs ∈ {15, 30, 60}` and `weight_decay ∈ {0.01, 0.1}`, 4 folds at seed `42`, `learning_rate = 0.001`, `batch_size = 64`) was executed on an **NVIDIA L4** GPU, matching the GPU model recorded in the primary `GoldAdjudicated v1.1` run (`VIDEO_OOF_PREDICTIONS.csv`) and producing identical fold `StandardScaler` bytes (`scaler_bytes_equal = True` across all 4 folds).
 
-Consequently, at the matched hyperparameter cell `(weight_decay=1e-4, dropout=0.2, head_lr=1e-3)`, seed-42 Macro F1 differs slightly between the frozen primary run and the sensitivity replay:
-- `visual_linear`: `0.48324` (frozen primary) vs `0.47657` (sensitivity replay, `Δ = −0.00668`)
-- `audio_mlp`: `0.50670` (frozen primary) vs `0.51065` (sensitivity replay, `Δ = +0.00395`)
-- `feature_mlp`: `0.56295` (frozen primary) vs `0.55679` (sensitivity replay, `Δ = −0.00616`)
-- `healnet`: `0.56125` (frozen primary) vs `0.54865` (sensitivity replay, `Δ = −0.01260`)
+However, the two runs executed in separate software environments (`numpy 2.1.3` vs `2.4.6`, `torch 2.11.0+cu130` vs `2.14.1+cu130`, `torchvision 0.26.0+cu130` vs `0.29.1+cu130`, Linux `6.6.122+` vs `6.6.113+`), and the original Gold notebook explicitly set `torch.set_float32_matmul_precision('high')` whereas that call was not set in the archived sensitivity notebook. At the baseline setting (`epochs = 30, weight_decay = 0.01`), pooled OOF Macro F1 differs slightly between the frozen primary run and the sensitivity replay:
+- `concat_mlp`: **`0.507951623552652`** (frozen primary Table 3) vs **`0.5017144487753278`** (`concat_mlp_e30_wd0.01` sensitivity replay, `Δ = −0.006237174777324217`)
+- `healnet_adapted_2024`: **`0.5098265619167537`** (frozen primary Table 3) vs **`0.4938767980947205`** (`healnet_e30_wd0.01` sensitivity replay, `Δ = −0.01594976382203317`)
 
-Primary Table 3 retains the frozen `v1.1` predictions unchanged; the 48-run sensitivity grid is evaluated internally across its consistent runtime (`python scripts/validation/verify_revision.py --root .`).
+Because multiple runtime and library factors differed simultaneously, **causal attribution of the replay discrepancy remains unresolved**. Primary Table 3 retains the frozen `v1.1` predictions unchanged; the 12 pooled sensitivity configurations (`concat_mlp: 0.4876617530360183–0.5054619174213288`, `healnet: 0.48995107844566277–0.5094701632707828`) are evaluated across their consistent sensitivity runtime (`python scripts/validation/verify_revision.py --root .`).

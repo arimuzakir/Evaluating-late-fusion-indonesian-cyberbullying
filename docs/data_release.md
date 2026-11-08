@@ -6,7 +6,7 @@ The public CSV copies have text-bearing columns replaced by `[WITHHELD]`, withou
 
 ---
 
-## Institutional data provenance, usage, protection, and release record (`R1.1`)
+## Institutional data provenance, usage, protection, and release record (`R2.4`)
 
 Formal administrative documentation of the corpus origin, acquisition basis, annotation/audit trail, de-identification controls, and public-release boundaries is archived in [`UBD_Data_Provenance_and_Protection_Record_Signed_20260923.pdf`](UBD_Data_Provenance_and_Protection_Record_Signed_20260923.pdf) (No. `010/DRPM/Univ-BD/IX/2026`).
 
@@ -22,17 +22,17 @@ Formal administrative documentation of the corpus origin, acquisition basis, ann
 | **Associated public repository** | https://github.com/arimuzakir/Evaluating-late-fusion-indonesian-cyberbullying |
 | **Record issue & signature date** | September 23, 2026 |
 
-> **Scope note (`R1.1`):** Document No. `010/DRPM/Univ-BD/IX/2026` is an administrative research provenance and protection record. It must **not** be described as an institutional ethics approval, an IRB/ethics-exemption determination, or a blanket permission to redistribute third-party platform content. Formal institutional ethics determination remains recorded as an open institutional item (`OPEN` in `RELEASE_INFO.json` and `docs/provenance/revision_20261108/PROVENANCE_TIMELINE.csv`).
+> **Scope note (`R2.4`):** Document No. `010/DRPM/Univ-BD/IX/2026` is an administrative research provenance and protection record. It must **not** be described as an institutional ethics approval, an IRB/ethics-exemption determination, or a blanket permission to redistribute third-party platform content. Formal institutional ethics determination remains recorded as an open institutional item (`OPEN` in `RELEASE_INFO.json` and `docs/provenance/revision_20261108/RESEARCH_CHRONOLOGY.csv`).
 
 ### 1. Corpus origin and acquisition provenance
 
-Data were collected through official platform APIs (Facebook, Instagram, TikTok, YouTube, and X) and archived Indonesian abusive-language resources; some archived source provenance is incomplete (`docs/provenance/revision_20261108/PROVENANCE_TIMELINE.csv`). Before release, records were screened and de-identified.
+Data were collected through official platform APIs (Facebook, Instagram, TikTok, YouTube, and X) and archived Indonesian abusive-language resources; some archived source provenance is incomplete (`docs/provenance/revision_20261108/RESEARCH_CHRONOLOGY.csv`). Before release, records were screened and de-identified.
 
 | Provenance component | Recorded status |
 | :--- | :--- |
 | **Platform sources** | Facebook, Instagram, TikTok, YouTube, and X |
 | **Collection basis** | Official platform APIs and archived Indonesian abusive-language resources, according to the research team record (some archived source provenance is incomplete) |
-| **Unit of analysis** | Standalone comments ($8{,}906$ initial; $8{,}196$ eligible; $1{,}226$ held-out test) and 10-second video windows ($4{,}401$ initial from $233$ source videos; $3{,}951$ aligned across $214$ linked source groups; $450$ alignment exclusions: $359$ missing video files, $91$ missing keyframe images) |
+| **Unit of analysis** | Standalone comments (`8,906` initial; `8,196` eligible; `1,226` held-out test across `865` source groups) and 10-second video windows (`4,401` initial from `233` source videos; `3,951` aligned across `214` linked source groups; `450` duplicate/content-match alignment exclusions: `187` `frame_identity_match`, `220` `frame_identity_match+stt_content_match`, `35` `ocr_content_match`, `5` `frame_identity_match+ocr_content_match`, and `3` `frame_identity_match+ocr_content_match+stt_content_match` in `EXCLUSION_REASON_PLATFORM_CLASS.csv`) |
 | **Derived modalities** | Keyframes, 16-dimensional acoustic features, OCR text, STT text, labels, stored predictions, and summary statistics |
 | **Public release basis** | Reviewed de-identified artefacts and derived numerical outputs only |
 | **Restricted materials** | Original videos, source audio, identifiable frames, unreduced source text, identity mappings, private coordinator workbooks, and non-public credentials |
@@ -55,9 +55,9 @@ Data were collected through official platform APIs (Facebook, Instagram, TikTok,
 | **RESTRICTED / KEEP_PRIVATE** | Original videos, source audio, identifiable frames, unreduced source text, identity mappings, neural model checkpoints, and internal audit workbook traces (`private/`) | Retained separately with controlled access and excluded from the public repository |
 | **EXCLUDED** | Credentials, access tokens, unreviewed exports, unnecessary personal data, and any file judged to present unacceptable disclosure risk | Not released; removed or withheld from the public archive |
 
-### 4. Repository chronology note
+### 4. Repository chronology note (`R2.2`)
 
-The institutional record issue and signature date is distinct from later repository assembly milestones (`docs/provenance/revision_20261108/PROVENANCE_TIMELINE.csv`):
+The institutional record issue and signature date is distinct from later repository assembly milestones (`docs/provenance/revision_20261108/RESEARCH_CHRONOLOGY.csv`):
 
 | Milestone | Repository date / record |
 | :--- | :--- |

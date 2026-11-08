@@ -21,8 +21,8 @@ ROLES = ['fit', 'early_stop', 'meta_fit', 'calibration', 'test']
 GRID = np.round(np.arange(0.1, 0.90001, 0.025), 3)
 SEED = 6112026
 BOOTSTRAP_REPS = 10000
-HEAD_EPOCHS = [15, 30, 45]
-HEAD_WEIGHT_DECAYS = [0.001, 0.01]
+HEAD_EPOCHS = [15, 30, 60]
+HEAD_WEIGHT_DECAYS = [0.01, 0.1]
 PARTITION_SEEDS = [1042, 2042]
 
 
@@ -56,8 +56,17 @@ def f1counts(c):
     )
 
 
-def paired_ci(d, a, b, B=BOOTSTRAP_REPS, seed=SEED):
-    keys, inv = np.unique(d.group_id.astype(str), return_inverse=True)
+def paired_ci(d, a, b, B=BOOTSTRAP_REPS, seed=SEED, group_order='canonical_master_id'):
+    if group_order == 'canonical_master_id' and 'master_id' in d.columns:
+        # In INITIAL_RUN, paired_ci() ran before save() pseudonymised group_id to src_<16hex>.
+        # Because master_id (MV_000001..MV_004386) is ordered by the original un-pseudonymised
+        # source video identifier, taking unique group_ids in master_id order recovers the exact
+        # pre-pseudonymisation np.unique(group_id) ordering and reproduces archived CIs to 1e-12.
+        keys = pd.unique(d.sort_values('master_id').group_id.astype(str))
+        rank_map = {k: i for i, k in enumerate(keys)}
+        inv = d.group_id.astype(str).map(rank_map).to_numpy(int)
+    else:
+        keys, inv = np.unique(d.group_id.astype(str), return_inverse=True)
     ca = np.zeros((len(keys), 4))
     cb = ca.copy()
     np.add.at(ca, (inv, 2 * d.label_final.to_numpy(int) + d[a].to_numpy(int)), 1)
@@ -350,6 +359,13 @@ def run(root, output_dir, B=BOOTSTRAP_REPS):
 
     # 3. Neural head sensitivity pooled & baseline reconciliation + Repartition effects & seed ledger
     hp = pd.read_csv(root / 'results/video/revision_20261108/head_sensitivity/HEAD_SENSITIVITY_PREDICTIONS.csv', dtype={'master_id': str, 'group_id': str})
+    expected_heads = {
+        f'{kind}_e{epochs}_wd{wd:g}'
+        for kind in ['concat_mlp', 'healnet']
+        for epochs in HEAD_EPOCHS
+        for wd in HEAD_WEIGHT_DECAYS
+    }
+    assert set(hp.model) == expected_heads, f'Unexpected neural head grid: {set(hp.model)}'
     hp_rows = []
     for name, z in hp.groupby('model'):
         hp_rows.append(dict(
