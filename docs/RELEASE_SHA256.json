@@ -2,7 +2,7 @@
   "status": "PUBLIC_NUMERICAL_PACKAGE_FILE_INVENTORY",
   "note": "This is a hash manifest of file bytes, not evidence of human data validity or public publication.",
   "self_excluded": "docs/RELEASE_SHA256.json",
-  "file_count": 433,
+  "file_count": 431,
   "files": {
     ".gitattributes": {
       "sha256": "1a1dbe176bc233b499d35a57db7513f2941c99ab9759f177830c9149be99005b",
@@ -37,7 +37,7 @@
       "bytes": 1450
     },
     "VERIFICATION.md": {
-      "sha256": "d7a0d203457b99e38108eba4ff8ee118c05260f58f6950c9a0541a43b51ac29d",
+      "sha256": "73b235d6984056ae9d3ade10aef6f835e9b940a645484420296710a4ed464fd1",
       "bytes": 2375
     },
     "configs/analysis/control_protocol_lock.json": {
@@ -381,8 +381,8 @@
       "bytes": 4721
     },
     "docs/reproduction/MANUSCRIPT_ARTIFACT_MANIFEST.csv": {
-      "sha256": "1baca2818cdc028c47d044e9ca60a38f20c8e2026a52ecf3f8b18c310ff58a27",
-      "bytes": 28237
+      "sha256": "427f9d842f89ccf7b51b5d4690b17a1336805ee5015115c0133fde7d7f5228a3",
+      "bytes": 27987
     },
     "docs/reproduction/revision_20261108/SOURCE_REVIEWER_COVERAGE.csv": {
       "sha256": "0473fbf239c1dcff9825bcab5ee4b4e91b01e97d7b279f46ae430c526eaa4070",
@@ -468,25 +468,17 @@
       "sha256": "48b1b3a7f0ac47ba87e807e7bd5f70ebb152a92ab653eb4d7a6dd1a4ce83e716",
       "bytes": 750187
     },
-    "results/figures/Fig_1.drawio": {
-      "sha256": "04a8a57de77ad4b2ea0044b3092536e832d9dec1913f863abcad3dffdcb5a875",
-      "bytes": 24408
-    },
     "results/figures/Fig_1.png": {
       "sha256": "5a2145c99127310215df17553f24f2219658355e883e609269a41a742cfa069e",
       "bytes": 1055428
-    },
-    "results/figures/Fig_2.drawio": {
-      "sha256": "385423218b0335b09502ce2760b61af724a25452ccb0a2b64308ae38490d7a45",
-      "bytes": 755748
     },
     "results/figures/Fig_2.png": {
       "sha256": "eeae9d409efe2b264068562c5e35f3d65260920236f2386e719ebfef13f693c1",
       "bytes": 1831354
     },
     "results/figures/README.md": {
-      "sha256": "f187c731f197a35142d281b6bb2ea3f1b212188e4272725a74b770d3d18d22e9",
-      "bytes": 2073
+      "sha256": "7f2c8fc7c8156291fe15312877c2a9503030dcfa9020b291b89f19fc398da17f",
+      "bytes": 1963
     },
     "results/figures/comment_benchmark_macro_f1.png": {
       "sha256": "29266025d402395d32ef0c4638187cd202800acfe23286923ca66d7b8c4543b9",
