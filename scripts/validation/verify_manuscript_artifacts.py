@@ -67,6 +67,10 @@ def verify_tables(root):
         if name not in tables or len(tables[name]) != exp_rows:
             raise AssertionError(f'{name} expected {exp_rows} rows, got {len(tables.get(name, []))}')
 
+    # Compare each actual export against a fresh builder result, not a differently shaped source summary.
+    for name, table in tables.items():
+        _compare_frames(table, pd.read_csv(root / 'results/manuscript' / (name + '.csv')), name, atol=1e-12)
+
     # Cross-check Table 3 against TABLE3_RECOMPUTED.csv + STRATIFIED_RANDOM_SUMMARY.json
     t3 = tables['Table_3'].set_index('model')
     t3_all = pd.read_csv(root / 'results/statistics/revision_20261108/main_result_checks/TABLE3_RECOMPUTED.csv')
@@ -185,8 +189,10 @@ def verify_governance_and_manifest(root):
         'SUPP_S1_THRESHOLDS_AND_ROLES',
         'SUPP_S2_FEATURE_AND_MODEL_INVENTORY',
         'SUPP_S3_AUDIT_BOUNDS_AND_TRANSITIONS',
-        'SUPP_S4_HEAD_SENSITIVITY_AND_FALLBACK',
-        'SUPP_S5_EXCLUSIONS_4401',
+        'SUPP_S6_HEAD_SENSITIVITY',
+        'SUPP_S1_NO_TEXT_FALLBACK',
+        'SUPP_S4_EXCLUSIONS_4401',
+        'SUPP_S5_INFERENCE_AND_ROUNDING',
         'SUPP_S6_TWO_SOURCE_PARTITIONS',
         'SUPP_S7_RELIABILITY_POINTWISE_CI',
         'SUPP_S8_CHRONOLOGY_AND_LOCKS',

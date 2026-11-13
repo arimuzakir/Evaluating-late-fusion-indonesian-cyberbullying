@@ -1,0 +1,4 @@
+field,assessment,agree_count,n,agreement,kappa
+B_agresi_window,Aggression,95,100,0.95,0.8997594226142742
+ocr_akurasi,OCR accuracy,48,52,0.9230769230769232,0.8514285714285714
+stt_akurasi,STT accuracy,60,64,0.9375,0.8928870292887029
