@@ -1,0 +1,16 @@
+{
+  "original_gold": {
+    "explicit_float32_matmul_precision": "high",
+    "source": "Gold notebook runtime setup cell 8",
+    "source_sha256": "0d885fce431e5da9ea5f48ec19e8fcf5ae1376308865b81ce83d7de7d544a1e2"
+  },
+  "head_sensitivity": {
+    "explicit_float32_matmul_precision": "NOT_SET_IN_ARCHIVED_NOTEBOOK",
+    "effective_value": "NOT_RECORDED; do not infer a default retroactively",
+    "source": "04a49267c0e49e3dc0ee7a5a0117f96d067dc17ea712ec9134faff4f3412ec45"
+  },
+  "checked": "Both heads have matching nominal baseline hyperparameters and byte-identical scalers for all four folds.",
+  "other_differences": "PyTorch, torchvision and NumPy differ; see TRAINING_ENVIRONMENT_COMPARISON.csv.",
+  "conclusion": "Not a bitwise original replay; the cause of score differences is not isolated. A missing explicit setting is not proof of its effective runtime value or causal impact.",
+  "action": "Retain original results and label new grid as separate sensitivity. No training is initiated by this CPU notebook."
+}

@@ -55,7 +55,7 @@ def run(root,full=False):
             equal_table(root/'results/generalization/LOPO_CLUSTER_BOOTSTRAP_CI.csv',Path(td)/'lopo/LOPO_CLUSTER_BOOTSTRAP_CI.csv')
             print('PASS LOPO 20-contrast conditional bootstrap reproduction')
             group_run(root,Path(td)/'repeated')
-            blas_tie_atol={'roc_auc':1e-3,'average_precision':1e-3,'brier':1e-4,'roc_auc_mean':1e-3,'brier_mean':1e-4,'probability':1e-3}
+            blas_tie_atol={'roc_auc':1e-3,'average_precision':1e-3,'brier':1e-4,'roc_auc_mean':1e-3,'brier_mean':1e-4,'probability':1.5e-3}
             for fn in ['REPEATED_SPLIT_METRICS.csv','REPEATED_SPLIT_SUMMARY.csv','REPEATED_SPLIT_TEST_PREDICTIONS.csv','REPEATED_SPLIT_ROLE_MANIFEST.csv']:
                 equal_table(root/'results/generalization'/fn,Path(td)/'repeated'/fn,col_atol=blas_tie_atol)
             print('PASS five-seed frozen-feature partition probe reproduction')

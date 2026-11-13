@@ -1,0 +1,13 @@
+model,pooled_macro_f1,scope
+concat_mlp_e15_wd0.01,0.4974100868945922,all grid entries reported; no outer-test best model selected
+concat_mlp_e15_wd0.1,0.5030346784494655,all grid entries reported; no outer-test best model selected
+concat_mlp_e30_wd0.01,0.5017144487753278,all grid entries reported; no outer-test best model selected
+concat_mlp_e30_wd0.1,0.5054619174213288,all grid entries reported; no outer-test best model selected
+concat_mlp_e60_wd0.01,0.5034176299771134,all grid entries reported; no outer-test best model selected
+concat_mlp_e60_wd0.1,0.4876617530360183,all grid entries reported; no outer-test best model selected
+healnet_e15_wd0.01,0.5094701632707828,all grid entries reported; no outer-test best model selected
+healnet_e15_wd0.1,0.49954424564796907,all grid entries reported; no outer-test best model selected
+healnet_e30_wd0.01,0.49387679809472057,all grid entries reported; no outer-test best model selected
+healnet_e30_wd0.1,0.49675897636448074,all grid entries reported; no outer-test best model selected
+healnet_e60_wd0.01,0.48995107844566277,all grid entries reported; no outer-test best model selected
+healnet_e60_wd0.1,0.5039352129247329,all grid entries reported; no outer-test best model selected

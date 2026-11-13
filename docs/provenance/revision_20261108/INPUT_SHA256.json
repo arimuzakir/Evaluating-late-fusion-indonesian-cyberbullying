@@ -1,0 +1,12 @@
+{
+  "Data FINAL/results/video/gold_adjudicated_v1.1/VIDEO_OOF_PREDICTIONS.csv": "336892131fd6ff00d27cd568e30c8ecc9abb9cf705adea5d93158a03016f4c01",
+  "Data FINAL/results/video/gold_adjudicated_v1.1/ROLE_MANIFEST.csv": "7e687cd04aee97af82c999feb5242bc3ca92370a83d850893a9cdcb5305c2c62",
+  "submission_revision_20261026/learned_fusion/results/ROLE_PROBABILITIES_SEED42.csv": "49398fe1d0a935e8d8617549524abb934f368227ea9aab256d44ebe87504ffcf",
+  "submission_revision_20261026/learned_fusion/results/CONTROL_THRESHOLDS.csv": "695f80485e4080608000926506520154abbe2d67125f9040e1cd5c2d9cb8e620",
+  "submission_revision_20261026/learned_fusion/results/ROLE_SIZES.csv": "e6e3da194f54ef1c92d8ad8eecd9b55c6da818ee3d5d10d1f79c10793828c6a0",
+  "Data FINAL/results/input_audit/Form_Audit_R1_scored.csv": "c13c9c0f17a1c44dfa55e977d936ea14a511d5f03ad5ef4e204e2fe60c16044a",
+  "Data FINAL/results/input_audit/Form_Audit_R2_scored.csv": "9d665e0513691c307ff6df547a6d097f7d4fdbd1554fa58e2c36fac4e2952804",
+  "audit_blinded_paket_20261026/02_Koordinator/Kunci_Sampel_100_PRIVAT.csv": "4b69957806a638574c41441852ea83a6149141dd7ee0ed7696f6ab80427c9d74",
+  "audit_blinded_paket_20261026/02_Koordinator/Alokasi_Sampling.csv": "f32f4106e2805da3163e217214a8b775ce639b45db1bb5927c754dbc573af278",
+  "Data FINAL/results/input_audit/Form_Adjudikasi.csv": "b4dd28a40ff95859bf80cb3dff56f888d1edd2668ac0b99c1480b08c45c925d1"
+}

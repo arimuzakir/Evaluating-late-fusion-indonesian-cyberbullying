@@ -1,0 +1,9 @@
+partition_id,search_start_seed,effective_outer_seed,fold,calibration_seed,meta_fit_seed,early_stop_seed,training_seed,acceptance
+1042,1042,1042,0,1542,1642,1742,42,first candidate satisfying window/class/platform constraints; no prediction score used
+1042,1042,1042,1,1543,1643,1743,42,first candidate satisfying window/class/platform constraints; no prediction score used
+1042,1042,1042,2,1544,1644,1744,42,first candidate satisfying window/class/platform constraints; no prediction score used
+1042,1042,1042,3,1545,1645,1745,42,first candidate satisfying window/class/platform constraints; no prediction score used
+2042,2042,2044,0,2542,2642,2742,42,first candidate satisfying window/class/platform constraints; no prediction score used
+2042,2042,2044,1,2543,2643,2743,42,first candidate satisfying window/class/platform constraints; no prediction score used
+2042,2042,2044,2,2544,2644,2744,42,first candidate satisfying window/class/platform constraints; no prediction score used
+2042,2042,2044,3,2545,2645,2745,42,first candidate satisfying window/class/platform constraints; no prediction score used

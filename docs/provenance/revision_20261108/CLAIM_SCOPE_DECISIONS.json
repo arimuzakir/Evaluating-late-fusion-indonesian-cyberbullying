@@ -1,0 +1,21 @@
+{
+  "adaptive_fusion": {
+    "reviewer": "R2.1",
+    "route": "Bounded comparison of specified fixed and learned implementations; no claim covering modern multimodal detection in general.",
+    "new_comparator_run": false
+  },
+  "external_validation": {
+    "reviewer": "R2.2",
+    "route": "Exploratory internal-corpus evidence unless independently documented untouched data become available.",
+    "repartitions_are_external_validation": false
+  },
+  "audit_mechanism": {
+    "reviewer": "R2.3",
+    "route": "Descriptive transitions; causal mechanism remains unresolved."
+  },
+  "oversight": {
+    "reviewer": "R2.4",
+    "status": "AUTHOR_AND_INSTITUTION_REQUIRED",
+    "administrative_record_is_ethics_approval": false
+  }
+}

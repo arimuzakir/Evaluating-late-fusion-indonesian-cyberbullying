@@ -1,0 +1,25 @@
+reviewer_point,status,detail
+ARCHIVED_RUN,VERIFIED,Manifest hashes and current primary inputs match; training outputs inherited
+R1.3,ARCHIVED_RESULTS_VERIFIED,48 completed neural-head fits retained; no training
+R2.5,ARCHIVED_RESULTS_VERIFIED,Two completed source allocations retained; five roles and paired effects verified
+PREFLIGHT,PASS,Input utama dan hasil tersimpan cocok; training dinonaktifkan
+R1.1/R1.4/R1.8,COMPUTED,"Role, all-model/all-seed fallback, threshold dan pembulatan selesai"
+R1.7 MDE,ARCHIVAL_SOURCE_VERIFIED,Unrounded bootstrap SE and original MDE agree with the stated 80 percent normal approximation
+R2.6,COMPUTED,"Brier paired CI dan reliability bins; bin kecil ditandai, tidak digabung berdasarkan hasil"
+R2.6 controls,COMPUTED,"Two archived seed-42 controls; paired Brier intervals versus text and Equal VAT, window/source metrics and descriptive reliability plots; no training"
+R1.4 controls,ARCHIVED_RESULTS_VERIFIED,Thresholds and no-text confusion matrices for both seed-42 controls; original roles verified
+R1.5,FINITE_POPULATION_BOUNDS_WITH_LIMITS,Sampling replay passed; conservative finite-population bounds added. New-source inference and model-assisted intervals remain limited.
+R2.3,DESCRIPTIVE_MECHANISM_UNRESOLVED,Sparse paired transitions reported without unsupported subgroup confidence intervals
+R2.4,ARCHIVED_RESULTS_VERIFIED,Tabel eksklusi dipertahankan dari ZIP yang diperiksa; tidak mengestimasi outcome input salah pasangan
+R1.7,ARCHIVED_RESULTS_VERIFIED,Keluarga uji komentar dipertahankan; MDE diverifikasi terpisah menggunakan SE arsip tidak dibulatkan
+R1.2,PARTIAL_ARCHIVAL_EVIDENCE,Extraction settings and exact acoustic definitions documented; historical revision/provenance gaps explicit
+R2.2 chronology,PARTIAL_ARCHIVAL_EVIDENCE,"Execution metadata, run records and retrospective declarations distinguished"
+R1.3 replay,ENVIRONMENT_DIFFERENCE_DOCUMENTED,Both neural heads: all four fold baseline settings and scaler bytes match. Training histories differ; exact replay not established. Original Table 3 retained.
+R1.1/R1.3,METHOD_TABLES_ADDED,"Model roles, exact local head settings, effective allocation seeds and numerical-runtime limits documented"
+R2.6 estimand,REPORTING_CHOICE_EXPLICIT,Window-weighted primary for the fixed window task; source-weighted sensitivity; revision-time decision disclosed
+R2.1,CLAIM_LIMITATION_ROUTE,No new architecture; bounded implementation comparison for manuscript stage
+R2.2,EXPLORATORY_SCOPE_CONFIRMED,No verified untouched cohort; final contrast decision timing remains qualified
+R2.3,DESCRIPTIVE_MECHANISM_UNRESOLVED,Audit transition intervals remain NA; no causal explanation inferred
+R2.4 oversight,ADMINISTRATIVE_RECORD_ONLY,Institutional determination remains outside computation
+R1.6,PARTIAL_MANIFEST,Notebook outputs reproducible; full paper table/figure mapping remains for GitHub stage
+R1.9/EDITOR,DEFERRED,"Manuscript integration, final figure placement, references and response letter remain separate stages"

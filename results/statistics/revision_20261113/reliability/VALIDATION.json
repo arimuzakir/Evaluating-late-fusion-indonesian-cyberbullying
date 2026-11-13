@@ -1,0 +1,21 @@
+{
+  "rows": 100,
+  "groups": 214,
+  "windows": 3951,
+  "point_estimates_match_existing": true,
+  "maximum_absolute_differences": {
+    "n": 0.0,
+    "groups": 0.0,
+    "mean_probability": 2.220446049250313e-16,
+    "observed_positive": 3.3306690738754696e-16
+  },
+  "ci_status_counts": {
+    "pointwise_ci": 68,
+    "empty": 20,
+    "sparse_no_ci": 12
+  },
+  "group_mapping_bijection_verified": true,
+  "three_shared_probability_columns_verified": true,
+  "direct_resampling_checks": 6,
+  "source_files_unchanged": true
+}

@@ -1,0 +1,7 @@
+population,observations,negative,positive
+Master corpus,13307,6055,7252
+Standalone comments,8906,4260,4646
+Selected comments,8196,3799,4397
+Held-out comment test,1226,555,671
+Original video windows,4401,1795,2606
+Aligned video windows,3951,1625,2326

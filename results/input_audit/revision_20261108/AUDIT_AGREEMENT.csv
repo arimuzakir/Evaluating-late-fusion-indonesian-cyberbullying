@@ -1,0 +1,7 @@
+field,n,agreement,kappa,rater1_unscored,rater2_unscored,scope
+B_agresi_window,100,0.95,0.8997594226142742,0,0,"pre-consensus paired scored ratings; NA/U excluded from kappa, not recoded as zero"
+ocr_akurasi,52,0.9230769230769231,0.8514285714285714,48,48,"pre-consensus paired scored ratings; NA/U excluded from kappa, not recoded as zero"
+stt_akurasi,64,0.9375,0.8928870292887029,36,36,"pre-consensus paired scored ratings; NA/U excluded from kappa, not recoded as zero"
+ocr_relevansi,52,1.0,1.0,48,48,"pre-consensus paired scored ratings; NA/U excluded from kappa, not recoded as zero"
+stt_relevansi,64,1.0,1.0,36,36,"pre-consensus paired scored ratings; NA/U excluded from kappa, not recoded as zero"
+B_keyframe_event,50,0.98,0.8466257668711656,47,48,"pre-consensus paired scored ratings; NA/U excluded from kappa, not recoded as zero"

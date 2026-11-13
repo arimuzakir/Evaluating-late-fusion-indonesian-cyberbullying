@@ -1,0 +1,9 @@
+fold,model,threshold,source_role,macro_f1_on_selection_role,seed
+0,sigmoid_equal_vat,0.65,calibration,0.5102407473948976,42
+0,convex_vat,0.625,calibration,0.5170706520180144,42
+1,sigmoid_equal_vat,0.7,calibration,0.536617271333674,42
+1,convex_vat,0.65,calibration,0.5278165775218887,42
+2,sigmoid_equal_vat,0.7,calibration,0.501464953797611,42
+2,convex_vat,0.65,calibration,0.5631471086162345,42
+3,sigmoid_equal_vat,0.65,calibration,0.5082526002414175,42
+3,convex_vat,0.65,calibration,0.5458823529411765,42

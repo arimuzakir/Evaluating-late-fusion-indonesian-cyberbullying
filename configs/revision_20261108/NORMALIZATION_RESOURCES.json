@@ -1,0 +1,41 @@
+{
+  "emoji_map": {
+    "🤡": " badut ",
+    "🗿": " batu ",
+    "🤮": " muntah ",
+    "💩": " kotoran ",
+    "💀": " tengkorak ",
+    "👎": " jempol bawah ",
+    "🖕": " jari tengah ",
+    "🤬": " mengumpat ",
+    "😡": " marah ",
+    "😭": " menangis ",
+    "🤣": " tertawa ",
+    "😂": " tertawa ",
+    "😹": " tertawa ",
+    "🔥": " api ",
+    "🙏": " terima kasih "
+  },
+  "slang": {
+    "yg": "yang",
+    "dgn": "dengan",
+    "bgt": "banget",
+    "ga": "tidak",
+    "gak": "tidak",
+    "gk": "tidak",
+    "klo": "kalau",
+    "kalo": "kalau",
+    "tp": "tapi",
+    "tpi": "tapi",
+    "udh": "sudah",
+    "udah": "sudah",
+    "blm": "belum",
+    "blom": "belum",
+    "bkn": "bukan",
+    "krn": "karena",
+    "emg": "memang",
+    "jg": "juga",
+    "kls": "kelas"
+  },
+  "status": "fixed source-code dictionaries; verify historical development chronology separately"
+}

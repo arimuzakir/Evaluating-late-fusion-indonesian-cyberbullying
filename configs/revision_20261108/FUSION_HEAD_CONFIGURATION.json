@@ -1,0 +1,55 @@
+{
+  "concat_mlp": {
+    "dimensions": [
+      2064,
+      128,
+      32,
+      2
+    ],
+    "activation": "ReLU",
+    "dropout": 0.2
+  },
+  "healnet_vector_adaptation": {
+    "modality_dimensions": [
+      1280,
+      16,
+      768
+    ],
+    "tokens_per_modality": 1,
+    "depth": 2,
+    "latent_count": 16,
+    "latent_dimension": 64,
+    "cross_attention_heads": 4,
+    "latent_attention_heads": 4,
+    "cross_head_dimension": 16,
+    "latent_head_dimension": 16,
+    "attention_dropout": 0.1,
+    "feedforward_dropout": 0.1,
+    "fourier_encoding": false
+  },
+  "optimizer": {
+    "name": "AdamW",
+    "learning_rate": 0.001,
+    "batch_size": 64,
+    "gradient_clip_norm": 1.0,
+    "original_weight_decay": 0.01
+  },
+  "original_epochs": 30,
+  "fit_role": "meta_fit",
+  "normalization_role": "meta_fit",
+  "stopping": "fixed full epoch budget; no test or early_stop selection of neural heads",
+  "sensitivity": {
+    "epochs": [
+      15,
+      30,
+      60
+    ],
+    "weight_decays": [
+      0.01,
+      0.1
+    ],
+    "training_seed": 42,
+    "all_grid_results_reported": true
+  },
+  "limits": "26-30 meta-fit groups; local vector-token implementation, not a general test of original HEALNet; runtime discrepancy separately documented"
+}

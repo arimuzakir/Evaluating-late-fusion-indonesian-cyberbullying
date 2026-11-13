@@ -1,0 +1,19 @@
+{
+  "outer": "Canonical source/image-hash grouping and four-fold stratified group split; original recorded split seed 42 on the 4401-window prefilter population. Original manifests are authoritative.",
+  "inner": "GroupShuffleSplit candidate search using fractions f,f-.04,f+.04 (bounded); class/platform/size penalty; deterministic first minimum penalty",
+  "calibration": {
+    "target_fraction": 0.15,
+    "seed": "500+outer_fold"
+  },
+  "meta_fit": {
+    "target_fraction": 0.17647058823529413,
+    "seed": "600+outer_fold"
+  },
+  "early_stop": {
+    "target_fraction": 0.14285714285714288,
+    "seed": "700+outer_fold"
+  },
+  "lineage": "Keep original role indices when applying the four Gold label changes; rerunning the splitter with corrected labels is not promised to reconstruct the historical split.",
+  "normalization": "Fixed code dictionaries; estimators/scalers fit only in the roles listed in MODEL_ROLE_RULES.csv",
+  "unverified": "Historical timing of every dictionary/configuration choice relative to test inspection remains qualified"
+}

@@ -1,7 +1,7 @@
 name: Numerical reproducibility
 on:
   push:
-    branches: [main]
+    branches: [main, 'revision-*']
   pull_request:
   workflow_dispatch:
 jobs:
@@ -17,10 +17,22 @@ jobs:
         run: python -m pip install -r requirements.txt
       - name: Verify notebook JSON and code structure
         run: |
-          python -m pip install nbformat
-          python -c "import nbformat, pathlib; [nbformat.validate(nbformat.read(str(p), as_version=4)) for p in pathlib.Path('notebooks').glob('*.ipynb')]"
+          python -m pip install nbformat jupyter_client ipykernel nbconvert
+          python -c "import nbformat, pathlib; [nbformat.validate(nbformat.read(str(p), as_version=4)) for p in sorted(pathlib.Path('notebooks').glob('*.ipynb'))]"
+      - name: Execute read-only notebooks
+        run: |
+          for nb in notebooks/*.ipynb; do
+            jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=180 --stdout "$nb" > /dev/null
+          done
       - name: Recalculate metrics and verify sources
         run: python scripts/validation/verify_release.py --root .
+      - name: Verify V4 revision source freeze and CPU reproduction
+        run: python scripts/validation/verify_revision.py --root .
+      - name: Verify final manuscript Tables 1-6, Figures 1-6, and S7 reliability
+        run: |
+          python scripts/validation/verify_manuscript_artifacts.py --root .
+          python results/statistics/revision_20261113/reliability/reproduce_reliability.py --output /tmp/ci_reliability
+          python scripts/analysis/build_manuscript_artifacts.py --root . --output /tmp/ci_manuscript
       - name: Reproduce saved generalization diagnostics
         env:
           OPENBLAS_NUM_THREADS: '1'

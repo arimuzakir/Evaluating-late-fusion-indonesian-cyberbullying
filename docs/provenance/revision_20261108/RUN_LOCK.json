@@ -1,0 +1,210 @@
+{
+  "protocol_version": "v6_gold_adjudicated_v1_1_20261024",
+  "label_version": "v1.1-GoldAdjudicated",
+  "seeds": [
+    42,
+    2026,
+    2027
+  ],
+  "folds": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "primary_seed": 42,
+  "models": [
+    "majority",
+    "text",
+    "visual",
+    "audio",
+    "equal_va",
+    "equal_vat",
+    "va_lr",
+    "vat_lr",
+    "vat_flags",
+    "vat_coverage",
+    "coverage_only",
+    "coverage_shuffled_control",
+    "concat_mlp",
+    "healnet_adapted_2024",
+    "siglip2_visual_probe",
+    "siglip2_vt_probe",
+    "siglip2_vta_probe",
+    "equal_tv",
+    "equal_ta",
+    "tv_lr",
+    "ta_lr"
+  ],
+  "configuration": {
+    "text_batch": 16,
+    "visual_batch": 32,
+    "accumulation": 2,
+    "video_text_epochs": 4,
+    "visual_epochs": 5,
+    "video_max_length": 192,
+    "save_best_weights": true,
+    "head_epochs": 30,
+    "head_batch": 64,
+    "head_lr": 0.001
+  },
+  "threshold_grid": [
+    0.1,
+    0.125,
+    0.15,
+    0.175,
+    0.2,
+    0.225,
+    0.25,
+    0.275,
+    0.3,
+    0.325,
+    0.35,
+    0.375,
+    0.4,
+    0.425,
+    0.45,
+    0.475,
+    0.5,
+    0.525,
+    0.55,
+    0.575,
+    0.6,
+    0.625,
+    0.65,
+    0.675,
+    0.7,
+    0.725,
+    0.75,
+    0.775,
+    0.8,
+    0.825,
+    0.85,
+    0.875,
+    0.9
+  ],
+  "threshold_selection": "calibration role only; closest .5 then lower on ties",
+  "text_checkpoint": "indobenchmark/indobert-base-p2",
+  "text_revision": "94b4e0a82081fa57f227fcc2024d1ea89b57ac1f",
+  "visual_weights": "EfficientNet_B0_Weights.IMAGENET1K_V1",
+  "supervised_branches": "train from generic pretrained weights under v1.1 labels in every seed/fold; old supervised NPZ/model cache never loaded",
+  "encoder_selection": "best early_stop-role macro F1 at .5; earliest epoch on tie",
+  "fusion_training": "meta_fit only, fixed 30 epochs for neural heads; audio/probes fit role only",
+  "audio_representation": "waveform16_v1, quality policy unchanged; 3841 OK,84 partial,26 absent in aligned cohort",
+  "parent_video_context": "metadata only; not a window-label override and not used for fitting",
+  "primary_7_contrasts": [
+    [
+      "vat_coverage",
+      "visual"
+    ],
+    [
+      "vat_coverage",
+      "vat_lr"
+    ],
+    [
+      "vat_coverage",
+      "vat_flags"
+    ],
+    [
+      "vat_coverage",
+      "coverage_only"
+    ],
+    [
+      "vat_coverage",
+      "coverage_shuffled_control"
+    ],
+    [
+      "vat_coverage",
+      "healnet_adapted_2024"
+    ],
+    [
+      "vat_coverage",
+      "siglip2_vta_probe"
+    ]
+  ],
+  "exploratory_6_contrasts": [
+    [
+      "equal_vat",
+      "text"
+    ],
+    [
+      "equal_va",
+      "visual"
+    ],
+    [
+      "equal_ta",
+      "text"
+    ],
+    [
+      "ta_lr",
+      "text"
+    ],
+    [
+      "equal_tv",
+      "text"
+    ],
+    [
+      "tv_lr",
+      "text"
+    ]
+  ],
+  "multiplicity": "Holm within each family; all inference remains exploratory internal-corpus analysis",
+  "inference_replicates": 10000,
+  "lopo_role_source": "previous waveform16 LOPO assignments frozen before this label update",
+  "no_best_seed_selection": true,
+  "environment": {
+    "python": "3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]",
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.6.1",
+    "torch": "2.11.0+cu130",
+    "einops": "0.8.1",
+    "transformers": "4.57.1",
+    "torchvision": "0.26.0+cu130",
+    "emoji": "2.14.1",
+    "cuda_runtime": "13.0",
+    "gpu": "NVIDIA L4"
+  },
+  "device": "cuda",
+  "implementation_sha256": "e632c42b0efccc0b93b00b0ba07d52a8884644825c68fe7e9d7af4ea18471ca6",
+  "healnet_sha256": "78e9c2b10455f6ad43a88ed4e0a646cbf6304bf52cac06a5140f49dbc4796820",
+  "input_sha256": {
+    "data/dataset_master_13307_labeled.csv": "cd3349fe5c2c824a1d9269135938d3a2de56a4321c685d880a097b71a147dafb",
+    "results/v6_reviewer_experiments_20261020_v1/VIDEO_PRIMARY_MANIFEST.csv": "f82b694fda9251a3cd9a736ca5974e520d606a5e5277bdf5b3028b0ba3bb68a4",
+    "results/v6_reviewer_experiments_20261020_v1/VIDEO_ROLE_MANIFEST.csv": "662ed2510be1d48673951926a15a2dc30a2ad9f216c4b7dd7ff4755b9b620daa",
+    "results/v6_reviewer_experiments_20261020_v1/LOCKED_CONFIG.json": "acbe9851dfacf73e1aa477c1b107be197c8be4f71562c94809a9714bfda40a67",
+    "results/v6_reviewer_experiments_20261020_v1/MODEL_REVISIONS.json": "a58d37fcc561f377784708bb3f8d09a9d1507bb2c393a92de8282c87c3ac084f",
+    "results/v6_reviewer_experiments_20261020_v1/siglip2_frozen_features.npz": "9ad7e603e42864796e70f11240ce468e4acd75728e33483a21b3c5e5cc0af1e1",
+    "results/audio_waveform16_reevaluation_20261024_v1/LOPO_ROLE_MANIFEST.csv": "85e18edeb62637aa0a92dd824df429499ca2dec9ef7837823ab1f109227ffb42",
+    "results/audio_waveform16_v1_20261024/AUDIO_EXTRACTION_QUALITY.csv": "10d6c33e82b896c53b0e62b4d1223f135a7b8e67910536c4fea35cf51966bc06",
+    "results/audio_waveform16_v1_20261024/ROW_ID_MANIFEST.csv": "09d6e2259d437ce6b1ee0492c0dc27600e50502d95c3820bc021f3cb44200190",
+    "results/audio_waveform16_v1_20261024/ALIGNED_ROW_ID_MANIFEST.csv": "08262e1d205058ede758689a37528b4c5937679bfc21ca0c304ffc36cddbece0",
+    "results/audio_waveform16_v1_20261024/audio_waveform16_all_4401.npy": "5b40a43259daa2de26dd2b072194a21cd71baf09777a2636bf74009d4943c5a5",
+    "results/audio_waveform16_v1_20261024/audio_waveform16_aligned_3951.npy": "e35b8e453bb83c43280ac8affa892788e72f83580da76db18d2bbdebc0660c7d",
+    "results/audio_waveform16_v1_20261024/LOCK.json": "6bbfbfaa74c7d2ac0eec605199b767357b0277bbe7c1e27b41a30484d9a2949e",
+    "results/audio_waveform16_v1_20261024/EXTRACTION_COMPLETE_NEEDS_MODEL_REEVALUATION.json": "e7fd08f78424b988b941003b0fa29cbb6e3094c8efe191d47038a0c8f353d0ae",
+    "results/label_versions/v1_1_GoldAdjudicated/VALIDATION.json": "3530212e8d3c80d6e485b1727f29bb1c7af225df623115400d4c66fb9ff8a44b",
+    "results/label_versions/v1_1_GoldAdjudicated/VERSION_LOCK.json": "2a61f338b9c24c96865c6d9aeecb1585ded1d7958ad86ba64a9c051bd54b01f0",
+    "results/label_versions/v1_1_GoldAdjudicated/README.md": "d24f5459e445e955bd6a12b731b663d7a74a8aa6445aed103a916b1872877dfe",
+    "results/label_versions/v1_1_GoldAdjudicated/POPULATION_COUNTS.csv": "4a59e81b0825b1e6f2601d00c0ab28ccb0f1686a6c3dd050adf5bac48e513a55",
+    "results/label_versions/v1_1_GoldAdjudicated/manifests/VIDEO_ROLE_MANIFEST.csv": "662ed2510be1d48673951926a15a2dc30a2ad9f216c4b7dd7ff4755b9b620daa",
+    "results/label_versions/v1_1_GoldAdjudicated/manifests/VIDEO_PRIMARY_MANIFEST.csv": "54c363efce6069e4e9ba70bb6664312c99a7cf96a5616081a4d1c439e542158e",
+    "results/label_versions/v1_1_GoldAdjudicated/annotation/WINDOW_LABEL_CHANGELOG_4.csv": "a4d96964e086a694c4a8046e162625cf157e83322595eaea61aa22dd883e1e60",
+    "results/label_versions/v1_1_GoldAdjudicated/annotation/LABEL_LINEAGE_ALL_13307.csv": "089ad7c3f2308309b39d434964f68dd1ae92ec032d852f759d12a7b4a16555a8",
+    "results/label_versions/v1_1_GoldAdjudicated/annotation/PARENT_VIDEO_CONTEXT_94.csv": "8d0253f82eb230fe565894310a514da47b97d242df89e4ada71d081ab6896823",
+    "results/label_versions/v1_1_GoldAdjudicated/annotation/HISTORICAL_194_VIDEO_CONTEXT_LINKAGE.csv": "a6ac3baba8c9769c57511bcb69e33e7650c73c1456f0c81f46d45550b834b0cc",
+    "results/label_versions/v1_1_GoldAdjudicated/annotation/IAA_SCOPE.json": "9209355c618ce98f12f7b5297e0780d154403d2c5d08e2dc1c7a78ee16743bca",
+    "results/label_versions/v1_1_GoldAdjudicated/annotation/RESEARCHER_DECLARATION_SCOPE.json": "f1b7636b256812f4216ed123c86cc4e52979fe0b3edbea8980f7c56286bd3f04",
+    "results/label_versions/v1_1_GoldAdjudicated/annotation/WINDOW_AUDIT_REFERENCE_153.csv": "6dc9b2fe22d71fba75246f09263fbd6f359f8abde167e4c5b5b3a79e49e0df41",
+    "results/label_versions/v1_1_GoldAdjudicated/annotation/AFFECTED_ROLES_16.csv": "4be157f4a8cb310e5f8d72e4bc39df65ccbfa514b4ee323d6f72bfb74b75134c",
+    "results/label_versions/v1_1_GoldAdjudicated/data/dataset_master_13307_labeled.csv": "11f1b2a6ccb6de7b15b1f24dfd38fb904437adb13eb197d746434ff77f1dd573",
+    "results/label_versions/v1_1_GoldAdjudicated/data/dataset_ocr_video_labeled.csv": "d8ea0099a975ac0e2a2a375462d2aeb34f50bf3526cf9cd0083ada08ec8b252e",
+    "results/label_versions/v1_1_GoldAdjudicated/features/multimodal_video_clean_metadata.csv": "fbabefe1b96a0da21abab647e212b8166262ba475b46108f4779db141ac4dbbc",
+    "results/label_versions/v1_1_GoldAdjudicated/annotation/source_snapshots/EXPERT_2_INDEPENDENT_WINDOW_REVIEW.csv": "ed48943bc498f5452a6df4b12f8f8789aa60a1973905bf32794d759beaa5df29",
+    "results/label_versions/v1_1_GoldAdjudicated/annotation/source_snapshots/WINDOW_ADJUDICATION_AS_RECEIVED.csv": "ab9966d4d934ac2e31215f90c7539d614bb30e79cc185626109cbdcfe77752ed",
+    "results/label_versions/v1_1_GoldAdjudicated/annotation/source_snapshots/EXPERT_1_INDEPENDENT_WINDOW_REVIEW.csv": "5381e4f6fc854e79b03b79c107cad7c7fa1f4ea07457ff1f4f2903043d1bb8be",
+    "results/label_versions/v1_1_GoldAdjudicated/data/multimodal/segmentation_10s_stride3_v2/multimodal_segments.csv": "8a00d85d6f060f590a06b7917b919794965c7b09e2d4509313856babd771dded",
+    "results/label_versions/v1_1_GoldAdjudicated/FILE_MANIFEST.json": "c992ba3078eccd7bf2ba91f228cc3cfcae9221ac080de5fe9c88d26c723d5465"
+  }
+}

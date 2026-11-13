@@ -1,0 +1,13 @@
+{
+  "error_transitions": {
+    "status": "DESCRIPTIVE_ONLY_MECHANISM_UNRESOLVED",
+    "reason": "Few discordant source groups; subgroup-only positive multipliers cannot create unobserved transitions and did not preserve the original stratified design. Previous subgroup intervals remain withdrawn.",
+    "missing_ci": "NA means not estimated; neither zero uncertainty nor no association",
+    "sign": "new errors minus corrected errors; negative favours Equal VAT"
+  },
+  "fidelity": {
+    "primary": "Conservative finite-population stratified hypergeometric/Bonferroni bounds, conditional on the reproduced SRSWOR design and fixed adjudicated ratings. Source-dependent outcomes may be arbitrary fixed patterns; no iid outcome model is assumed.",
+    "secondary": "Shared-source exponential multipliers calibrated within cells; exploratory source-dependence sensitivity only.",
+    "limitation": "Finite-population bounds do not estimate transfer to new source groups. Secondary multiplier intervals remain model-assisted; singleton variance is not thereby identified. Neither analysis identifies a causal mechanism."
+  }
+}

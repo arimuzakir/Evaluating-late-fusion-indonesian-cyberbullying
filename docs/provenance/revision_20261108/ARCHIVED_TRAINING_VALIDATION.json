@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "head_fits": 48,
+  "head_prediction_rows": 47412,
+  "complete_partitions": 2,
+  "repartition_rows": 7902,
+  "five_roles_verified": true,
+  "training_repeated": false,
+  "scope": "Stored prediction/role/metric consistency; not an exact replay of model fitting"
+}

@@ -1,0 +1,15 @@
+field,rating,n,groups,corrected,new_errors,discordant_groups,weighted_error_delta,ci_low,ci_high,ci_status,effective_n_kish,scope
+ocr_akurasi,0.0,6,6,0,0,0,0.0,,,not_estimated_sparse_transitions_and_unvalidated_design_variance,5.890197177911559,descriptive audited subgroup only; mechanism unresolved; no significance or causal claim
+ocr_akurasi,1.0,3,3,0,0,0,0.0,,,not_estimated_sparse_transitions_and_unvalidated_design_variance,2.999867148856966,descriptive audited subgroup only; mechanism unresolved; no significance or causal claim
+ocr_akurasi,2.0,43,35,3,4,7,0.02395639143875215,,,not_estimated_sparse_transitions_and_unvalidated_design_variance,42.917135991428545,descriptive audited subgroup only; mechanism unresolved; no significance or causal claim
+stt_akurasi,0.0,9,7,1,0,1,-0.11122345803842269,,,not_estimated_sparse_transitions_and_unvalidated_design_variance,8.998649640006722,descriptive audited subgroup only; mechanism unresolved; no significance or causal claim
+stt_akurasi,1.0,4,4,0,0,0,0.0,,,not_estimated_sparse_transitions_and_unvalidated_design_variance,3.988737425531232,descriptive audited subgroup only; mechanism unresolved; no significance or causal claim
+stt_akurasi,2.0,51,36,1,5,6,0.08201169211851529,,,not_estimated_sparse_transitions_and_unvalidated_design_variance,50.92161536609388,descriptive audited subgroup only; mechanism unresolved; no significance or causal claim
+ocr_relevansi,0.0,25,21,0,1,1,0.03927108462995645,,,not_estimated_sparse_transitions_and_unvalidated_design_variance,24.848846412342414,descriptive audited subgroup only; mechanism unresolved; no significance or causal claim
+ocr_relevansi,1.0,26,24,2,3,5,0.03884275590796991,,,not_estimated_sparse_transitions_and_unvalidated_design_variance,25.956204006612673,descriptive audited subgroup only; mechanism unresolved; no significance or causal claim
+ocr_relevansi,2.0,1,1,1,0,1,-1.0,,,not_estimated_sparse_transitions_and_unvalidated_design_variance,1.0,descriptive audited subgroup only; mechanism unresolved; no significance or causal claim
+stt_relevansi,0.0,49,31,2,4,6,0.04468318630170603,,,not_estimated_sparse_transitions_and_unvalidated_design_variance,48.923625971535174,descriptive audited subgroup only; mechanism unresolved; no significance or causal claim
+stt_relevansi,1.0,13,13,0,1,1,0.07618624732653533,,,not_estimated_sparse_transitions_and_unvalidated_design_variance,12.996628466185992,descriptive audited subgroup only; mechanism unresolved; no significance or causal claim
+stt_relevansi,2.0,2,2,0,0,0,0.0,,,not_estimated_sparse_transitions_and_unvalidated_design_variance,1.9912436779354692,descriptive audited subgroup only; mechanism unresolved; no significance or causal claim
+B_keyframe_event,1.0,9,8,0,0,0,0.0,,,not_estimated_sparse_transitions_and_unvalidated_design_variance,8.968536228769738,descriptive audited subgroup only; mechanism unresolved; no significance or causal claim
+B_keyframe_event,2.0,46,39,3,4,7,0.023745756257762443,,,not_estimated_sparse_transitions_and_unvalidated_design_variance,45.87330150259978,descriptive audited subgroup only; mechanism unresolved; no significance or causal claim

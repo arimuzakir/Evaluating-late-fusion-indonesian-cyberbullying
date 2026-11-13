@@ -1,0 +1,16 @@
+{
+  "state": "CPU_V4_FINISHED_AUTHOR_ITEMS_OPEN",
+  "revision": "cpu_revision_v4",
+  "training_repeated": false,
+  "head_fits_retained": 48,
+  "repartitions_retained": 2,
+  "fallback_models": 21,
+  "fallback_seeds": 3,
+  "calibration_control_models": 2,
+  "calibration_control_seed": 42,
+  "calibration_control_contrasts": 8,
+  "audit_fidelity_primary": "conservative finite-population bounds conditional on verified SRSWOR design",
+  "audit_error_intervals": "not estimated; descriptive only",
+  "human_documentation_complete": false,
+  "external_confirmatory_validation": false
+}
