@@ -33,6 +33,13 @@ EXPECTED_FIGURES = {
     'results/figures/Fig_2.png': 'eeae9d409efe2b264068562c5e35f3d65260920236f2386e719ebfef13f693c1',
 }
 
+EXPECTED_COMPOSITE_FIGURES = [
+    'results/figures/manuscript/Fig_3.png',
+    'results/figures/manuscript/Fig_4.png',
+    'results/figures/manuscript/Fig_5.png',
+    'results/figures/manuscript/Fig_6.png',
+]
+
 RECOMPUTED_TO_REPO = {
     'ROLE_COUNTS.csv': 'results/video/revision_20261108/roles/ROLE_COUNTS.csv',
     'ALL_THRESHOLDS.csv': 'results/video/revision_20261108/roles/ALL_THRESHOLDS.csv',
@@ -82,6 +89,8 @@ DOC_FILES = [
     'docs/numerical_environment.md',
     'docs/results_index.md',
     'docs/data_release.md',
+    'docs/controlled_access.md',
+    'docs/feature_interactions.md',
     'results/figures/README.md',
     'notebooks/README.md',
     'src/README.md',
@@ -135,7 +144,7 @@ def verify_figures_and_checksum_inventory(root, simulated_missing_figure=None):
     if drawio_files:
         raise AssertionError(f'Editable .drawio files must not be committed to the public repository: {drawio_files}')
 
-    # 2. Final Fig_1.png and Fig_2.png existence and SHA-256 verification
+    # 2. Final Fig_1.png and Fig_2.png existence and SHA-256 verification, plus composite Fig_3..Fig_6
     for rel_fig, exp_hash in EXPECTED_FIGURES.items():
         p = root / rel_fig
         if simulated_missing_figure == rel_fig or not p.is_file():
@@ -144,14 +153,23 @@ def verify_figures_and_checksum_inventory(root, simulated_missing_figure=None):
         if actual_hash != exp_hash:
             raise AssertionError(f'SHA-256 mismatch for {rel_fig}: {actual_hash} != {exp_hash}')
 
-    # 3. Checksum file count computed dynamically from actual public repo contents
-    skip_dirs = {'.git', '__pycache__', '.pytest_cache', '.ipynb_checkpoints', 'private'}
+    for rel_fig in EXPECTED_COMPOSITE_FIGURES:
+        p = root / rel_fig
+        if not p.is_file() or p.stat().st_size < 10000:
+            raise AssertionError(f'Required composite manuscript figure missing or empty: {rel_fig}')
+
+    # 3. Checksum file count computed dynamically from actual public repo contents (aligned with build_checksums.py)
+    skip_dirs = {'.git', '__pycache__', '.venv', '.pytest_cache', '.ipynb_checkpoints', 'private'}
     public_files = []
     for p in sorted(root.rglob('*')):
         if not p.is_file():
             continue
         rel = p.relative_to(root)
-        if any(part in skip_dirs for part in rel.parts) or p.name == '.DS_Store':
+        if p.name == '.DS_Store' or p.name.startswith('Icon\r'):
+            continue
+        if any(part in skip_dirs for part in rel.parts):
+            continue
+        if rel.as_posix().startswith('docs/internal/'):
             continue
         if rel.as_posix() == 'docs/RELEASE_SHA256.json':
             continue
@@ -200,7 +218,6 @@ def verify_documentation_consistency(root, texts_override=None, simulated_missin
         'docs/provenance/revision_20261108/AUDIT_DESIGN_METHOD.json',
         'docs/provenance/revision_20261108/AUDIT_TARGET_DISAGREEMENT.json',
         'docs/provenance/revision_20261108/AUDIT_UNCERTAINTY_NOTES.json',
-        'docs/provenance/revision_20261108/CONTROL_PROTOCOL_LOCK_VERIFIED.json',
         'MV_000001', 'MV_004386',
         'A06', 'A07', 'ADJ_KF',
         '6.6.113+',
@@ -221,7 +238,10 @@ def verify_documentation_consistency(root, texts_override=None, simulated_missin
         [f'**{actual_public_count} files PASS**'],
     )
 
-    # 3. Item 2A: Structured 3-seed mean/SD verification from THREE_SEED_RECOMPUTED.csv
+    # 3. Concise top-level README cleanliness & primary summary verification + 3-seed check in methods docs
+    if re.search(r'\bR[12]\.\d+\b', texts['README.md']) or 'AWAIT_FINAL_MANUSCRIPT_MAPPING' in texts['README.md']:
+        raise AssertionError('Top-level README.md must remain clean without internal reviewer numbering (R1.x/R2.x) or AWAIT placeholders')
+
     three_seed = pd.read_csv(
         root / 'results/statistics/revision_20261108/main_result_checks/THREE_SEED_RECOMPUTED.csv',
         dtype=str,
@@ -229,14 +249,26 @@ def verify_documentation_consistency(root, texts_override=None, simulated_missin
     _assert_line_association(
         texts['README.md'],
         'README.md',
-        'Video extracted text (`text`, primary)',
-        ['0.5703396012843986', three_seed.loc['text', 'mean'], three_seed.loc['text', 'std']],
+        '**Standalone comments**',
+        ['0.9663', '0.9666', '0.9932', '0.9604'],
     )
     _assert_line_association(
         texts['README.md'],
         'README.md',
-        'Video equal-weight VAT (`equal_vat`, primary)',
-        ['0.5669772833605011', three_seed.loc['equal_vat', 'mean'], three_seed.loc['equal_vat', 'std']],
+        '**Aligned video (main)**',
+        ['0.5703', '0.5591', '0.0111', '0.5670', '0.5590', '0.0084'],
+    )
+    _assert_line_association(
+        texts['README.md'],
+        'README.md',
+        '**Focal paired contrast**',
+        ['0.0034', '0.0179', '0.0116', '0.6608'],
+    )
+    _assert_line_association(
+        texts['README.md'],
+        'README.md',
+        '**Probability quality**',
+        ['0.2362', '0.0252', '0.2830', '0.1950'],
     )
     _assert_line_association(
         texts['docs/methods_and_reproducibility.md'],
@@ -270,24 +302,6 @@ def verify_documentation_consistency(root, texts_override=None, simulated_missin
                 f'source_brier_rank = {row["source_brier_rank"]}',
             ],
         )
-    # Also verify README.md Table 6 row pairs sigmoid_equal_vat, convex_vat, and vat_lr with their exact metrics and ranks
-    for model_name in ['sigmoid_equal_vat', 'convex_vat', 'vat_lr']:
-        row = t6.loc[model_name]
-        _assert_line_association(
-            texts['README.md'],
-            'README.md',
-            'Seed-42 probability controls (`R2.6`, V4)',
-            [
-                model_name,
-                row['window_macro_f1'],
-                row['window_brier'],
-                f'[rank {row["window_brier_rank"]}]',
-                row['window_ece'],
-                row['source_brier'],
-                f'[rank {row["source_brier_rank"]}]',
-                row['source_ece'],
-            ],
-        )
 
     # Also verify CALIBRATION_CONTROL_BRIER_INTERVALS.csv paired deltas & CIs by model, reference, and weighting
     cbrier = pd.read_csv(
@@ -313,7 +327,7 @@ def verify_documentation_consistency(root, texts_override=None, simulated_missin
         sub = hp[hp['model'].str.startswith(prefix)]
         min_row = sub.loc[sub['val'].idxmin()]
         max_row = sub.loc[sub['val'].idxmax()]
-        for doc_rel in ['README.md', 'docs/methods_and_reproducibility.md', 'docs/limitations.md', 'docs/numerical_environment.md']:
+        for doc_rel in ['docs/methods_and_reproducibility.md', 'docs/limitations.md', 'docs/numerical_environment.md']:
             _assert_line_association(
                 texts[doc_rel],
                 doc_rel,
@@ -406,12 +420,6 @@ def verify_documentation_consistency(root, texts_override=None, simulated_missin
                 r['ci_low'],
                 r['ci_high'],
             ],
-        )
-        _assert_line_association(
-            texts['README.md'],
-            'README.md',
-            'Focal source repartitions (`R2.5`, V4)',
-            [r['text_f1'], r['equal_vat_f1'], r['ci_low'].lstrip('-'), r['ci_high']],
         )
     _assert_line_association(
         texts['docs/methods_and_reproducibility.md'],
@@ -515,7 +523,7 @@ def verify_negative_self_tests(root):
     base_audit = (root / 'docs/input_audit.md').read_text(encoding='utf-8')
 
     mutations = [
-        ('3-seed mean mutation in README.md', {'README.md': base_readme.replace('0.5591008526998115', '0.5591390000000000')}, None),
+        ('Headline video score mutation in README.md', {'README.md': base_readme.replace('0.5703', '0.57845', 1)}, None),
         ('Table 6 rank swap in methods_and_reproducibility.md', {'docs/methods_and_reproducibility.md': base_methods.replace('source_brier_rank = 4', 'source_brier_rank = 1', 1)}, None),
         ('Neural min/max config swap in methods_and_reproducibility.md', {'docs/methods_and_reproducibility.md': base_methods.replace('concat_mlp_e30_wd0.1', 'concat_mlp_e15_wd0.01', 1)}, None),
         ('Exclusion count mutation in methods_and_reproducibility.md', {'docs/methods_and_reproducibility.md': base_methods.replace('**197** windows', '**187** windows', 1)}, None),

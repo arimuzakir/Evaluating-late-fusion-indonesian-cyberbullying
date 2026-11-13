@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.2.1 — manuscript artifact, S7 reliability, and governance synchronization (2026-11-13)
+
+- **Preserves all 279 primary `GoldAdjudicated v1.1` source files and all 89 public V4 revision files byte-for-byte**; excludes experimental offline workbooks (`adjudikasi_26_flag_20261112/`).
+- **Adds Supplementary S2/S7/S8 scientific artifacts**: `docs/feature_interactions.md`, `docs/provenance/revision_20261108/CONTROL_PROTOCOL_LOCK_VERIFIED.json`, `docs/provenance/revision_20261108/RUN_LOCK.json`, and `results/statistics/revision_20261113/reliability/` (`13` files including `reproduce_reliability.py`, `RELIABILITY_POINTWISE_CI.csv`, and `VALIDATION.json`).
+- **Adds final manuscript reproduction & validation scripts**: `scripts/analysis/build_manuscript_artifacts.py` (dynamically generates Tables `1–6` and composite manuscript `results/figures/manuscript/Fig_3.png`–`Fig_6.png`) and `scripts/validation/verify_manuscript_artifacts.py`.
+- **Finalizes `docs/reproduction/MANUSCRIPT_ARTIFACT_MANIFEST.csv`**: Maps all final manuscript **Table 1–6**, **Fig. 1–6**, and **Supplementary S1–S8** artifacts to exact inputs, SHA-256 hashes, and executable commands.
+- **Adds `docs/controlled_access.md` (`PROPOSED` procedure)** referencing DRPM statements `010/DRPM/Univ-BD/IX/2026` and `021/KET-DRPM/Univ-BD/XI/2026`, updates CI workflow (`.github/workflows/verify-release.yml`), and streamlines top-level `README.md` for concise academic readability.
+
 ## v1.2.0 — additive V4 reviewer revision archive (assembled 2026-11-08)
 
 - **Preserves all 279 primary numerical source files (`INASS_RESULTS_FREEZE_20261108_V4`) byte-for-byte** from `v1.1-GoldAdjudicated` (`v1.1.2`), including labels, five human votes, source groups, role manifests, out-of-fold predictions, thresholds, primary Table 1–6 metrics, 100,000-replicate focal clustered inference, LOPO intervals, and five frozen-feature partition probes.

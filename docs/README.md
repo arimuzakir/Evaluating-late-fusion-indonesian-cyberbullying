@@ -1,7 +1,9 @@
 # Documentation
 
 - [Methods, three-level reproduction boundaries, and V4 revision protocols](methods_and_reproducibility.md)
-- [Manuscript table/figure-to-code artifact manifest](reproduction/MANUSCRIPT_ARTIFACT_MANIFEST.csv)
+- [Manuscript Table 1–6, Figure 1–6, and Supplementary S1–S8 manifest](reproduction/MANUSCRIPT_ARTIFACT_MANIFEST.csv)
+- [Controlled access, institutional scope, and technical prerequisites (`PROPOSED`)](controlled_access.md)
+- [Modality feature interactions (Supplementary S2)](feature_interactions.md)
 - [Source revision ledger (`INITIAL_RUN` to `CPU_V4`)](provenance/revision_20261108/SOURCE_REVISION_LEDGER.csv)
 - [Archived code lineage and reproduction scope](provenance/revision_20261108/ARCHIVED_CODE_LINEAGE.json)
 - [Data provenance, governance, and administrative vs ethics status](data_release.md)

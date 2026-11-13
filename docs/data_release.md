@@ -52,19 +52,20 @@ Data were collected through official platform APIs (Facebook, Instagram, TikTok,
 | Release class | Examples | Control |
 | :--- | :--- | :--- |
 | **PUBLIC** | Source code, environment files, experiment configurations, de-identified predictions, group partitions, aggregate metrics, V4 sensitivity tables, and explanatory documentation | Released after researcher review for privacy and rights consistency |
-| **RESTRICTED / KEEP_PRIVATE** | Original videos, source audio, identifiable frames, unreduced source text, identity mappings, neural model checkpoints, and internal audit workbook traces (`private/`) | Retained separately with controlled access and excluded from the public repository |
+| **RESTRICTED / KEEP_PRIVATE** | Original videos, source audio, identifiable frames, unreduced source text, identity mappings, neural model checkpoints, and internal audit workbook traces (`private/`) | Retained offline; institutional request protocol documented as `PROPOSED` in [`docs/controlled_access.md`](controlled_access.md) |
 | **EXCLUDED** | Credentials, access tokens, unreviewed exports, unnecessary personal data, and any file judged to present unacceptable disclosure risk | Not released; removed or withheld from the public archive |
 
-### 4. Repository chronology note (`R2.2`)
+### 4. Repository chronology and institutional governance note (`R2.2`)
 
-The institutional record issue and signature date is distinct from later repository assembly milestones (`docs/provenance/revision_20261108/RESEARCH_CHRONOLOGY.csv`):
+The institutional administrative records (`010/DRPM/Univ-BD/IX/2026` dated 23 September 2026 and follow-up `021/KET-DRPM/Univ-BD/XI/2026` dated 6 November 2026 citing Universitas Bina Darma Rector's Decrees `0171/SK/Univ-BD/I/2011` and `0172/SK/Univ-BD/I/2011` dated 2 January 2011 and the Academic Code of Ethics) are distinct from later repository assembly milestones (`docs/provenance/revision_20261108/RESEARCH_CHRONOLOGY.csv`):
 
 | Milestone | Repository date / record |
 | :--- | :--- |
-| **Institutional administrative record issue and signatures (unaltered)** | 23 September 2026 (`010/DRPM/Univ-BD/IX/2026`) |
+| **Institutional administrative provenance & governance statements** | 23 September 2026 (`010/DRPM/Univ-BD/IX/2026`), 6 November 2026 (`021/KET-DRPM/Univ-BD/XI/2026`) |
 | **Project release (researcher-designated)** | 6 October 2026 |
 | **Analysis reference (researcher-designated)** | 22 October 2026 |
 | **Baseline archive assembly (`v1.1.2`)** | 28 October 2026 |
 | **Additive V4 reviewer revision assembly (`v1.2.0`)** | 8 November 2026 |
+| **Manuscript figure/table & S7 reliability sync (`v1.2.1`)** | 13 November 2026 |
 
-The signed administrative record dated 23 September 2026 is retained without alteration. Later repository milestones document subsequent repository packaging, environment stabilization, and reviewer-requested V4 sensitivity analyses only.
+The signed administrative records do not claim formal independent research ethics committee / IRB approval or a formal waiver of informed consent (`docs/controlled_access.md`). Later repository milestones document packaging, environment stabilization, V4 sensitivity analyses, and final manuscript table/figure synchronization without modifying frozen primary labels or metrics.

@@ -1,0 +1,18 @@
+{
+  "analysis": "Reviewer requested post hoc learned fusion diagnosis and controlled probability combinations",
+  "locked_at_utc": "2026-10-26T12:06:40.274919+00:00",
+  "status": "locked before first new control run",
+  "seed": 42,
+  "n_windows": 3951,
+  "n_groups": 214,
+  "outer_folds": 4,
+  "oof_sha256": "336892131fd6ff00d27cd568e30c8ecc9abb9cf705adea5d93158a03016f4c01",
+  "roles": "Use original fit, early_stop, meta_fit, calibration (threshold selection), test; no reallocation",
+  "fit_weighting": "Within each fitting subset, inverse source group size normalized to mean 1, as in original VAT-LR",
+  "control_1": "One monotone sigmoid expit(a*p+b), a>=0, per branch; weighted log loss fit only on meta_fit. Text sigmoid fits only available-extraction rows; no-extraction text remains exactly 0.5. Equal arithmetic mean after calibration. No hyperparameter search.",
+  "control_2": "Nonnegative linear probability pool; three weights sum to 1; weighted Brier objective on meta_fit; uniform start included; SLSQP ftol 1e-12 maxiter 2000, analytic gradient; no intercept. Applied to raw branch probabilities.",
+  "thresholds": "Original grid 0.100 through 0.900 by 0.025. Maximize window Macro F1 on original calibration role. Ties nearest 0.5 then smaller threshold. Also report fixed 0.5.",
+  "evaluation": "Window-weighted Brier, positive-class ECE with 10 equal-width bins, ROC-AUC, AP, accuracy, Macro F1; test pooled and test-size-weighted within-fold ECE. Also group-weighted loss and positive prevalence as diagnostics. Meta-fit scores for fitted combiners and calibrators are apparent fitting scores.",
+  "constraints": "No test label used for fitting, calibrator selection, weight selection or threshold selection; no claim of guaranteed test improvement; descriptive seed42 analysis only.",
+  "scope": "B3 B4 and Reviewer2 point3 only. No new encoder training, no edits to original predictions."
+}

@@ -28,6 +28,11 @@ jobs:
         run: python scripts/validation/verify_release.py --root .
       - name: Verify V4 revision source freeze and CPU reproduction
         run: python scripts/validation/verify_revision.py --root .
+      - name: Verify final manuscript Tables 1-6, Figures 1-6, and S7 reliability
+        run: |
+          python scripts/validation/verify_manuscript_artifacts.py --root .
+          python results/statistics/revision_20261113/reliability/reproduce_reliability.py --output /tmp/ci_reliability
+          python scripts/analysis/build_manuscript_artifacts.py --root . --output /tmp/ci_manuscript
       - name: Reproduce saved generalization diagnostics
         env:
           OPENBLAS_NUM_THREADS: '1'

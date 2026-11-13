@@ -1,0 +1,37 @@
+{
+  "scope": "Supplementary retrospective reliability analysis; primary predictions and Gold v1.1 unchanged; conditional on stored fitted models; no refitting",
+  "training_seed": 42,
+  "bootstrap_seed": 20261112,
+  "replicates": 10000,
+  "resampling": "214 complete source groups with replacement, same multiplicity vector for every model and weighting",
+  "group_order": "first appearance after ascending master_id",
+  "models": [
+    "text",
+    "equal_vat",
+    "vat_lr",
+    "sigmoid_equal_vat",
+    "convex_vat"
+  ],
+  "edges": [
+    0.0,
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    1.0
+  ],
+  "interval": "pointwise percentile 2.5th and 97.5th percentiles of observed positive fraction and mean predicted probability",
+  "source_weight": "each window receives 1 / full-cohort number of windows in its source group, before bootstrap multiplicities; not bin-wise equalization",
+  "window_weight": "each eligible window receives unit weight before bootstrap multiplicities",
+  "bin_membership": "fixed stored probability; lower-inclusive upper-exclusive except final bin includes 1",
+  "sparse_rule": "suppress CI when original bin n < 20 or original source groups < 5",
+  "empty_replicates": "report count; omit empty-bin replicates from quantiles only if at least 95% replicates nonempty, otherwise suppress CI",
+  "other_limitations": "not simultaneous bands; not external validation; sparse point estimates retained and marked; label adjudication may require regeneration",
+  "input_file": "CALIBRATION_CONTROL_TEST_PREDICTIONS.csv",
+  "input_sha256": "a36b44ef53019d13cf547e53ca2dacffd4a8401629aa36dd89c55cf9b8820e53"
+}
